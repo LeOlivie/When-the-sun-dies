@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83de7a3c44c1e3b4d8185fee3c64ea76, type: 3}
+  m_Name: Food_TomatoSoup
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 454c645e82c7931458880a1441e61148, type: 3}
+  _name: Tomato soup
+  _description: Canned tomato soup.
+  _weight: 0.4
+  _maxInStack: 4
+  _isUsable: 1
+  _calories: 170
+  _water: 100

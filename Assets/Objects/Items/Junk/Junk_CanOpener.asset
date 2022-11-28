@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae2ce9b28a06014b963bf2d54717fd4, type: 3}
+  m_Name: Junk_CanOpener
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 00817ba2b8bde744b9daaeb060257fc0, type: 3}
+  _name: Can opener
+  _description: Regular can opener.
+  _weight: 0.2
+  _maxInStack: 4
+  _uses: 10
+  _maxUses: 10
+  _isEatable: 0
+  _calories: 0
+  _water: 0

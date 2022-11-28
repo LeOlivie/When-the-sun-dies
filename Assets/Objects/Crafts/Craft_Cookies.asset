@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8ef86564ab3f14bb371ba1bac9fc31, type: 3}
+  m_Name: Craft_Cookies
+  m_EditorClassIdentifier: 
+  _itemRequirements:
+  - _itemData: {fileID: 11400000, guid: c479c5201a502f549b1955f0044bc268, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 80db4f0022a44e243ab3b9ffe5da5f56, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 03ac1570e6878d743971ebd1cd048c9e, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 1551cae61deceac4bb974bf74301ecb5, type: 2}
+    _count: 1
+  _time: 40
+  _output:
+  - _itemData: {fileID: 11400000, guid: d507734da61523f45bb19a86d8fc9ac4, type: 2}
+    _count: 4

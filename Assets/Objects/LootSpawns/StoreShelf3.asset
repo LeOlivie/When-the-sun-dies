@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d758a34f71cba24289806af7c356ea2, type: 3}
+  m_Name: StoreShelf3
+  m_EditorClassIdentifier: 
+  _itemSpawnDatas:
+  - _itemData: {fileID: 11400000, guid: 03ac1570e6878d743971ebd1cd048c9e, type: 2}
+    _spawnChance: 20
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 0d3bc6067a2857c469109da5bf8aa3f1, type: 2}
+    _spawnChance: 100
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 80db4f0022a44e243ab3b9ffe5da5f56, type: 2}
+    _spawnChance: 50
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 0b1a62022a0608d4990964ad2265c433, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 51e6ec4bd56e88441ba8a1c33c07ed24, type: 2}
+    _spawnChance: 20
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: b2d382e5dadc7754a9494b6488fe05f4, type: 2}
+    _spawnChance: 20
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 34d3e5f4a6979f7469a16e63a4a6c979, type: 2}
+    _spawnChance: 45
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: c479c5201a502f549b1955f0044bc268, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: b2d382e5dadc7754a9494b6488fe05f4, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: c479c5201a502f549b1955f0044bc268, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: b2d382e5dadc7754a9494b6488fe05f4, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 80db4f0022a44e243ab3b9ffe5da5f56, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 80db4f0022a44e243ab3b9ffe5da5f56, type: 2}
+    _spawnChance: 30
+    _count: 1
+  _containerSize: 9
+  _containerName: Store shelf
+  _lootTime: 5

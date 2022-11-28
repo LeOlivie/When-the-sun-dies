@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e77d2009d788849a87b4eeb7a12208, type: 3}
+  m_Name: CookingStation
+  m_EditorClassIdentifier: 
+  _stationLevels:
+  - _recipies:
+    - {fileID: 11400000, guid: d638dbc788aa4c344a5637fe77c164c1, type: 2}
+    - {fileID: 11400000, guid: 77cb6df9707a236468d3deb64949914e, type: 2}
+    _upgradeRequierements:
+    - _itemData: {fileID: 11400000, guid: 9252b5d086258ef469620b0ce7fde252, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 687e6b8138a2ce848b2fad872069244c, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 9085fb8b86c62864195da4b07f1e8580, type: 2}
+      _count: 5
+    - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
+      _count: 3
+    - _itemData: {fileID: 11400000, guid: b45e60c882934104c828133c6fb6bb8d, type: 2}
+      _count: 2
+    _upgradeTime: 120
+  - _recipies:
+    - {fileID: 11400000, guid: 2ca75dce3c89bc54f8830512f502dcd9, type: 2}
+    - {fileID: 11400000, guid: 5a3987b8d878d474685b134593f7e2a1, type: 2}
+    - {fileID: 11400000, guid: c682a5ebbfaa19045b83665a80607b28, type: 2}
+    _upgradeRequierements:
+    - _itemData: {fileID: 11400000, guid: 9252b5d086258ef469620b0ce7fde252, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 687e6b8138a2ce848b2fad872069244c, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 9085fb8b86c62864195da4b07f1e8580, type: 2}
+      _count: 5
+    - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
+      _count: 3
+    - _itemData: {fileID: 11400000, guid: b45e60c882934104c828133c6fb6bb8d, type: 2}
+      _count: 2
+    _upgradeTime: 300
+  _name: Cooking station

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae2ce9b28a06014b963bf2d54717fd4, type: 3}
+  m_Name: Junk_EmptyBottle
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 42588ffb00a75b848be7f42559f5f7cc, type: 3}
+  _name: Empty bottle
+  _description: Empty water bottle. It can hold 0.5L of liquid.
+  _weight: 0.01
+  _maxInStack: 6
+  _uses: 1
+  _maxUses: 1
+  _isEatable: 0
+  _calories: 0
+  _water: 0
