@@ -60,6 +60,11 @@ public class FoodData : ItemData
 
     public override void Use()
     {
+        foreach (Item item in this.ItemsToAddAfterUse)
+        {
+            GlobalRepository.Inventory.AddItem(item, false);
+        }
+
         GlobalRepository.AddLastEatenFood(this.Name);
         GlobalRepository.AddKcal(_calories);
         GlobalRepository.AddWater(_water);

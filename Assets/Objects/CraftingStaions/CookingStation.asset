@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stationLevels:
   - _recipies:
+    - {fileID: 11400000, guid: ff1b6a5c97d19c04d8a8b15ea924887d, type: 2}
     - {fileID: 11400000, guid: d638dbc788aa4c344a5637fe77c164c1, type: 2}
     - {fileID: 11400000, guid: 77cb6df9707a236468d3deb64949914e, type: 2}
     _upgradeRequierements:
