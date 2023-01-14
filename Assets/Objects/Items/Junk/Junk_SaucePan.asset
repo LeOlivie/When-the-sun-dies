@@ -17,8 +17,5 @@ MonoBehaviour:
   _description: Sauce pan. Can be used to boil food.
   _weight: 0.8
   _maxInStack: 1
-  _uses: 50
-  _maxUses: 50
-  _isEatable: 0
-  _calories: 0
-  _water: 0
+  _isUsable: 0
+  _lootPointsToSpawn: 200

@@ -17,8 +17,5 @@ MonoBehaviour:
   _description: 'Glue. '
   _weight: 0.12
   _maxInStack: 8
-  _uses: 5
-  _maxUses: 5
-  _isEatable: 0
-  _calories: 0
-  _water: 0
+  _isUsable: 0
+  _lootPointsToSpawn: 40

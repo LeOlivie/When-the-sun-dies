@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: Trunk
   m_EditorClassIdentifier: 
   _itemSpawnDatas:
+  - _itemData: {fileID: 11400000, guid: 9fef963cbdfbc3d46ba48cde1ee64d1c, type: 2}
+    _spawnChance: 7
+    _count: 1
   - _itemData: {fileID: 11400000, guid: 49fa1c0295ad71b459ee4b7ce3153121, type: 2}
-    _spawnChance: 45
+    _spawnChance: 25
     _count: 1
   - _itemData: {fileID: 11400000, guid: e3b7ae565e6f43349b877081d8cbc72d, type: 2}
-    _spawnChance: 60
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: 9fef963cbdfbc3d46ba48cde1ee64d1c, type: 2}
-    _spawnChance: 55
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: 3e5779b8079b72e43ab9e00d4d2b1473, type: 2}
-    _spawnChance: 100
+    _spawnChance: 30
     _count: 1
   - _itemData: {fileID: 11400000, guid: dab8a6a84487839449470b480e5779be, type: 2}
-    _spawnChance: 50
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 58972b5158d0e0248974c97ae6e79077, type: 2}
+    _spawnChance: 25
     _count: 1
   - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
     _spawnChance: 50
@@ -34,9 +34,16 @@ MonoBehaviour:
   - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
     _spawnChance: 50
     _count: 1
-  - _itemData: {fileID: 11400000, guid: 955440116049e9744ab54f27be488363, type: 2}
-    _spawnChance: 100
+  - _itemData: {fileID: 11400000, guid: 05258ec3340e2c942b66c5df75bc8ebb, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: cae2157ad2186304da0f8fd3b80cc76b, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: a09a1c0022225ab45916ce229ef6c52f, type: 2}
+    _spawnChance: 40
     _count: 1
   _containerSize: 9
   _containerName: Trunk
   _lootTime: 5
+  _lootPointsMax: 400

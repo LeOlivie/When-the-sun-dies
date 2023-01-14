@@ -18,3 +18,4 @@ MonoBehaviour:
   _weight: 0.02
   _maxInStack: 20
   _isUsable: 0
+  _lootPointsToSpawn: 35

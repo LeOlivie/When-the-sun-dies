@@ -17,8 +17,5 @@ MonoBehaviour:
   _description: A roll of insulating tape. Legends say it can fix everything.
   _weight: 0.04
   _maxInStack: 15
-  _uses: 3
-  _maxUses: 3
-  _isEatable: 0
-  _calories: 0
-  _water: 0
+  _isUsable: 0
+  _lootPointsToSpawn: 50

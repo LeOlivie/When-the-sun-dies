@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Craft_Cookies
   m_EditorClassIdentifier: 
   _itemRequirements:
-  - _itemData: {fileID: 11400000, guid: c479c5201a502f549b1955f0044bc268, type: 2}
+  - _itemData: {fileID: 11400000, guid: d13bb37e5c9c4b342af8ae891b9d804f, type: 2}
     _count: 1
   - _itemData: {fileID: 11400000, guid: 80db4f0022a44e243ab3b9ffe5da5f56, type: 2}
     _count: 1
@@ -21,7 +21,7 @@ MonoBehaviour:
     _count: 1
   - _itemData: {fileID: 11400000, guid: 1551cae61deceac4bb974bf74301ecb5, type: 2}
     _count: 1
-  _time: 40
+  _time: 50
   _output:
   - _itemData: {fileID: 11400000, guid: d507734da61523f45bb19a86d8fc9ac4, type: 2}
     _count: 4

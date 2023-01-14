@@ -17,8 +17,5 @@ MonoBehaviour:
   _description: Empty water bottle. It can hold 0.5L of liquid.
   _weight: 0.01
   _maxInStack: 6
-  _uses: 1
-  _maxUses: 1
-  _isEatable: 0
-  _calories: 0
-  _water: 0
+  _isUsable: 0
+  _lootPointsToSpawn: 20

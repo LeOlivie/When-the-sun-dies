@@ -4,14 +4,13 @@ using System.Linq;
 using TMPro;
 using System.Collections;
 
-public class LootScreenShower : MonoBehaviour
+public class LootScreenShower : MonoBehaviour, IClosable
 {
     public delegate void OnLooted();
 
     [SerializeField] private Joystick _joystick;
     [SerializeField] private GameObject _lootScr;
     [SerializeField] private GameObject _lootingInProgressScr;
-    [SerializeField] private GameObject _menuScr;
     [SerializeField] private Image _weightBar;
     [SerializeField] private ItemShower[] _inventoryItemShowers;
     [SerializeField] private ItemShower[] _containerItemShowers;
@@ -26,6 +25,13 @@ public class LootScreenShower : MonoBehaviour
     [SerializeField] private ButtonHandler _closeBtn;
     private ItemContainer _lootContainer;
     private OnLooted _onLooted;
+    private ScreensCloser _screensCloser;
+
+    private void Awake()
+    {
+        _screensCloser = GameObject.FindObjectOfType<ScreensCloser>(true);
+        this.gameObject.SetActive(false);
+    }
 
     private void Start()
     {
@@ -35,12 +41,12 @@ public class LootScreenShower : MonoBehaviour
 
     public void OpenLootScreen(ItemContainer lootContainer, string containerName, bool isLooted, OnLooted onLootedDelegate, float lootTime)
     {
+        _screensCloser.CloseAllScreens();
         _joystick.enabled = false;
-        _menuScr.SetActive(false);
         _lootContainer = lootContainer;
         _containerNameText.text = containerName;
         _lootScr.SetActive(true);
-        _closeBtn.AddListener(CloseLootScreen);
+        _closeBtn.AddListener(CloseScreen);
         InspectItem(null);
         ShowInventory();
         _onLooted = onLootedDelegate;
@@ -56,11 +62,11 @@ public class LootScreenShower : MonoBehaviour
         }
     }
 
-    public void CloseLootScreen()
+    public void CloseScreen()
     {
         _joystick.enabled = true;
         _lootScr.SetActive(false);
-        _closeBtn.RemoveListener(CloseLootScreen);
+        _closeBtn.RemoveListener(CloseScreen);
         StopAllCoroutines();
     }
 
@@ -108,22 +114,36 @@ public class LootScreenShower : MonoBehaviour
 
     private void TakeItem()
     {
-        if (_inspectItemShower.Item != null && GlobalRepository.Inventory.CheckIfCanFit(_inspectItemShower.Item) && _lootContainer.Items.Contains(_inspectItemShower.Item))
+        if (_inspectItemShower.Item == null || _inspectItemShower.Item.ItemData == null)
         {
-            GlobalRepository.Inventory.AddItem(_inspectItemShower.Item, true);
+            return;
+        }
 
-            InspectItem(null);
+            Item itemToAdd = new Item(_inspectItemShower.Item.ItemData, 1);
+
+        if (GlobalRepository.Inventory.CheckIfCanFit(itemToAdd) && _lootContainer.Items.Contains(_inspectItemShower.Item))
+        {
+            GlobalRepository.Inventory.AddItem(itemToAdd, true);
+            _inspectItemShower.Item.AddCount(-1);
+            InspectItem(_inspectItemShower.Item);
             ShowInventory();
         }
     }
 
     private void PutItem()
     {
-        if (_inspectItemShower.Item != null && _lootContainer.CheckIfCanFit(_inspectItemShower.Item) && GlobalRepository.Inventory.Items.Contains(_inspectItemShower.Item))
+        if (_inspectItemShower.Item == null || _inspectItemShower.Item.ItemData == null)
         {
-            _lootContainer.AddItem(_inspectItemShower.Item, true);
+            return;
+        }
 
-            InspectItem(null);
+        Item itemToAdd = new Item(_inspectItemShower.Item.ItemData, 1);
+
+        if (_lootContainer.CheckIfCanFit(itemToAdd) && GlobalRepository.Inventory.Items.Contains(_inspectItemShower.Item))
+        {
+            _lootContainer.AddItem(itemToAdd, true);
+            _inspectItemShower.Item.AddCount(-1);
+            InspectItem(_inspectItemShower.Item);
             ShowInventory();
         }
     }

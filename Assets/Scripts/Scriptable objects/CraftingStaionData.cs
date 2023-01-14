@@ -12,10 +12,12 @@ public class CraftingStaionData : ScriptableObject
         [SerializeField] private CraftingRecipieData[] _recipies;
         [SerializeField] private Item[] _upgradeRequierements;
         [SerializeField] private uint _upgradeTime;
+        [SerializeField] private Sprite _upgradedSprite;
 
         public CraftingRecipieData[] Recipies => _recipies;
         public Item[] UpgradeRequierements => _upgradeRequierements;
         public uint UpgradeTime => _upgradeTime;
+        public Sprite UpgradedSprite => _upgradedSprite;
     }
 
     [SerializeField] private StationLevelData[] _stationLevels;
@@ -46,4 +48,8 @@ public class CraftingStaionData : ScriptableObject
         return _stationLevels[level].UpgradeTime;
     }
 
+    public Sprite GetSprite(uint level)
+    {
+        return _stationLevels[level].UpgradedSprite;
+    }
 }

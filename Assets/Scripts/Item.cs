@@ -81,4 +81,13 @@ public class Item : IComparable
         _itemData = itemData;
         _count = count;
     }
+
+    public Item(SaveDatas.ItemSaveData itemSaveData)
+    {
+        if (itemSaveData != null) 
+        {
+            _itemData = itemSaveData.Data;
+            _count = itemSaveData.Count;
+        }
+    }
 }

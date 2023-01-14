@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00663b7e45dddaf44aab65a86d358363, type: 3}
+  m_Name: Harvester_GasPump
+  m_EditorClassIdentifier: 
+  _harvestOptionDatas:
+  - _itemToHarvest:
+      _itemData: {fileID: 11400000, guid: 9fef963cbdfbc3d46ba48cde1ee64d1c, type: 2}
+      _count: 1
+    _requirements:
+    - _itemRequirement:
+        _itemData: {fileID: 11400000, guid: 58972b5158d0e0248974c97ae6e79077, type: 2}
+        _count: 1
+      _isDisposable: 1
+    _timeToHarvest: 10
+    _kcalDebuff: 0
+    _waterDebuff: 0
+    _maxHarvests: 1
+    _availabilityChance: 60

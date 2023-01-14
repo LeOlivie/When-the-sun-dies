@@ -22,19 +22,23 @@ public class LootSpawnerData : ScriptableObject
     [SerializeField] private sbyte _containerSize;
     [SerializeField] private string _containerName;
     [SerializeField] private float _lootTime;
+    [SerializeField] private int _lootPointsMax;
 
     public sbyte ContainerSize => _containerSize;
     public string ContainerName => _containerName;
     public float LootTime => _lootTime;
+    public int LootPointsMax => _lootPointsMax;
 
     public Item[] GetSpawnedItems()
     {
+        int lootPointsLeft = _lootPointsMax;
         List<Item> items = new List<Item>();
 
         foreach (ItemSpawnData spawnData in _itemSpawnDatas)
         {
-            if (UnityEngine.Random.Range(0, 100) <= spawnData.SpawnChance)
+            if (UnityEngine.Random.Range(0, 100) <= spawnData.SpawnChance && spawnData.ItemData.LootPointsToSpawn * spawnData.Count <= lootPointsLeft)
             {
+                lootPointsLeft -= spawnData.ItemData.LootPointsToSpawn * spawnData.Count;
                 items.Add(new Item(spawnData.ItemData, spawnData.Count));
             }
         }

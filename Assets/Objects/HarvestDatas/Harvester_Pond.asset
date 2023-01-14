@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00663b7e45dddaf44aab65a86d358363, type: 3}
   m_Name: Harvester_Pond
   m_EditorClassIdentifier: 
-  _harvestOptions:
+  _harvestOptionDatas:
   - _itemToHarvest:
       _itemData: {fileID: 11400000, guid: 89f7f3c326e85a342ab018f4c58b8db0, type: 2}
       _count: 1
@@ -24,3 +24,5 @@ MonoBehaviour:
     _timeToHarvest: 5
     _kcalDebuff: 0
     _waterDebuff: 0
+    _maxHarvests: 20
+    _availabilityChance: 100

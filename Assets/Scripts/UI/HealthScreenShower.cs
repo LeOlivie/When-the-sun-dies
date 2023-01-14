@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class HealthScreenShower : MonoBehaviour
 {
@@ -10,7 +11,13 @@ public class HealthScreenShower : MonoBehaviour
     {
         string kcal = Mathf.Round(GlobalRepository.Kcal).ToString();
 
-        _nutrientsText.text = "";
+        _nutrientsText.text = "Skills\n";
+
+        foreach (string str in Enum.GetNames(typeof(GlobalRepository.SkillType)))
+        {
+            GlobalRepository.SkillType skillType = (GlobalRepository.SkillType)Enum.Parse(typeof(GlobalRepository.SkillType), str);
+            _nutrientsText.text += string.Format("<size=25><color=#E5DE1B>{0}</color>: {1} Lvl.\n</size>", skillType.ToString(), GlobalRepository.Skills[skillType]);
+        }
 
         while (kcal.Length < 4)
         {
@@ -24,8 +31,9 @@ public class HealthScreenShower : MonoBehaviour
             water = "0" + water;
         }
 
-        _nutrientsText.text += string.Format("Nutrients\n<size=25><color=#FFA500>{0}/2000</color>kcal    <color=#00E3FF>{1}/2000</color>ml</size=>", kcal, water);
-        _nutrientsText.text += string.Format("\nHappiness: {0}", GlobalRepository.Happiness);
+
+        _nutrientsText.text += string.Format("\n\nNutrients\n<size=25><color=#FFA500>{0}/2000</color>kcal    <color=#00E3FF>{1}/2000</color>ml</size>", kcal, water);
+        _nutrientsText.text += string.Format("\n<size=25>Happiness: {0}</size>", GlobalRepository.Happiness);
 
     }
 }

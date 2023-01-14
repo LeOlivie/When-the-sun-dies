@@ -5,7 +5,7 @@ using System;
 public class HarvesterData : ScriptableObject
 {
     [Serializable]
-    public struct HarvestOption
+    public struct HarvestOptionData
     {
         [Serializable]
         public struct Requirement
@@ -22,14 +22,18 @@ public class HarvesterData : ScriptableObject
         [SerializeField] private int _timeToHarvest;
         [SerializeField, Tooltip("In kcal/minute")] private float _kcalDebuff;
         [SerializeField, Tooltip("In ml/minute")] private float _waterDebuff;
+        [SerializeField] private int _maxHarvests;
+        [SerializeField, Range(0, 100)] private int _availabilityChance;
 
         public Item ItemToHarvest => _itemToHarvest;
         public Requirement[] Requirements => _requirements;
         public int TimeToHarvest => _timeToHarvest;
         public float KcalDebuff => _kcalDebuff;
         public float WaterDebuff => _waterDebuff;
+        public int MaxHarvests => _maxHarvests;
+        public int AvailabilityChance => _availabilityChance;
     }
 
-    [SerializeField] private HarvestOption[] _harvestOptions;
-    public HarvestOption[] HarvestOptions => _harvestOptions;
+    [SerializeField] private HarvestOptionData[] _harvestOptionDatas;
+    public HarvestOptionData[] HarvestOptionDatas => _harvestOptionDatas;
 }

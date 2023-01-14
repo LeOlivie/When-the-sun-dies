@@ -9,6 +9,9 @@ public class LootSpawner : MonoBehaviour
     [SerializeField] private bool _isLooted;
     private ItemContainer _itemContainer;
 
+    public ItemContainer ItemContainer => _itemContainer;
+    public bool IsLooted => _isLooted;
+
     private void Start()
     {
         if(_lootSpawnerData != null)
@@ -41,12 +44,18 @@ public class LootSpawner : MonoBehaviour
         }
         else
         {
-            _lootScreenShower.CloseLootScreen();
+            _lootScreenShower.CloseScreen();
         }
     }
 
     private void OnLooted()
     {
         _isLooted = true;
+    }
+
+    public void LoadSaveData(SaveDatas.LootSpawnerSaveData saveData)
+    {
+        _itemContainer = new ItemContainer(saveData.ContainerSave);
+        _isLooted = saveData.IsLooted;
     }
 }

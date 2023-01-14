@@ -17,8 +17,5 @@ MonoBehaviour:
   _description: Pliers.
   _weight: 0.38
   _maxInStack: 4
-  _uses: 30
-  _maxUses: 30
-  _isEatable: 0
-  _calories: 0
-  _water: 0
+  _isUsable: 0
+  _lootPointsToSpawn: 150

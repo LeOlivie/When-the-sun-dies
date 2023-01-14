@@ -46,3 +46,4 @@ MonoBehaviour:
   _containerSize: 9
   _containerName: Fridge
   _lootTime: 5
+  _lootPointsMax: 250

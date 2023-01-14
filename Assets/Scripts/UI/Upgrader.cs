@@ -35,6 +35,7 @@ public class Upgrader : MonoBehaviour
 
     public void CloseUpgradeMenu()
     {
+        GlobalRepository.OnTimeUpdated -= UpgradeInProgress;
         _upgradableObject = null;
         OnUpgradeEnded = null;
         _upgradeBtn.RemoveListener(StartUpgrade);
@@ -46,6 +47,12 @@ public class Upgrader : MonoBehaviour
 
         for (int i = 0; i < _upgradeRequirementShowers.Length; i++)
         {
+            if (_upgradableObject.UpgradeRequirements.Length <= i)
+            {
+                _upgradeRequirementShowers[i].ShowItem(null);
+                continue;
+            }
+
             _upgradeRequirementShowers[i].ShowItem(_upgradableObject.UpgradeRequirements[i]);
         }
 
@@ -60,6 +67,12 @@ public class Upgrader : MonoBehaviour
             }
         }
 
+        if (_upgradableObject.CurrLevel >= _upgradableObject.MaxLevel)
+        {
+            _upgradeBtn.RemoveListener(StartUpgrade);
+            return;
+        }
+        
         _upgradeBtn.AddListener(StartUpgrade);
     }
 
@@ -99,7 +112,7 @@ public class Upgrader : MonoBehaviour
 
         if (_upgradableObject.UpgradeTimeLeft <= 0)
         {
-            Debug.Log("Upgraded");
+            Debug.Log("Aaa");
             PauseUpgrade();
             _upgradableObject.OnUpgradeEnded();
             //_pauseUpgradeBtn.RemoveListener(PauseUpgrade);

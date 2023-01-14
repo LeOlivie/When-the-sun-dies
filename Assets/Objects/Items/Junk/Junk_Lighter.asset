@@ -17,8 +17,5 @@ MonoBehaviour:
   _description: Gas lighter. More reliable than matches.
   _weight: 0.02
   _maxInStack: 20
-  _uses: 15
-  _maxUses: 15
-  _isEatable: 0
-  _calories: 0
-  _water: 0
+  _isUsable: 0
+  _lootPointsToSpawn: 40

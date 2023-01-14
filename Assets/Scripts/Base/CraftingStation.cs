@@ -12,6 +12,9 @@ public class CraftingStation : IUpgradable, ICrafter
     private CraftingRecipieData _activeCraftData;
     private int _craftTimeLeft;
 
+    public delegate void OnUpgradedDelegate();
+    public event OnUpgradedDelegate OnUpgradedEvent;
+
     public CraftingStaionData StationData => _staionData;
     public uint CurrLevel => _level;
     public uint MaxLevel => (uint)_staionData.MaxLevel;
@@ -26,9 +29,12 @@ public class CraftingStation : IUpgradable, ICrafter
 
     public void OnUpgradeEnded()
     {
+        Debug.Log("+1 level");
         _isBeingUpgraded = false;
         _level += 1;
+        OnUpgradedEvent?.Invoke();
     }
+
     public void OnUpgradeStarted()
     {
         _isBeingUpgraded = true;

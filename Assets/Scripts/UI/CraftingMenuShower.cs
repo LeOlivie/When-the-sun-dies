@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CraftingMenuShower : MonoBehaviour
+public class CraftingMenuShower : MonoBehaviour, IClosable
 {
     [SerializeField] private Joystick _joystick;
     [SerializeField] private GameObject _craftingScr;
@@ -16,15 +16,22 @@ public class CraftingMenuShower : MonoBehaviour
     [SerializeField] private Crafter _crafter;
 
     private CraftingStation _craftingStation;
+    private ScreensCloser _screensCloser;
 
+    private void Awake()
+    {
+        _screensCloser = GameObject.FindObjectOfType<ScreensCloser>();
+        this.gameObject.SetActive(false);
+    }
 
     public void OpenCraftScreen(CraftingStation craftingStation)
     {
+        _screensCloser.CloseAllScreens();
         _joystick.enabled = false;
         _craftingStation = craftingStation;
         _upgrader.ShowUpgradeMenu(_craftingStation, OpenCraftsMenu);
         _craftingScr.SetActive(true);
-        _closeBtn.AddListener(CloseCraftScreen);
+        _closeBtn.AddListener(CloseScreen);
         GlobalRepository.Inventory.ContainerUpdated += ShowInventory;
         GlobalRepository.CountWeight();
         OpenCraftsMenu();
@@ -34,15 +41,14 @@ public class CraftingMenuShower : MonoBehaviour
         _upgradesBtn.AddListener(OpenUpgradesMenu);
     }
 
-    public void CloseCraftScreen()
+    public void CloseScreen()
     {
+        _upgrader.CloseUpgradeMenu();
         _joystick.enabled = true;
         _craftingScr.SetActive(false);
         GlobalRepository.Inventory.ContainerUpdated -= ShowInventory;
-        _closeBtn.RemoveListener(CloseCraftScreen);
+        _closeBtn.RemoveListener(CloseScreen);
         _crafter.PauseCraft();
-        _upgrader.PauseUpgrade();
-        _upgrader.CloseUpgradeMenu();
     }
 
     private void ShowInventory()

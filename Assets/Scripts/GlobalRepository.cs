@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class GlobalRepository
 {
+    public enum SkillType { DIY, Electronics, Bakery, Building };
     private static byte _minutes = 00;
     private static byte _hours = 12;
     private static ushort _days = 1;
@@ -13,6 +14,7 @@ public static class GlobalRepository
     private static float _maxWeight = 15;
     private static sbyte _happiness = 50;
     private static List<string> _lastEatenFood = new List<string>();
+    private static Dictionary<SkillType, int> skills = new Dictionary<SkillType, int>();
 
     private static DifficultyData _difficulty;
     private static ItemContainer _inventory = new ItemContainer(16, CountWeight);
@@ -31,7 +33,23 @@ public static class GlobalRepository
     public static List<string> LastEatenFood => _lastEatenFood;
     public static DifficultyData Difficulty => _difficulty;
     public static ItemContainer Inventory => _inventory;
+    public static Dictionary<SkillType, int> Skills
+    {
+        get
+        {
+            if (skills.Count <= 0) CreateSkillDict();
+            return skills;
+        }
+    }
 
+    public static void CreateSkillDict()
+    {
+        foreach(string str in Enum.GetNames(typeof(SkillType)))
+        {
+            SkillType skillType = (SkillType)Enum.Parse(typeof(SkillType), str);
+            skills.Add(skillType, 0);
+        }
+    }
 
     public static void SetDifficulty(DifficultyData difficultyData)
     {
@@ -45,6 +63,7 @@ public static class GlobalRepository
             throw new System.Exception("Trying to change difficulty.");
         }
     }
+
     public static void CountWeight()
     {
         _weight = 0;
@@ -135,5 +154,22 @@ public static class GlobalRepository
         {
             _lastEatenFood.RemoveAt(0);
         }
+    }
+
+    public static void LoadSaveData(SaveDatas.PlayerSaveData playerSaveData)
+    {
+        _inventory = new ItemContainer(playerSaveData.InventorySaveData);
+        _water = playerSaveData.Water;
+        _kcal = playerSaveData.Calories;
+
+        Vector3 playerPos = new Vector3(playerSaveData.PlayerPos.xPos, playerSaveData.PlayerPos.yPos, playerSaveData.PlayerPos.zPos);
+        GameObject.FindGameObjectWithTag("Player").transform.localPosition = playerPos;
+
+        int totalTime = playerSaveData.TotalTime;
+        _days = (ushort)(totalTime / 24 / 60);
+        totalTime -= totalTime / 24 / 60 * 24 * 60;
+        _hours = (byte)(totalTime / 60);
+        totalTime -= totalTime / 60 * 60;
+        _minutes = (byte)(totalTime);
     }
 }

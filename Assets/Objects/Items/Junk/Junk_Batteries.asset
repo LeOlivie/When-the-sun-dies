@@ -17,8 +17,5 @@ MonoBehaviour:
   _description: Alkaline batteries. The simpliest electricity source.
   _weight: 0.03
   _maxInStack: 20
-  _uses: 1
-  _maxUses: 1
-  _isEatable: 0
-  _calories: 0
-  _water: 0
+  _isUsable: 0
+  _lootPointsToSpawn: 50

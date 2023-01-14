@@ -17,8 +17,5 @@ MonoBehaviour:
   _description: Regular can opener.
   _weight: 0.2
   _maxInStack: 4
-  _uses: 10
-  _maxUses: 10
-  _isEatable: 0
-  _calories: 0
-  _water: 0
+  _isUsable: 0
+  _lootPointsToSpawn: 150

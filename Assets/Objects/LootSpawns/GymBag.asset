@@ -49,3 +49,4 @@ MonoBehaviour:
   _containerSize: 9
   _containerName: Gym Bag
   _lootTime: 5
+  _lootPointsMax: 200

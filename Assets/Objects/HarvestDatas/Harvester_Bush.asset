@@ -12,11 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00663b7e45dddaf44aab65a86d358363, type: 3}
   m_Name: Harvester_Bush
   m_EditorClassIdentifier: 
-  _harvestOptions:
+  _harvestOptionDatas:
   - _itemToHarvest:
       _itemData: {fileID: 11400000, guid: 9085fb8b86c62864195da4b07f1e8580, type: 2}
       _count: 1
     _requirements: []
     _timeToHarvest: 5
-    _kcalDebuff: -0.2
-    _waterDebuff: -0.2
+    _kcalDebuff: -0.3
+    _waterDebuff: -0.3
+    _maxHarvests: 5
+    _availabilityChance: 100
+  - _itemToHarvest:
+      _itemData: {fileID: 11400000, guid: 42bc80699c003554a9ea49c1968094d9, type: 2}
+      _count: 2
+    _requirements: []
+    _timeToHarvest: 10
+    _kcalDebuff: -0.1
+    _waterDebuff: -0.1
+    _maxHarvests: 1
+    _availabilityChance: 40
+  - _itemToHarvest:
+      _itemData: {fileID: 11400000, guid: 42bc80699c003554a9ea49c1968094d9, type: 2}
+      _count: 3
+    _requirements: []
+    _timeToHarvest: 15
+    _kcalDebuff: -0.1
+    _waterDebuff: -0.1
+    _maxHarvests: 1
+    _availabilityChance: 30

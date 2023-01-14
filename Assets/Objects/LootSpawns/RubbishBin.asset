@@ -37,3 +37,4 @@ MonoBehaviour:
   _containerSize: 9
   _containerName: Rubbish bin
   _lootTime: 5
+  _lootPointsMax: 100

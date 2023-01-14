@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: Junk_Fuel
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 895a5a4c02278424496fd03ec807c510, type: 3}
-  _name: Fuel canister
+  _name: Fuel canister (full)
   _description: A 5L canister of fuel.
   _weight: 4
   _maxInStack: 1
-  _uses: 5
-  _maxUses: 5
-  _isEatable: 0
-  _calories: 0
-  _water: 0
+  _isUsable: 0
+  _itemsToAddAfterUse: []
+  _lootPointsToSpawn: 400

@@ -253,4 +253,26 @@ public class ItemContainer
         _items = new Item[size];
         ContainerUpdated += containerUpdatedDelegate;
     }
+
+    public ItemContainer(SaveDatas.ContainerSaveData containerSaveData)
+    {
+        if (containerSaveData == null)
+        {
+            return;
+        }
+
+        _items = new Item[containerSaveData.SaveDatas.Length];
+
+        for (int i = 0; i < containerSaveData.SaveDatas.Length; i++)
+        {
+            if (containerSaveData.SaveDatas[i] != null)
+            {
+                _items[i] = new Item(containerSaveData.SaveDatas[i]);
+            }
+            else 
+            {
+                _items[i] = new Item();
+            }
+        }
+    }
 }

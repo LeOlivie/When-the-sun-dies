@@ -2,7 +2,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class HarvestScreenShower : MonoBehaviour
+public class HarvestScreenShower : MonoBehaviour, IClosable
 {
     [SerializeField] private ItemShower _itemToHarvestShower;
     [SerializeField] private ItemShower _itemBeingHarvestedShower;
@@ -20,8 +20,15 @@ public class HarvestScreenShower : MonoBehaviour
     [SerializeField] private GameObject _harvestInProgress;
     [SerializeField] private Image _weightBar;
     private int _optionIndex = 0;
-    private HarvesterData _harvesterData;
+    private Harvester.HarvestOption[] _harvestOptions;
     private int _harvestTimeLeft;
+    private ScreensCloser _screensCloser;
+
+    private void Awake()
+    {
+        _screensCloser = GameObject.FindObjectOfType<ScreensCloser>();
+        this.gameObject.SetActive(false);
+    }
 
     private void Start()
     {
@@ -30,42 +37,41 @@ public class HarvestScreenShower : MonoBehaviour
         _cancelHarvestButton.AddListener(EndHarvest);
     }
 
-    public void OpenHarvestMenu(HarvesterData harvesterData)
+    public void OpenHarvestMenu(ref Harvester.HarvestOption[] harvestOptions)
     {
+        _screensCloser.CloseAllScreens();
         _optionIndex = 0;
         this.gameObject.SetActive(true);
-        _harvesterData = harvesterData;
+        _harvestOptions = harvestOptions;
         _harvestInProgress.SetActive(false);
         ChangeHarvestOption(0);
-        ShowHarvestOption(_harvesterData.HarvestOptions[0]);
+        ShowHarvestOption(_harvestOptions[0]);
         ShowInventory();
     }
 
-    public void CloseHarvestMenu()
+    public void CloseScreen()
     {
         EndHarvest();
         this.gameObject.SetActive(false);
     }
 
-    private void ShowHarvestOption(HarvesterData.HarvestOption harvestOption)
-    {
+    private void ShowHarvestOption(Harvester.HarvestOption harvestOption)
+    {        
         _startHarvestButton.RemoveListener(StartHarvest);
-
         bool ifCanBeHarvested = true;
+        HarvesterData.HarvestOptionData harvestData = harvestOption.HarvestOptionData;
+        _harvestItemName.text = string.Format("{0} ({1}/{2})", harvestData.ItemToHarvest.Name, harvestOption.HarvestsLeft, harvestData.MaxHarvests);
+        _itemToHarvestShower.ShowItem(harvestData.ItemToHarvest);
 
-        _harvestItemName.text = harvestOption.ItemToHarvest.Name;
+        string additionalInfo = harvestData.TimeToHarvest + " minutes\n";
 
-        _itemToHarvestShower.ShowItem(harvestOption.ItemToHarvest);
-
-        string additionalInfo = harvestOption.TimeToHarvest + " minutes\n";
-
-        if (harvestOption.KcalDebuff != 0)
+        if (harvestOption.HarvestOptionData.KcalDebuff != 0)
         {
-            additionalInfo += "Debuff: " + harvestOption.KcalDebuff + " kcal/min\n";
+            additionalInfo += "Debuff: " + harvestData.KcalDebuff + " kcal/min\n";
         }
-        if (harvestOption.WaterDebuff != 0)
+        if (harvestOption.HarvestOptionData.WaterDebuff != 0)
         {
-            additionalInfo += "Debuff: " + harvestOption.WaterDebuff + " ml/min";
+            additionalInfo += "Debuff: " + harvestData.WaterDebuff + " ml/min";
         }
 
         _additionalInfo.text = additionalInfo;
@@ -75,14 +81,19 @@ public class HarvestScreenShower : MonoBehaviour
             shower.ShowItem(null);
         }
 
-        for (int i = 0; i < harvestOption.Requirements.Length; i++)
+        for (int i = 0; i < harvestData.Requirements.Length; i++)
         {
-            _requirementShowers[i].ShowItem(harvestOption.Requirements[i].ItemRequirement);
+            _requirementShowers[i].ShowItem(harvestData.Requirements[i].ItemRequirement);
             
-            if (!GlobalRepository.Inventory.CheckIfHas(harvestOption.Requirements[i].ItemRequirement.ItemData, harvestOption.Requirements[i].ItemRequirement.Count))
+            if (!GlobalRepository.Inventory.CheckIfHas(harvestData.Requirements[i].ItemRequirement.ItemData, harvestData.Requirements[i].ItemRequirement.Count))
             {
                 ifCanBeHarvested = false;
             }
+        }
+
+        if (harvestOption.HarvestsLeft <= 0)
+        {
+            ifCanBeHarvested = false;
         }
 
         if (ifCanBeHarvested)
@@ -97,15 +108,15 @@ public class HarvestScreenShower : MonoBehaviour
 
         if (_optionIndex < 0)
         {
-            _optionIndex = _harvesterData.HarvestOptions.Length - 1;
+            _optionIndex = _harvestOptions.Length - 1;
         }
-        else if (_optionIndex >= _harvesterData.HarvestOptions.Length)
+        else if (_optionIndex >= _harvestOptions.Length)
         {
             _optionIndex = 0;
         }
 
-        _optionCountText.text = string.Format("{0}/{1}", _optionIndex + 1, _harvesterData.HarvestOptions.Length);
-        ShowHarvestOption(_harvesterData.HarvestOptions[_optionIndex]);
+        _optionCountText.text = string.Format("{0}/{1}", _optionIndex + 1, _harvestOptions.Length);
+        ShowHarvestOption(_harvestOptions[_optionIndex]);
     }
 
     private void ShowInventory()
@@ -131,8 +142,8 @@ public class HarvestScreenShower : MonoBehaviour
     private void StartHarvest()
     {
         _harvestInProgress.SetActive(true);
-        _itemBeingHarvestedShower.ShowItem(_harvesterData.HarvestOptions[_optionIndex].ItemToHarvest);
-        _harvestTimeLeft = _harvesterData.HarvestOptions[_optionIndex].TimeToHarvest;
+        _itemBeingHarvestedShower.ShowItem(_harvestOptions[_optionIndex].HarvestOptionData.ItemToHarvest);
+        _harvestTimeLeft = _harvestOptions[_optionIndex].HarvestOptionData.TimeToHarvest;
         _harvestTimeLeftText.text = _harvestTimeLeft + " minutes";
         GlobalRepository.OnTimeUpdated += HarvestInProgress;
         Time.timeScale = 20;
@@ -142,14 +153,14 @@ public class HarvestScreenShower : MonoBehaviour
     {
         _harvestTimeLeft -= 1;
         _harvestTimeLeftText.text = _harvestTimeLeft + " minutes";
-        GlobalRepository.AddKcal(_harvesterData.HarvestOptions[_optionIndex].KcalDebuff);
-        GlobalRepository.AddWater(_harvesterData.HarvestOptions[_optionIndex].WaterDebuff);
+        GlobalRepository.AddKcal(_harvestOptions[_optionIndex].HarvestOptionData.KcalDebuff);
+        GlobalRepository.AddWater(_harvestOptions[_optionIndex].HarvestOptionData.WaterDebuff);
 
         if (_harvestTimeLeft <= 0)
         {
-            GlobalRepository.Inventory.AddItem(_harvesterData.HarvestOptions[_optionIndex].ItemToHarvest,false);
+            GlobalRepository.Inventory.AddItem(_harvestOptions[_optionIndex].HarvestOptionData.ItemToHarvest,false);
 
-            foreach (HarvesterData.HarvestOption.Requirement requirement in _harvesterData.HarvestOptions[_optionIndex].Requirements)
+            foreach (HarvesterData.HarvestOptionData.Requirement requirement in _harvestOptions[_optionIndex].HarvestOptionData.Requirements)
             {
                 if (requirement.IsDisposable)
                 {
@@ -157,12 +168,20 @@ public class HarvestScreenShower : MonoBehaviour
                 }
             }
 
+            _harvestOptions[_optionIndex].ChangeHarvestsLeftAmount(-1);
+
             EndHarvest();
         }
     }
 
     private void EndHarvest()
     {
+        if (_harvestOptions == null)
+        {
+            return;
+        }
+
+        ShowHarvestOption(_harvestOptions[_optionIndex]);
         _harvestInProgress.SetActive(false);
         GlobalRepository.OnTimeUpdated -= HarvestInProgress;
         ShowInventory();

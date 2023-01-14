@@ -49,3 +49,4 @@ MonoBehaviour:
   _containerSize: 9
   _containerName: Car debris
   _lootTime: 8
+  _lootPointsMax: 200

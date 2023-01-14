@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: CookingStation
   m_EditorClassIdentifier: 
   _stationLevels:
-  - _recipies:
-    - {fileID: 11400000, guid: ff1b6a5c97d19c04d8a8b15ea924887d, type: 2}
-    - {fileID: 11400000, guid: d638dbc788aa4c344a5637fe77c164c1, type: 2}
-    - {fileID: 11400000, guid: 77cb6df9707a236468d3deb64949914e, type: 2}
+  - _recipies: []
     _upgradeRequierements:
     - _itemData: {fileID: 11400000, guid: 9252b5d086258ef469620b0ce7fde252, type: 2}
       _count: 1
@@ -29,20 +26,45 @@ MonoBehaviour:
     - _itemData: {fileID: 11400000, guid: b45e60c882934104c828133c6fb6bb8d, type: 2}
       _count: 2
     _upgradeTime: 120
+    _upgradedSprite: {fileID: 21300000, guid: 8677e5628645d4943bc8f0414c05ae99, type: 3}
   - _recipies:
-    - {fileID: 11400000, guid: 2ca75dce3c89bc54f8830512f502dcd9, type: 2}
-    - {fileID: 11400000, guid: 5a3987b8d878d474685b134593f7e2a1, type: 2}
-    - {fileID: 11400000, guid: c682a5ebbfaa19045b83665a80607b28, type: 2}
+    - {fileID: 11400000, guid: ff1b6a5c97d19c04d8a8b15ea924887d, type: 2}
+    - {fileID: 11400000, guid: d638dbc788aa4c344a5637fe77c164c1, type: 2}
+    - {fileID: 11400000, guid: 77cb6df9707a236468d3deb64949914e, type: 2}
     _upgradeRequierements:
-    - _itemData: {fileID: 11400000, guid: 9252b5d086258ef469620b0ce7fde252, type: 2}
-      _count: 1
-    - _itemData: {fileID: 11400000, guid: 687e6b8138a2ce848b2fad872069244c, type: 2}
-      _count: 1
-    - _itemData: {fileID: 11400000, guid: 9085fb8b86c62864195da4b07f1e8580, type: 2}
-      _count: 5
     - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
-      _count: 3
+      _count: 20
     - _itemData: {fileID: 11400000, guid: b45e60c882934104c828133c6fb6bb8d, type: 2}
-      _count: 2
+      _count: 6
+    - _itemData: {fileID: 11400000, guid: 45964dd8d2ca5e44aa30730d2ca0e38c, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 49fa1c0295ad71b459ee4b7ce3153121, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 3cdb7dca9a1cf174393a7ceb65b0ca37, type: 2}
+      _count: 1
     _upgradeTime: 300
+    _upgradedSprite: {fileID: -3853082709363784740, guid: 0e0b59eb216641f4f9f2438454a7f6b3, type: 3}
+  - _recipies: []
+    _upgradeRequierements:
+    - _itemData: {fileID: 11400000, guid: 05258ec3340e2c942b66c5df75bc8ebb, type: 2}
+      _count: 10
+    - _itemData: {fileID: 11400000, guid: cae2157ad2186304da0f8fd3b80cc76b, type: 2}
+      _count: 2
+    - _itemData: {fileID: 11400000, guid: 544b56a3faf7e814ba44ec9b29856af7, type: 2}
+      _count: 6
+    - _itemData: {fileID: 11400000, guid: 4171ebc1104afa247a09b51a0a399405, type: 2}
+      _count: 2
+    - _itemData: {fileID: 11400000, guid: e3b7ae565e6f43349b877081d8cbc72d, type: 2}
+      _count: 1
+    _upgradeTime: 600
+    _upgradedSprite: {fileID: 21300000, guid: d6a2861a3477b7b478dd849f886012e4, type: 3}
+  - _recipies:
+    - {fileID: 11400000, guid: 07e6e3e9ad495f947b0a5f6b3c75a146, type: 2}
+    - {fileID: 11400000, guid: 2ca75dce3c89bc54f8830512f502dcd9, type: 2}
+    - {fileID: 11400000, guid: c682a5ebbfaa19045b83665a80607b28, type: 2}
+    - {fileID: 11400000, guid: 5a3987b8d878d474685b134593f7e2a1, type: 2}
+    - {fileID: 11400000, guid: f47361a699207db4483b067add1d3c3b, type: 2}
+    _upgradeRequierements: []
+    _upgradeTime: 0
+    _upgradedSprite: {fileID: 21300000, guid: 4cfbf352ca75a244ea1b27b39a1af89f, type: 3}
   _name: Cooking station
