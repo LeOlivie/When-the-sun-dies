@@ -15,12 +15,12 @@ MonoBehaviour:
   _stationLevels:
   - _recipies: []
     _upgradeRequierements:
-    - _itemData: {fileID: 11400000, guid: 9252b5d086258ef469620b0ce7fde252, type: 2}
-      _count: 1
     - _itemData: {fileID: 11400000, guid: 687e6b8138a2ce848b2fad872069244c, type: 2}
       _count: 1
-    - _itemData: {fileID: 11400000, guid: 9085fb8b86c62864195da4b07f1e8580, type: 2}
-      _count: 5
+    - _itemData: {fileID: 11400000, guid: d6c70d0e1ca721e4fa3d8a77134b0a18, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 1b86c50e5b7700947b7d2b48eb65c784, type: 2}
+      _count: 1
     - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
       _count: 3
     - _itemData: {fileID: 11400000, guid: b45e60c882934104c828133c6fb6bb8d, type: 2}
@@ -34,13 +34,13 @@ MonoBehaviour:
     _upgradeRequierements:
     - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
       _count: 20
-    - _itemData: {fileID: 11400000, guid: b45e60c882934104c828133c6fb6bb8d, type: 2}
-      _count: 6
-    - _itemData: {fileID: 11400000, guid: 45964dd8d2ca5e44aa30730d2ca0e38c, type: 2}
+    - _itemData: {fileID: 11400000, guid: fb26c626f7ac9b643bf33a59a4eca0fa, type: 2}
+      _count: 10
+    - _itemData: {fileID: 11400000, guid: 1b86c50e5b7700947b7d2b48eb65c784, type: 2}
+      _count: 3
+    - _itemData: {fileID: 11400000, guid: 9252b5d086258ef469620b0ce7fde252, type: 2}
       _count: 1
-    - _itemData: {fileID: 11400000, guid: 49fa1c0295ad71b459ee4b7ce3153121, type: 2}
-      _count: 1
-    - _itemData: {fileID: 11400000, guid: 3cdb7dca9a1cf174393a7ceb65b0ca37, type: 2}
+    - _itemData: {fileID: 11400000, guid: dab8a6a84487839449470b480e5779be, type: 2}
       _count: 1
     _upgradeTime: 300
     _upgradedSprite: {fileID: -3853082709363784740, guid: 0e0b59eb216641f4f9f2438454a7f6b3, type: 3}
@@ -54,7 +54,7 @@ MonoBehaviour:
       _count: 6
     - _itemData: {fileID: 11400000, guid: 4171ebc1104afa247a09b51a0a399405, type: 2}
       _count: 2
-    - _itemData: {fileID: 11400000, guid: e3b7ae565e6f43349b877081d8cbc72d, type: 2}
+    - _itemData: {fileID: 11400000, guid: a7762881a954a45499d2a036fdbf7de5, type: 2}
       _count: 1
     _upgradeTime: 600
     _upgradedSprite: {fileID: 21300000, guid: d6a2861a3477b7b478dd849f886012e4, type: 3}

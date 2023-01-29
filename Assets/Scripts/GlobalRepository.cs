@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class GlobalRepository
 {
     public enum SkillType { DIY, Electronics, Bakery, Building };
-    private static byte _minutes = 00;
-    private static byte _hours = 12;
-    private static ushort _days = 1;
+    private static int _globalTime = 2160;
     private static float _kcal = 2000;
     private static float _water = 2000;
     private static float _weight;
     private static float _maxWeight = 15;
     private static sbyte _happiness = 50;
+    private static int _raidTimeLeft = 90;
+    private static int _timeBeforeArrival = 0;
+    private static LocationData _currentLocationData;
     private static List<string> _lastEatenFood = new List<string>();
     private static Dictionary<SkillType, int> skills = new Dictionary<SkillType, int>();
 
@@ -21,15 +23,16 @@ public static class GlobalRepository
 
     public delegate void TimeUpdatedDelegate();
     public static event TimeUpdatedDelegate OnTimeUpdated;
-
-    public static byte Minutes => _minutes;
-    public static byte Hours => _hours;
-    public static ushort Days => _days;
+    
+    public static int GlobalTime => _globalTime;
     public static float Kcal => _kcal;
     public static float Water => _water;
     public static float Weight => _weight;
     public static float MaxWeight => _maxWeight;
     public static sbyte Happiness => _happiness;
+    public static int RaidTimeLeft => _raidTimeLeft;
+    public static int TimeBeforeArrival => _timeBeforeArrival;
+    public static LocationData CurrentLocationData => _currentLocationData;
     public static List<string> LastEatenFood => _lastEatenFood;
     public static DifficultyData Difficulty => _difficulty;
     public static ItemContainer Inventory => _inventory;
@@ -58,10 +61,10 @@ public static class GlobalRepository
             _difficulty = difficultyData;
             _maxWeight = _difficulty.MaxWeight;
         }
-        else
+        /*else
         {
             throw new System.Exception("Trying to change difficulty.");
-        }
+        }*/
     }
 
     public static void CountWeight()
@@ -82,20 +85,17 @@ public static class GlobalRepository
 
     public static void AddTime(uint minutesCount)
     {
+        if (_raidTimeLeft > 0)
+        {
+            _raidTimeLeft -= (int)minutesCount;
+        }
 
-        _days += (ushort)(minutesCount / 1440);
-        minutesCount %= 1440;
+        if (_timeBeforeArrival > 0)
+        {
+            _timeBeforeArrival -= (int)minutesCount;
+        }
 
-        _hours += (byte)(minutesCount / 60);
-        minutesCount %= 60;
-
-        _minutes += (byte)(minutesCount);
-
-        _hours += (byte)(_minutes / 60);
-        _minutes = (byte)(_minutes % 60);
-
-        _days += (byte)(_hours / 24);
-        _hours = (byte)(_hours % 24);
+        _globalTime += (int)minutesCount;
 
         OnTimeUpdated?.Invoke();
     }
@@ -156,6 +156,16 @@ public static class GlobalRepository
         }
     }
 
+    public static void ChangeLocation(LocationData locationData)
+    {
+        OnTimeUpdated = null;
+        _currentLocationData = locationData;
+        _timeBeforeArrival = Mathf.CeilToInt(locationData.Distance / 6f * 60f);
+        _raidTimeLeft = 0;
+        Time.timeScale = 1;
+        SceneManager.LoadScene("GoingScene");
+    }
+
     public static void LoadSaveData(SaveDatas.PlayerSaveData playerSaveData)
     {
         _inventory = new ItemContainer(playerSaveData.InventorySaveData);
@@ -165,11 +175,6 @@ public static class GlobalRepository
         Vector3 playerPos = new Vector3(playerSaveData.PlayerPos.xPos, playerSaveData.PlayerPos.yPos, playerSaveData.PlayerPos.zPos);
         GameObject.FindGameObjectWithTag("Player").transform.localPosition = playerPos;
 
-        int totalTime = playerSaveData.TotalTime;
-        _days = (ushort)(totalTime / 24 / 60);
-        totalTime -= totalTime / 24 / 60 * 24 * 60;
-        _hours = (byte)(totalTime / 60);
-        totalTime -= totalTime / 60 * 60;
-        _minutes = (byte)(totalTime);
+        _globalTime = playerSaveData.GlobalTime;
     }
 }

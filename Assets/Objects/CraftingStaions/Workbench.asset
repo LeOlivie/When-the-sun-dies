@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e77d2009d788849a87b4eeb7a12208, type: 3}
+  m_Name: Workbench
+  m_EditorClassIdentifier: 
+  _stationLevels:
+  - _recipies:
+    - {fileID: 11400000, guid: 5586ae0e1642531408f171d74f062421, type: 2}
+    - {fileID: 11400000, guid: e08a9ff6d1b2b7d48aa385cc3de547cd, type: 2}
+    - {fileID: 11400000, guid: 0dd8892d183f6404aa637a88d9f47ecf, type: 2}
+    - {fileID: 11400000, guid: a8d01e9c4b54596449a1e06e8f3a06a0, type: 2}
+    - {fileID: 11400000, guid: 5a8a3ebc72f32294ea568b5e5ba696bd, type: 2}
+    - {fileID: 11400000, guid: 5ed81db3db5951f43ba1244170ac6413, type: 2}
+    _upgradeRequierements:
+    - _itemData: {fileID: 11400000, guid: 5f6d56673449d5d418b4ab283870ddda, type: 2}
+      _count: 15
+    - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
+      _count: 10
+    - _itemData: {fileID: 11400000, guid: fb26c626f7ac9b643bf33a59a4eca0fa, type: 2}
+      _count: 10
+    - _itemData: {fileID: 11400000, guid: 955440116049e9744ab54f27be488363, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 45964dd8d2ca5e44aa30730d2ca0e38c, type: 2}
+      _count: 1
+    _upgradeTime: 240
+    _upgradedSprite: {fileID: 21300000, guid: 703d0033e6b957c4d8a544003f0d9300, type: 3}
+  - _recipies: []
+    _upgradeRequierements:
+    - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
+      _count: 40
+    - _itemData: {fileID: 11400000, guid: e3b7ae565e6f43349b877081d8cbc72d, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 3cdb7dca9a1cf174393a7ceb65b0ca37, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: a7762881a954a45499d2a036fdbf7de5, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: dab8a6a84487839449470b480e5779be, type: 2}
+      _count: 1
+    _upgradeTime: 600
+    _upgradedSprite: {fileID: 21300000, guid: efb151def66786f448b6e0800ef72de2, type: 3}
+  - _recipies: []
+    _upgradeRequierements: []
+    _upgradeTime: 0
+    _upgradedSprite: {fileID: 21300000, guid: e0517563dafdad749ae86640ba92501a, type: 3}
+  _name: 

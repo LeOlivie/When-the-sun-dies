@@ -4,33 +4,35 @@ using System.Collections.Generic;
 
 public class Saver : MonoBehaviour
 {
-    void Update()
+    private void Start()
+    {
+       LoadLocation();
+    }
+
+    /*void Update()
     {
         if (Input.GetButtonDown("Save"))
         {
-            SavePlayer();
             SaveLocation();
         }
 
 
         if (Input.GetButtonDown("Load"))
         {
-            LoadPlayer();
             LoadLocation();
         }
-    }
+    }*/
 
     private void SavePlayer()
     {
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
-        int totalTime = GlobalRepository.Days * 24 * 60 + GlobalRepository.Hours * 60 + GlobalRepository.Minutes;
         ContainerSaveData invSave = new ContainerSaveData(GlobalRepository.Inventory.Items);
-        PlayerSaveData playerSaveData = new PlayerSaveData(playerPos, GlobalRepository.Kcal, GlobalRepository.Water, invSave, totalTime);
+        PlayerSaveData playerSaveData = new PlayerSaveData(playerPos, GlobalRepository.Kcal, GlobalRepository.Water, invSave, GlobalRepository.GlobalTime);
         SaveLoadManager.Save<PlayerSaveData>("PlayerSave", playerSaveData);
         Debug.Log("Player data saved");
     }
 
-    private void SaveLocation()
+    public void SaveLocation()
     {
 
         LootSpawner[] lootSpawners = GameObject.FindObjectsOfType<LootSpawner>(true);
@@ -48,34 +50,53 @@ public class Saver : MonoBehaviour
         Debug.Log("Player data loaded");
     }
 
-    private void LoadLocation()
+    public void LoadLocation()
     {
         LocationSaveData locSave = SaveLoadManager.Load<LocationSaveData>("LocSave");
-        Dictionary<int, LootSpawnerSaveData> lootSpawnersDict = new Dictionary<int, LootSpawnerSaveData>();
+        /*Dictionary<float, LootSpawnerSaveData> lootSpawnersDict = new Dictionary<float, LootSpawnerSaveData>();
 
         foreach (LootSpawnerSaveData lootSpawnerSaveData in locSave.LootSpawnerSaveDatas)
         {
-            lootSpawnersDict.Add(lootSpawnerSaveData.InstanceID, lootSpawnerSaveData);
+            lootSpawnersDict.Add(lootSpawnerSaveData.XCoordinate, lootSpawnerSaveData);
         }
+
 
         foreach (LootSpawner lootSpawner in GameObject.FindObjectsOfType<LootSpawner>(true))
         {
-            lootSpawner.LoadSaveData(lootSpawnersDict[lootSpawner.GetInstanceID()]);
+            lootSpawner.LoadSaveData(lootSpawnersDict[lootSpawner.transform.position.x]);
+            if (lootSpawnersDict.ContainsKey(lootSpawner.transform.position.x))
+            {
+            }
+        }*/
+
+        for (int i = 0; i < locSave.LootSpawnerSaveDatas.Length; i++)
+        {
+            GameObject.FindObjectsOfType<LootSpawner>(true)[i].LoadSaveData(locSave.LootSpawnerSaveDatas[i]);
         }
 
-
+        /*
         Dictionary<int, HarvestPOISave> harvestersDict = new Dictionary<int, HarvestPOISave>();
+
 
         foreach (HarvestPOISave harvesterSave in locSave.HarvestSaves)
         {
             harvestersDict.Add(harvesterSave.InstanceID, harvesterSave);
         }
 
+
         foreach (Harvester harvester in GameObject.FindObjectsOfType<Harvester>())
         {
-            harvester.LoadSaveData(harvestersDict[harvester.GetInstanceID()]);
+            if (lootSpawnersDict.ContainsKey(harvester.GetInstanceID()))
+            {
+                harvester.LoadSaveData(harvestersDict[harvester.GetInstanceID()]);
+            }
+        }*/
+
+        for (int i = 0; i < locSave.HarvestSaves.Length; i++)
+        {
+            GameObject.FindObjectsOfType<Harvester>(true)[i].LoadSaveData(locSave.HarvestSaves[i]);
         }
 
-        Debug.Log("Location loaded");
+            Debug.Log("Location loaded");
     }
 }

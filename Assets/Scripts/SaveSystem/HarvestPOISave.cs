@@ -20,12 +20,10 @@ namespace SaveDatas
         }
 
         public HarvestOptionSave[] HarvestOptionSaves;
-        public int InstanceID;
 
         public HarvestPOISave(Harvester harvester)
         {
             HarvestOptionSaves = new HarvestOptionSave[harvester.HarvestOptions.Length];
-            InstanceID = harvester.GetInstanceID();
 
             for (int i = 0; i < harvester.HarvestOptions.Length; i++)
             {

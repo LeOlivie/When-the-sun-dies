@@ -12,9 +12,9 @@ public class LootSpawner : MonoBehaviour
     public ItemContainer ItemContainer => _itemContainer;
     public bool IsLooted => _isLooted;
 
-    private void Start()
+    private void Awake()
     {
-        if(_lootSpawnerData != null)
+        if(_lootSpawnerData != null && !IsLooted)
         {
             _itemContainer = new ItemContainer(_lootSpawnerData.ContainerSize);
             Item[] items = _lootSpawnerData.GetSpawnedItems();
@@ -25,6 +25,7 @@ public class LootSpawner : MonoBehaviour
             }
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
