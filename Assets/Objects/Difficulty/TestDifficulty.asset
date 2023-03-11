@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8a66f933b4cf04aa3b240f3cba2392, type: 3}
   m_Name: TestDifficulty
   m_EditorClassIdentifier: 
-  _dayCycleLength: 48
+  _dayCycleLength: 24
   _maxWeight: 15
   _foodMemoryLength: 4
+  _weatherMaxDuration: 2160
+  _sleepTimePerDay: 8

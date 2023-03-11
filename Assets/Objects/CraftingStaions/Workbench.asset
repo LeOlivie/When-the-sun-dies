@@ -20,6 +20,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a8d01e9c4b54596449a1e06e8f3a06a0, type: 2}
     - {fileID: 11400000, guid: 5a8a3ebc72f32294ea568b5e5ba696bd, type: 2}
     - {fileID: 11400000, guid: 5ed81db3db5951f43ba1244170ac6413, type: 2}
+    _skillRequirements:
+    - _skillType: 3
+      _skillLevel: 1
     _upgradeRequierements:
     - _itemData: {fileID: 11400000, guid: 5f6d56673449d5d418b4ab283870ddda, type: 2}
       _count: 15
@@ -31,9 +34,12 @@ MonoBehaviour:
       _count: 1
     - _itemData: {fileID: 11400000, guid: 45964dd8d2ca5e44aa30730d2ca0e38c, type: 2}
       _count: 1
-    _upgradeTime: 240
+    _upgradeTime: 540
     _upgradedSprite: {fileID: 21300000, guid: 703d0033e6b957c4d8a544003f0d9300, type: 3}
   - _recipies: []
+    _skillRequirements:
+    - _skillType: 3
+      _skillLevel: 2
     _upgradeRequierements:
     - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
       _count: 40
@@ -48,7 +54,8 @@ MonoBehaviour:
     _upgradeTime: 600
     _upgradedSprite: {fileID: 21300000, guid: efb151def66786f448b6e0800ef72de2, type: 3}
   - _recipies: []
+    _skillRequirements: []
     _upgradeRequierements: []
     _upgradeTime: 0
     _upgradedSprite: {fileID: 21300000, guid: e0517563dafdad749ae86640ba92501a, type: 3}
-  _name: 
+  _name: Workbench

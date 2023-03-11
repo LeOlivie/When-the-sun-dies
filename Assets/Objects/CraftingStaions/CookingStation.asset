@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stationLevels:
   - _recipies: []
+    _skillRequirements: []
     _upgradeRequierements:
     - _itemData: {fileID: 11400000, guid: 687e6b8138a2ce848b2fad872069244c, type: 2}
       _count: 1
@@ -25,12 +26,15 @@ MonoBehaviour:
       _count: 3
     - _itemData: {fileID: 11400000, guid: b45e60c882934104c828133c6fb6bb8d, type: 2}
       _count: 2
-    _upgradeTime: 120
+    _upgradeTime: 180
     _upgradedSprite: {fileID: 21300000, guid: 8677e5628645d4943bc8f0414c05ae99, type: 3}
   - _recipies:
     - {fileID: 11400000, guid: ff1b6a5c97d19c04d8a8b15ea924887d, type: 2}
     - {fileID: 11400000, guid: d638dbc788aa4c344a5637fe77c164c1, type: 2}
     - {fileID: 11400000, guid: 77cb6df9707a236468d3deb64949914e, type: 2}
+    _skillRequirements:
+    - _skillType: 3
+      _skillLevel: 1
     _upgradeRequierements:
     - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
       _count: 20
@@ -42,9 +46,14 @@ MonoBehaviour:
       _count: 1
     - _itemData: {fileID: 11400000, guid: dab8a6a84487839449470b480e5779be, type: 2}
       _count: 1
-    _upgradeTime: 300
+    _upgradeTime: 570
     _upgradedSprite: {fileID: -3853082709363784740, guid: 0e0b59eb216641f4f9f2438454a7f6b3, type: 3}
   - _recipies: []
+    _skillRequirements:
+    - _skillType: 3
+      _skillLevel: 2
+    - _skillType: 1
+      _skillLevel: 1
     _upgradeRequierements:
     - _itemData: {fileID: 11400000, guid: 05258ec3340e2c942b66c5df75bc8ebb, type: 2}
       _count: 10
@@ -56,7 +65,7 @@ MonoBehaviour:
       _count: 2
     - _itemData: {fileID: 11400000, guid: a7762881a954a45499d2a036fdbf7de5, type: 2}
       _count: 1
-    _upgradeTime: 600
+    _upgradeTime: 720
     _upgradedSprite: {fileID: 21300000, guid: d6a2861a3477b7b478dd849f886012e4, type: 3}
   - _recipies:
     - {fileID: 11400000, guid: 07e6e3e9ad495f947b0a5f6b3c75a146, type: 2}
@@ -64,6 +73,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c682a5ebbfaa19045b83665a80607b28, type: 2}
     - {fileID: 11400000, guid: 5a3987b8d878d474685b134593f7e2a1, type: 2}
     - {fileID: 11400000, guid: f47361a699207db4483b067add1d3c3b, type: 2}
+    _skillRequirements: []
     _upgradeRequierements: []
     _upgradeTime: 0
     _upgradedSprite: {fileID: 21300000, guid: 4cfbf352ca75a244ea1b27b39a1af89f, type: 3}

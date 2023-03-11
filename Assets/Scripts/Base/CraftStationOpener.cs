@@ -4,8 +4,10 @@ public class CraftStationOpener : MonoBehaviour
 {
     [SerializeField] private ButtonHandler _interractBtn;
     [SerializeField] private CraftingStation _station;
-    [SerializeField] private CraftingMenuShower _menuShower;
     [SerializeField] private SpriteRenderer _stationSpriteRenderer;
+    [SerializeField]  private CraftingMenuShower _menuShower;
+
+    public CraftingStation Station => _station;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -38,5 +40,11 @@ public class CraftStationOpener : MonoBehaviour
             _menuShower.OpenCraftScreen(_station);
             _station.OnUpgradedEvent += ChangeSprite;
         }
+    }
+
+    public void LoadSaveData(SaveDatas.CraftingStationSaveData saveData)
+    {
+        _station.LoadSaveData(saveData);
+        ChangeSprite();
     }
 }

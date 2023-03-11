@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GoingScene.unity
     guid: 1d7709eb92c9ff64e90b1334a52dfdd2
+  - enabled: 1
+    path: Assets/Scenes/Forrest.unity
+    guid: ec92db7d76b640f4b8770891e9faaeba
   m_configObjects: {}

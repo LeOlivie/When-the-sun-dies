@@ -60,9 +60,12 @@ public class FoodData : ItemData
 
     public override void Use()
     {
-        foreach (Item item in this.ItemsToAddAfterUse)
+        if (ItemsToAddAfterUse != null && ItemsToAddAfterUse.Length > 0) 
         {
-            GlobalRepository.Inventory.AddItem(item, false);
+            foreach (Item item in this.ItemsToAddAfterUse)
+            {
+                GlobalRepository.Inventory.AddItem(item, false);
+            }
         }
 
         GlobalRepository.AddLastEatenFood(this.Name);

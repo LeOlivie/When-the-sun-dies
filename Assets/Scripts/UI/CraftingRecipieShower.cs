@@ -40,7 +40,7 @@ public class CraftingRecipieShower : MonoBehaviour
 
         _outputShower.ShowItem(recipieData.Output[0]);
         _outputNameText.text = recipieData.Output[0].Name;
-        _craftLengthText.text = recipieData.Time.ToString() + " minutes";
+        _craftLengthText.text = TimeConverter.InsertTime("{0}:{1}", recipieData.Time,TimeConverter.InsertionType.HourMinute);
 
         foreach (Item input in recipieData.ItemRequirements)
         {

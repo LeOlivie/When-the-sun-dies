@@ -55,7 +55,7 @@ MonoBehaviour:
   - _itemData: {fileID: 11400000, guid: 274a5b064e8a5b6408a4d7dec4858258, type: 2}
     _spawnChance: 30
     _count: 1
-  _containerSize: 9
+  _containerSize: 6
   _containerName: Dead body
   _lootTime: 5
   _lootPointsMax: 300

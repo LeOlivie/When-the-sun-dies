@@ -5,7 +5,7 @@ using System;
 public class LocationData : ScriptableObject
 {
     [SerializeField] private string _name;
-    [SerializeField] private string _description;
+    [SerializeField, TextArea] private string _description;
     [SerializeField] private int _distance;
     [SerializeField, Tooltip("ID in scene manager.")] private string _locationID;
 

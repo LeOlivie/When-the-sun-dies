@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public static class GlobalRepository
 {
     public enum SkillType { DIY, Electronics, Bakery, Building };
-    private static int _globalTime = 2160;
+    public enum WeatherTypeEnum { ClearWeather, Foggy, Rainy, Windy };
+    private static int _globalTime =2160; //2160 = 1 day 12:00
     private static float _kcal = 2000;
     private static float _water = 2000;
     private static float _weight;
@@ -14,6 +15,9 @@ public static class GlobalRepository
     private static sbyte _happiness = 50;
     private static int _raidTimeLeft = 90;
     private static int _timeBeforeArrival = 0;
+    private static int _weatherChangeTime = 1;
+    private static float _fatigue = -10000;
+    private static WeatherTypeEnum _weatherType;
     private static LocationData _currentLocationData;
     private static List<string> _lastEatenFood = new List<string>();
     private static Dictionary<SkillType, int> skills = new Dictionary<SkillType, int>();
@@ -32,6 +36,8 @@ public static class GlobalRepository
     public static sbyte Happiness => _happiness;
     public static int RaidTimeLeft => _raidTimeLeft;
     public static int TimeBeforeArrival => _timeBeforeArrival;
+    public static int Fatigue => Mathf.FloorToInt(_fatigue);
+    public static WeatherTypeEnum WeatherType => _weatherType;
     public static LocationData CurrentLocationData => _currentLocationData;
     public static List<string> LastEatenFood => _lastEatenFood;
     public static DifficultyData Difficulty => _difficulty;
@@ -95,6 +101,16 @@ public static class GlobalRepository
             _timeBeforeArrival -= (int)minutesCount;
         }
 
+        _weatherChangeTime -= (int)minutesCount;
+
+        if(_weatherChangeTime <= 0)
+        {
+            int newWeatherIndex = UnityEngine.Random.Range(0, Enum.GetValues(typeof(WeatherTypeEnum)).Length);
+            _weatherType = (WeatherTypeEnum)(Enum.GetValues(_weatherType.GetType())).GetValue(newWeatherIndex);
+            _weatherChangeTime = UnityEngine.Random.Range(120, _difficulty.WeatherMaxDuration);
+            Debug.Log(_weatherType.ToString());
+        }
+
         _globalTime += (int)minutesCount;
 
         OnTimeUpdated?.Invoke();
@@ -156,12 +172,27 @@ public static class GlobalRepository
         }
     }
 
-    public static void ChangeLocation(LocationData locationData)
+    public static void AddFatigue(float change)
+    {
+        _fatigue += change;
+        
+        if (_fatigue > 100)
+        {
+            _fatigue = 100;
+        }
+        else if (_fatigue < 0)
+        {
+            _fatigue = 0;
+        }
+    }
+
+    public static void ChangeLocation(LocationData locationData, int raidTime, int arrivalTime)
     {
         OnTimeUpdated = null;
+        _inventory.ContainerUpdated = null;
         _currentLocationData = locationData;
-        _timeBeforeArrival = Mathf.CeilToInt(locationData.Distance / 6f * 60f);
-        _raidTimeLeft = 0;
+        _timeBeforeArrival = arrivalTime;
+        _raidTimeLeft = raidTime + arrivalTime;
         Time.timeScale = 1;
         SceneManager.LoadScene("GoingScene");
     }

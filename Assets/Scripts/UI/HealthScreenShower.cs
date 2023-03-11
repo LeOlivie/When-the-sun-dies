@@ -33,7 +33,8 @@ public class HealthScreenShower : MonoBehaviour
 
 
         _nutrientsText.text += string.Format("\n\nNutrients\n<size=25><color=#FFA500>{0}/2000</color>kcal    <color=#00E3FF>{1}/2000</color>ml</size>", kcal, water);
-        _nutrientsText.text += string.Format("\n<size=25>Happiness: {0}</size>", GlobalRepository.Happiness);
+        _nutrientsText.text += string.Format("\n<size=25>Fatigue: {0}/100</size>", GlobalRepository.Fatigue);
+        _nutrientsText.text += string.Format("\n<size=25>Happiness: {0}/50</size>", GlobalRepository.Happiness);
 
     }
 }

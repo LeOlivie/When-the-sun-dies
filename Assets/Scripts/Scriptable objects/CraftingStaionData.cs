@@ -10,12 +10,14 @@ public class CraftingStaionData : ScriptableObject
     private struct StationLevelData
     {
         [SerializeField] private CraftingRecipieData[] _recipies;
+        [SerializeField] private IUpgradable.SkillRequirement[] _skillRequirements;
         [SerializeField] private Item[] _upgradeRequierements;
         [SerializeField] private uint _upgradeTime;
         [SerializeField] private Sprite _upgradedSprite;
 
         public CraftingRecipieData[] Recipies => _recipies;
         public Item[] UpgradeRequierements => _upgradeRequierements;
+        public IUpgradable.SkillRequirement[] SkillRequirements => _skillRequirements;
         public uint UpgradeTime => _upgradeTime;
         public Sprite UpgradedSprite => _upgradedSprite;
     }
@@ -51,5 +53,10 @@ public class CraftingStaionData : ScriptableObject
     public Sprite GetSprite(uint level)
     {
         return _stationLevels[level].UpgradedSprite;
+    }
+
+    public IUpgradable.SkillRequirement[] GetSkillRequirements(uint level)
+    {
+        return _stationLevels[level].SkillRequirements;
     }
 }

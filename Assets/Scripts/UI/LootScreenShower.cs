@@ -1,11 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LootScreenShower : MonoBehaviour, IClosable
 {
+    [Serializable]
+    private struct ItemShowerSet
+    {
+        [SerializeField] private LootSpawnerData.ContainerSizeEnum _size;
+        [SerializeField] private ItemShower[] _itemShowers;
+
+        public sbyte Size => (sbyte)_size;
+        public ItemShower[] ItemShowers => _itemShowers;
+    }
+
     public delegate void OnLooted();
 
     [SerializeField] private Joystick _joystick;
@@ -13,7 +25,8 @@ public class LootScreenShower : MonoBehaviour, IClosable
     [SerializeField] private GameObject _lootingInProgressScr;
     [SerializeField] private Image _weightBar;
     [SerializeField] private ItemShower[] _inventoryItemShowers;
-    [SerializeField] private ItemShower[] _containerItemShowers;
+    [SerializeField] private ItemShowerSet[] _itemShowerSets;
+    [SerializeField] private GameObject[] _itemSetsGameObjects;
     [SerializeField] private ItemShower _inspectItemShower;
     [SerializeField] private TextMeshProUGUI _weightText;
     [SerializeField] private TextMeshProUGUI _inspectItemDesc;
@@ -23,6 +36,8 @@ public class LootScreenShower : MonoBehaviour, IClosable
     [SerializeField] private ButtonHandler _takeBtn;
     [SerializeField] private ButtonHandler _putBtn;
     [SerializeField] private ButtonHandler _closeBtn;
+    private Dictionary<sbyte, ItemShower[]> _itemShowerSetsDict = new Dictionary<sbyte, ItemShower[]>();
+    private Dictionary<sbyte, GameObject> _itemSetsGameObjectsDict = new Dictionary<sbyte, GameObject>();
     private ItemContainer _lootContainer;
     private OnLooted _onLooted;
     private ScreensCloser _screensCloser;
@@ -30,13 +45,19 @@ public class LootScreenShower : MonoBehaviour, IClosable
     private void Awake()
     {
         _screensCloser = GameObject.FindObjectOfType<ScreensCloser>(true);
-        this.gameObject.SetActive(false);
+
+        for(int i = 0; i < _itemShowerSets.Length; i++)
+        {
+            _itemShowerSetsDict.Add(_itemShowerSets[i].Size, _itemShowerSets[i].ItemShowers);
+            _itemSetsGameObjectsDict.Add(_itemShowerSets[i].Size, _itemSetsGameObjects[i]);
+        }
     }
 
     private void Start()
     {
         _takeBtn.AddListener(TakeItem);
         _putBtn.AddListener(PutItem);
+        CloseScreen();
     }
 
     public void OpenLootScreen(ItemContainer lootContainer, string containerName, bool isLooted, OnLooted onLootedDelegate, float lootTime)
@@ -60,6 +81,13 @@ public class LootScreenShower : MonoBehaviour, IClosable
             _lootingInProgressScr.SetActive(true);
             StartCoroutine(Loot(lootTime));
         }
+
+        for(int i = 0; i < _itemSetsGameObjects.Length; i++)
+        {
+            _itemSetsGameObjects[i].SetActive(false);
+        }
+
+        _itemSetsGameObjectsDict[(sbyte)lootContainer.Items.Length].SetActive(true);
     }
 
     public void CloseScreen()
@@ -72,8 +100,8 @@ public class LootScreenShower : MonoBehaviour, IClosable
 
     private void ShowInventory()
     {
-        GlobalRepository.Inventory.ContainerUpdated();
-        ShowContainer(_containerItemShowers, _lootContainer);
+        GlobalRepository.Inventory.ContainerUpdated?.Invoke();
+        ShowContainer(_itemShowerSetsDict[(sbyte)_lootContainer.Items.Length], _lootContainer);
         ShowContainer(_inventoryItemShowers, GlobalRepository.Inventory);
 
         GlobalRepository.CountWeight();

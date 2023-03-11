@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 public class LootSpawner : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class LootSpawner : MonoBehaviour
     {
         if(_lootSpawnerData != null && !IsLooted)
         {
-            _itemContainer = new ItemContainer(_lootSpawnerData.ContainerSize);
+            _itemContainer = new ItemContainer((sbyte)_lootSpawnerData.ContainerSize);
             Item[] items = _lootSpawnerData.GetSpawnedItems();
 
             foreach (Item item in items)

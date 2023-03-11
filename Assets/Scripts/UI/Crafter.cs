@@ -23,8 +23,11 @@ public class Crafter : MonoBehaviour
         _crafter = crafter;
         _recipies = crafter.Recipies;
         _craftsPage = 0;
+        _prevPageBtn.RemoveListener(ChangeCraftPage);
+        _nextPageBtn.RemoveListener(ChangeCraftPage);
         _prevPageBtn.AddListener(ChangeCraftPage);
         _nextPageBtn.AddListener(ChangeCraftPage);
+        _pauseCraftBtn.ResetListeners();
         ChangeCraftPage(0);
 
         if (_crafter.ActiveCraftData == null)
@@ -35,7 +38,9 @@ public class Crafter : MonoBehaviour
         else
         {
             _craftInProgress.SetActive(true);
-            _craftingTimeLeftText.text = _crafter.CraftTimeLeft + " minutes";
+            _itemCraftingShower.ShowItem(crafter.ActiveCraftData.Output[0]);
+            _craftingTimeLeftText.text = TimeConverter.InsertTime("{0}:{1}", _crafter.CraftTimeLeft, TimeConverter.InsertionType.HourMinute);
+            PauseCraft();
         }
     }
 
@@ -77,7 +82,6 @@ public class Crafter : MonoBehaviour
 
     private void StartCraft(int index)
     {
-        _pauseCraftBtn.AddListener(ResumeCraft);
         _craftInProgress.SetActive(true);
         _itemCraftingShower.ShowItem(_recipies[index + _craftsPage * _recipieShowers.Length].Output[0]);
         _crafter.OnCraftStarted(_recipies[index + _craftsPage * _recipieShowers.Length]);
@@ -98,31 +102,38 @@ public class Crafter : MonoBehaviour
         }
 
         _craftInProgress.SetActive(false);
-        _pauseCraftBtn.RemoveListener(PauseCraft);
         _crafter.OnCraftEnded();
         OnCraftEnded?.Invoke();
         PauseCraft();
+        _pauseCraftBtn.RemoveListener(PauseCraft);
+        _pauseCraftBtn.RemoveListener(ResumeCraft);
+        ShowRecipies();
     }
 
     public void ResumeCraft()
     {
         GlobalRepository.OnTimeUpdated += CraftInProgress;
         Time.timeScale = 20;
+        _pauseCraftBtn.RemoveListener(ResumeCraft);
+        _pauseCraftBtn.AddListener(PauseCraft);
     }
 
     public void PauseCraft()
     {
         GlobalRepository.OnTimeUpdated -= CraftInProgress;
         Time.timeScale = 1;
+        _pauseCraftBtn.RemoveListener(PauseCraft);
+        _pauseCraftBtn.AddListener(ResumeCraft);
     }
 
     private void CraftInProgress()
     {
-        _craftingTimeLeftText.text = _crafter.CraftTimeLeft + " minutes";
+        _craftingTimeLeftText.text =  TimeConverter.InsertTime("{0}:{1}", _crafter.CraftTimeLeft,TimeConverter.InsertionType.HourMinute);
         _crafter.DecreaseCraftTimeLeft();
 
         if (_crafter.CraftTimeLeft <= 0)
         {
+            GlobalRepository.OnTimeUpdated -= CraftInProgress;
             EndCraft();
         }
     }

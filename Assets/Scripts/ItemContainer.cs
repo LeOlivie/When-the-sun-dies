@@ -4,7 +4,6 @@ using System;
 public class ItemContainer
 {
     private Item[] _items;
-
     public delegate void ContainerUpdatedDelegate();
     public ContainerUpdatedDelegate ContainerUpdated;
 

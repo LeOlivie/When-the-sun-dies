@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 
+[Serializable]
 [CreateAssetMenu(fileName = "CraftingRecipieData", menuName = "ScriptableObjects/CraftingRecipieData", order = 3)]
 public class CraftingRecipieData : ScriptableObject
 {

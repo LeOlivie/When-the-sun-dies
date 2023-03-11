@@ -26,10 +26,10 @@ public class CraftingStation : IUpgradable, ICrafter
     public CraftingRecipieData ActiveCraftData => _activeCraftData;
     public CraftingRecipieData[] Recipies => _staionData.GetRecipies(_level);
     public Item[] UpgradeRequirements => _staionData.GetUpgradeRequierements(_level);
+    public IUpgradable.SkillRequirement[] SkillRequirements => _staionData.GetSkillRequirements(_level);
 
     public void OnUpgradeEnded()
     {
-        Debug.Log("+1 level");
         _isBeingUpgraded = false;
         _level += 1;
         OnUpgradedEvent?.Invoke();
@@ -61,5 +61,14 @@ public class CraftingStation : IUpgradable, ICrafter
     public void DecreaseCraftTimeLeft()
     {
         _craftTimeLeft--;
+    }
+
+    public void LoadSaveData(SaveDatas.CraftingStationSaveData saveData)
+    {
+        _level = saveData.UpgradableSave.CurrLevel;
+        _upgradeTimeLeft = saveData.UpgradableSave.UpgradeTimeLeft;
+        _isBeingUpgraded = saveData.UpgradableSave.IsBeingUpgraded;
+        _activeCraftData = saveData.ActiveCraft;
+        _craftTimeLeft = saveData.CraftingTimeLeft;
     }
 }

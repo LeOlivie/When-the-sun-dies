@@ -9,7 +9,6 @@ public class CraftingMenuShower : MonoBehaviour, IClosable
     [SerializeField] private GameObject _craftMenu;
     [SerializeField] private GameObject _upgradesMenu;
     [SerializeField] private ItemShower[] _inventoryItemShowers;
-    [SerializeField] private ButtonHandler _closeBtn;
     [SerializeField] private ButtonHandler _craftsBtn;
     [SerializeField] private ButtonHandler _upgradesBtn;
     [SerializeField] private Upgrader _upgrader;
@@ -31,7 +30,6 @@ public class CraftingMenuShower : MonoBehaviour, IClosable
         _craftingStation = craftingStation;
         _upgrader.ShowUpgradeMenu(_craftingStation, OpenCraftsMenu);
         _craftingScr.SetActive(true);
-        _closeBtn.AddListener(CloseScreen);
         GlobalRepository.Inventory.ContainerUpdated += ShowInventory;
         GlobalRepository.CountWeight();
         OpenCraftsMenu();
@@ -47,7 +45,6 @@ public class CraftingMenuShower : MonoBehaviour, IClosable
         _joystick.enabled = true;
         _craftingScr.SetActive(false);
         GlobalRepository.Inventory.ContainerUpdated -= ShowInventory;
-        _closeBtn.RemoveListener(CloseScreen);
         _crafter.PauseCraft();
     }
 

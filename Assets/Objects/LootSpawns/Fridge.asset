@@ -43,7 +43,7 @@ MonoBehaviour:
   - _itemData: {fileID: 11400000, guid: 03ac1570e6878d743971ebd1cd048c9e, type: 2}
     _spawnChance: 30
     _count: 1
-  _containerSize: 9
+  _containerSize: 6
   _containerName: Fridge
   _lootTime: 5
   _lootPointsMax: 250

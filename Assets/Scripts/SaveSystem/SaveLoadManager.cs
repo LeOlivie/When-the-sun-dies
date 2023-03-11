@@ -18,7 +18,7 @@ public static class SaveLoadManager
         }
         else
         {
-            throw new System.Exception("Save key not found.");
+            throw new System.Exception("Save file not found.");
         }
     }
 }

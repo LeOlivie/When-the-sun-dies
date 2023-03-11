@@ -1,27 +1,31 @@
 using UnityEngine;
 using SaveDatas;
-using System.Collections.Generic;
 
 public class Saver : MonoBehaviour
 {
+    [SerializeField] private string _saveName;
+
     private void Start()
     {
-       LoadLocation();
+        //LoadBase();
+        //LoadLocation();
+        //SaveLoadManager.Save<StorageSaveData>("Test",new StorageSaveData(GameObject.FindObjectOfType<StorageOpener>().Storage));
+        //GameObject.FindObjectOfType<StorageOpener>().LoadSaveData(SaveLoadManager.Load<StorageSaveData>("Test"));
     }
 
-    /*void Update()
+    void Update()
     {
         if (Input.GetButtonDown("Save"))
         {
-            SaveLocation();
+            SaveBase();
         }
 
 
         if (Input.GetButtonDown("Load"))
         {
-            LoadLocation();
+            LoadBase();
         }
-    }*/
+    }
 
     private void SavePlayer()
     {
@@ -39,8 +43,32 @@ public class Saver : MonoBehaviour
 
         Harvester[] harvesters = GameObject.FindObjectsOfType<Harvester>(true);
 
-        SaveLoadManager.Save<LocationSaveData>("LocSave", new LocationSaveData(lootSpawners, harvesters));
+        SaveLoadManager.Save<LocationSaveData>(_saveName, new LocationSaveData(lootSpawners, harvesters));
         Debug.Log("Location saved");
+    }
+
+    public void SaveBase()
+    {
+        CraftingStation workbench = GameObject.FindObjectsOfType<CraftStationOpener>(true)[0].Station;
+        CraftingStation cookingStation = GameObject.FindObjectsOfType<CraftStationOpener>(true)[1].Station;
+        Storage storage = GameObject.FindObjectOfType<StorageOpener>().Storage;
+        TV tv = GameObject.FindObjectOfType<TVScreenOpener>(true).Tv;
+        Bed bed = GameObject.FindObjectOfType<BedOpener>().Bed;
+        WaterCollector waterCollector = GameObject.FindObjectOfType<WaterCollectorOpener>().WaterCollector;
+        SaveLoadManager.Save<BaseSaveData>("BaseSaveData", new BaseSaveData(workbench,cookingStation,storage,tv,bed,waterCollector));
+        Debug.Log("Base saved");
+    }
+
+    public void LoadBase()
+    {
+        BaseSaveData baseSaveData = SaveLoadManager.Load<BaseSaveData>("BaseSaveData");
+        GameObject.FindObjectsOfType<CraftStationOpener>(true)[0].LoadSaveData(baseSaveData.WorkbenchSave);
+        GameObject.FindObjectsOfType<CraftStationOpener>(true)[1].LoadSaveData(baseSaveData.CookingStationSave);
+        GameObject.FindObjectOfType<StorageOpener>().LoadSaveData(baseSaveData.StorageSave);
+        GameObject.FindObjectOfType<TVScreenOpener>(true).LoadSaveData(baseSaveData.TVSave);
+        GameObject.FindObjectOfType<BedOpener>().LoadSaveData(baseSaveData.BedSave);
+        GameObject.FindObjectOfType<WaterCollectorOpener>().LoadSaveData(baseSaveData.WaterCollectorSave);
+        Debug.Log("Base load");
     }
 
     private void LoadPlayer()
@@ -52,7 +80,7 @@ public class Saver : MonoBehaviour
 
     public void LoadLocation()
     {
-        LocationSaveData locSave = SaveLoadManager.Load<LocationSaveData>("LocSave");
+        LocationSaveData locSave = SaveLoadManager.Load<LocationSaveData>(_saveName);
         /*Dictionary<float, LootSpawnerSaveData> lootSpawnersDict = new Dictionary<float, LootSpawnerSaveData>();
 
         foreach (LootSpawnerSaveData lootSpawnerSaveData in locSave.LootSpawnerSaveDatas)

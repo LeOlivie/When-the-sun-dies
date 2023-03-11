@@ -46,7 +46,7 @@ MonoBehaviour:
   - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
     _spawnChance: 40
     _count: 1
-  _containerSize: 9
+  _containerSize: 4
   _containerName: Gym Bag
   _lootTime: 5
   _lootPointsMax: 200

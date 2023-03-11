@@ -121,7 +121,7 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
 
     private void ShowInventory()
     {
-        GlobalRepository.Inventory.ContainerUpdated();
+        GlobalRepository.Inventory.ContainerUpdated?.Invoke();
 
         GlobalRepository.CountWeight();
 

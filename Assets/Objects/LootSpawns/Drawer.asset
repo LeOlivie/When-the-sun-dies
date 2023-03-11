@@ -31,7 +31,7 @@ MonoBehaviour:
   - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
     _spawnChance: 20
     _count: 1
-  _containerSize: 9
+  _containerSize: 4
   _containerName: Drawer
   _lootTime: 5
   _lootPointsMax: 150

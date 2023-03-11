@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc499d671b654a4488150746e6b0575, type: 3}
+  m_Name: CD_Dill
+  m_EditorClassIdentifier: 
+  _name: Dill
+  _requirements:
+  - _itemData: {fileID: 11400000, guid: 60f0d0b6cb344774ca3f6cdebbb95772, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: e9dbee5ccc8a042459c77230e04cd800, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+    _count: 1
+  _growTime: 8640
+  _wateringTime: 1440
+  _output:
+    _itemData: {fileID: 11400000, guid: d043b4acb86f18e4396a9d03ceb3be5c, type: 2}
+    _count: 7

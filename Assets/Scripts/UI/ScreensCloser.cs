@@ -8,7 +8,7 @@ public class ScreensCloser : MonoBehaviour
     {
         foreach (GameObject screenGO in _screens)
         {
-            screenGO.GetComponent<IClosable>().CloseScreen();
+            screenGO?.GetComponent<IClosable>().CloseScreen();
         }
     }
 }

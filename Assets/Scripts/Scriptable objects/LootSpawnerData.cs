@@ -5,6 +5,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "LootSpawnerData", menuName = "ScriptableObjects/LootSpawnerData", order = 2)]
 public class LootSpawnerData : ScriptableObject
 {
+    public enum ContainerSizeEnum : ushort { size2X2 = 4, size2X3 = 6, size3X3 = 9 }
 
     [Serializable]
     private struct ItemSpawnData
@@ -19,12 +20,12 @@ public class LootSpawnerData : ScriptableObject
     }
 
     [SerializeField] private ItemSpawnData[] _itemSpawnDatas;
-    [SerializeField] private sbyte _containerSize;
+    [SerializeField] private ContainerSizeEnum _containerSize;
     [SerializeField] private string _containerName;
     [SerializeField] private float _lootTime;
     [SerializeField] private int _lootPointsMax;
 
-    public sbyte ContainerSize => _containerSize;
+    public ContainerSizeEnum ContainerSize => _containerSize;
     public string ContainerName => _containerName;
     public float LootTime => _lootTime;
     public int LootPointsMax => _lootPointsMax;

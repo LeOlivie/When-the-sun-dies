@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class ButtonHandler : MonoBehaviour, IPointerDownHandler
 {
     public delegate void ButtonDelegate();
-    protected event ButtonDelegate DoOnPress;
+    protected ButtonDelegate DoOnPress;
     private int _listenerCount;
 
     public void OnPointerDown(PointerEventData eventData)
@@ -23,5 +23,10 @@ public class ButtonHandler : MonoBehaviour, IPointerDownHandler
     public virtual void RemoveListener(ButtonDelegate doOnPressMethod)
     {
         DoOnPress -= doOnPressMethod;
+    }
+
+    public virtual void ResetListeners()
+    {
+        DoOnPress = null;
     }
 }

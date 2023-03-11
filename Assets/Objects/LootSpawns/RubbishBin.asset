@@ -34,7 +34,7 @@ MonoBehaviour:
   - _itemData: {fileID: 11400000, guid: e18a4f57421eba649b683f17b8252e70, type: 2}
     _spawnChance: 10
     _count: 1
-  _containerSize: 9
+  _containerSize: 4
   _containerName: Rubbish bin
   _lootTime: 5
   _lootPointsMax: 100

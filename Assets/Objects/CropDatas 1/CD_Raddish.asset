@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc499d671b654a4488150746e6b0575, type: 3}
+  m_Name: CD_Raddish
+  m_EditorClassIdentifier: 
+  _name: 
+  _requirements:
+  - _itemData: {fileID: 11400000, guid: d6f4001a4b688574d99e03c08781f42c, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: e9dbee5ccc8a042459c77230e04cd800, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+    _count: 1
+  _growTime: 10080
+  _wateringTime: 1200
+  _output:
+    _itemData: {fileID: 11400000, guid: 5cbdd9bf74142864e87d2899b379c4c2, type: 2}
+    _count: 5

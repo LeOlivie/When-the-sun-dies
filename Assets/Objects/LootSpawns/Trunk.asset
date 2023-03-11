@@ -43,7 +43,7 @@ MonoBehaviour:
   - _itemData: {fileID: 11400000, guid: a09a1c0022225ab45916ce229ef6c52f, type: 2}
     _spawnChance: 40
     _count: 1
-  _containerSize: 9
+  _containerSize: 6
   _containerName: Trunk
   _lootTime: 5
   _lootPointsMax: 400
