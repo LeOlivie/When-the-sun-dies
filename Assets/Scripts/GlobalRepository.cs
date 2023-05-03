@@ -7,7 +7,7 @@ public static class GlobalRepository
 {
     public enum SkillType { DIY, Electronics, Bakery, Building };
     public enum WeatherTypeEnum { ClearWeather, Foggy, Rainy, Windy };
-    private static int _globalTime =2160; //2160 = 1 day 12:00
+    private static int _globalTime =2810; //2160 = 1 day 12:00
     private static float _kcal = 2000;
     private static float _water = 2000;
     private static float _weight;
@@ -20,7 +20,8 @@ public static class GlobalRepository
     private static WeatherTypeEnum _weatherType;
     private static LocationData _currentLocationData;
     private static List<string> _lastEatenFood = new List<string>();
-    private static Dictionary<SkillType, int> skills = new Dictionary<SkillType, int>();
+    private static Dictionary<SkillType, int> _skills = new Dictionary<SkillType, int>();
+    private static LightSourceData _lightSourceData;
 
     private static DifficultyData _difficulty;
     private static ItemContainer _inventory = new ItemContainer(16, CountWeight);
@@ -42,12 +43,13 @@ public static class GlobalRepository
     public static List<string> LastEatenFood => _lastEatenFood;
     public static DifficultyData Difficulty => _difficulty;
     public static ItemContainer Inventory => _inventory;
+    public static LightSourceData LightSourceData => _lightSourceData;
     public static Dictionary<SkillType, int> Skills
     {
         get
         {
-            if (skills.Count <= 0) CreateSkillDict();
-            return skills;
+            if (_skills.Count <= 0) CreateSkillDict();
+            return _skills;
         }
     }
 
@@ -56,7 +58,7 @@ public static class GlobalRepository
         foreach(string str in Enum.GetNames(typeof(SkillType)))
         {
             SkillType skillType = (SkillType)Enum.Parse(typeof(SkillType), str);
-            skills.Add(skillType, 0);
+            _skills.Add(skillType, 0);
         }
     }
 
@@ -195,6 +197,11 @@ public static class GlobalRepository
         _raidTimeLeft = raidTime + arrivalTime;
         Time.timeScale = 1;
         SceneManager.LoadScene("GoingScene");
+    }
+
+    public static void SetLightSourceData(LightSourceData lightSourceData)
+    {
+        _lightSourceData = lightSourceData;
     }
 
     public static void LoadSaveData(SaveDatas.PlayerSaveData playerSaveData)

@@ -7,8 +7,19 @@ public class Saver : MonoBehaviour
 
     private void Start()
     {
-        //LoadBase();
-        //LoadLocation();
+        if (_saveName == "Base")
+        {
+            LoadBase();
+            return;
+        }
+
+        if (!SaveLoadManager.CheckIfSaveExists(_saveName))
+        {
+            return;
+        }
+
+
+        LoadLocation();
         //SaveLoadManager.Save<StorageSaveData>("Test",new StorageSaveData(GameObject.FindObjectOfType<StorageOpener>().Storage));
         //GameObject.FindObjectOfType<StorageOpener>().LoadSaveData(SaveLoadManager.Load<StorageSaveData>("Test"));
     }
@@ -17,13 +28,8 @@ public class Saver : MonoBehaviour
     {
         if (Input.GetButtonDown("Save"))
         {
-            SaveBase();
-        }
-
-
-        if (Input.GetButtonDown("Load"))
-        {
-            LoadBase();
+            PlayerPrefs.DeleteAll();
+            Debug.Log("Saves Deleted.");
         }
     }
 
@@ -38,7 +44,6 @@ public class Saver : MonoBehaviour
 
     public void SaveLocation()
     {
-
         LootSpawner[] lootSpawners = GameObject.FindObjectsOfType<LootSpawner>(true);
 
         Harvester[] harvesters = GameObject.FindObjectsOfType<Harvester>(true);

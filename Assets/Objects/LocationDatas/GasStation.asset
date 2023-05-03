@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Gas station
   _description: During the panic people were trying to leave the city through this
     station. You can still find the cars of those who failed.
-  _distance: 10
+  _distance: 5.2
   _locationID: GasStation

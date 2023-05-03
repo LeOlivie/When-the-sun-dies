@@ -21,4 +21,9 @@ public static class SaveLoadManager
             throw new System.Exception("Save file not found.");
         }
     }
+
+    public static bool CheckIfSaveExists(string key)
+    {
+        return PlayerPrefs.HasKey(key);
+    }
 }

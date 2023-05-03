@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbce6907afef1b24fab21c5158d38b16, type: 3}
+  m_Name: Bookshop
+  m_EditorClassIdentifier: 
+  _name: Bookshop
+  _description: Small bookshop almost in the city centre. It was a popular place
+    to visit, before the apocalypse. Now nothing but dusty books and dead bodies
+    can be found here.
+  _distance: 5.4
+  _locationID: Bookshop

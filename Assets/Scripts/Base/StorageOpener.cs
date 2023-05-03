@@ -19,11 +19,6 @@ public class StorageOpener : MonoBehaviour
 
         _interractButton.AddListener(OpenStorageScreen);
         _storage.OnUpgradedEvent += ChangeSprite;
-
-        foreach (Item item in _storage.UpgradeRequirements)
-        {
-            GlobalRepository.Inventory.AddItem(item, false);
-        }
     }
 
     private void OpenStorageScreen()

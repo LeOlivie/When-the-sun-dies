@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d758a34f71cba24289806af7c356ea2, type: 3}
+  m_Name: StorageBox
+  m_EditorClassIdentifier: 
+  _itemSpawnDatas:
+  - _itemData: {fileID: 11400000, guid: d7fe16a943dc96348b63fe39414330ca, type: 2}
+    _spawnChance: 20
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: e18a4f57421eba649b683f17b8252e70, type: 2}
+    _spawnChance: 20
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
+    _spawnChance: 20
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: b2deec2f732d3e0469061f901246b373, type: 2}
+    _spawnChance: 20
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: cae2157ad2186304da0f8fd3b80cc76b, type: 2}
+    _spawnChance: 20
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: cae2157ad2186304da0f8fd3b80cc76b, type: 2}
+    _spawnChance: 20
+    _count: 1
+  _containerSize: 6
+  _containerName: Storage box
+  _lootTime: 6
+  _lootPointsMax: 400

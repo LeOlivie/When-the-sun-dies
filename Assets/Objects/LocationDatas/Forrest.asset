@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbce6907afef1b24fab21c5158d38b16, type: 3}
   m_Name: Forrest
   m_EditorClassIdentifier: 
-  _name: Forrest
+  _name: Forest
   _description: "Protected area of \u200B\u200BRed Forest National Park. Before the
     apocalypse, it was a frequent place for picnics and family vacations, but now
     you won\u2019t meet anyone here."
-  _distance: 5
-  _locationID: Forrest
+  _distance: 2.3
+  _locationID: Forest

@@ -62,8 +62,8 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
         HarvesterData.HarvestOptionData harvestData = harvestOption.HarvestOptionData;
         _harvestItemName.text = string.Format("{0} ({1}/{2})", harvestData.ItemToHarvest.Name, harvestOption.HarvestsLeft, harvestData.MaxHarvests);
         _itemToHarvestShower.ShowItem(harvestData.ItemToHarvest);
-
-        string additionalInfo = harvestData.TimeToHarvest + " minutes\n";
+        int harvestTime = Mathf.RoundToInt(harvestData.TimeToHarvest * GlobalRepository.LightSourceData.HarvestSpeed);
+        string additionalInfo = TimeConverter.InsertTime("Time to harvest: {0}:{1}\n",harvestTime,TimeConverter.InsertionType.HourMinute);
 
         if (harvestOption.HarvestOptionData.KcalDebuff != 0)
         {
@@ -144,7 +144,8 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
         _harvestInProgress.SetActive(true);
         _itemBeingHarvestedShower.ShowItem(_harvestOptions[_optionIndex].HarvestOptionData.ItemToHarvest);
         _harvestTimeLeft = _harvestOptions[_optionIndex].HarvestOptionData.TimeToHarvest;
-        _harvestTimeLeftText.text = _harvestTimeLeft + " minutes";
+        _harvestTimeLeft = Mathf.RoundToInt(_harvestTimeLeft * GlobalRepository.LightSourceData.HarvestSpeed);
+        _harvestTimeLeftText.text = TimeConverter.InsertTime("Time to harvest: {0}:{1}", _harvestTimeLeft, TimeConverter.InsertionType.HourMinute);
         GlobalRepository.OnTimeUpdated += HarvestInProgress;
         Time.timeScale = 20;
     }
@@ -152,7 +153,7 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
     private void HarvestInProgress()
     {
         _harvestTimeLeft -= 1;
-        _harvestTimeLeftText.text = _harvestTimeLeft + " minutes";
+        _harvestTimeLeftText.text = TimeConverter.InsertTime("Time to harvest: {0}:{1}", _harvestTimeLeft, TimeConverter.InsertionType.HourMinute);
         GlobalRepository.AddKcal(_harvestOptions[_optionIndex].HarvestOptionData.KcalDebuff);
         GlobalRepository.AddWater(_harvestOptions[_optionIndex].HarvestOptionData.WaterDebuff);
 

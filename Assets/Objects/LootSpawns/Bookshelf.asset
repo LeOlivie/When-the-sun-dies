@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d758a34f71cba24289806af7c356ea2, type: 3}
+  m_Name: Bookshelf
+  m_EditorClassIdentifier: 
+  _itemSpawnDatas:
+  - _itemData: {fileID: 11400000, guid: 37d9c5846f29e89409fb111126f18c8f, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 06e6d0cdbf29a314c9f6559ec3d17ca1, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 6f1ccec17bec29045868d29c6fe9e1a7, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 3b51438020048d149b51d0e203d89cd8, type: 2}
+    _spawnChance: 30
+    _count: 1
+  _containerSize: 9
+  _containerName: Bookshelf
+  _lootTime: 5
+  _lootPointsMax: 300

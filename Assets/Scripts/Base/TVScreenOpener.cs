@@ -11,10 +11,6 @@ public class TVScreenOpener : MonoBehaviour
 
     private void Awake()
     {
-        foreach (Item item in _tv.UpgradeRequirements)
-        {
-            GlobalRepository.Inventory.AddItem(item, false);
-        }
         GlobalRepository.OnTimeUpdated += _tv.AddWatchTime;
     }
 

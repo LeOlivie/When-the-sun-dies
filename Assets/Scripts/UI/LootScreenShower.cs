@@ -191,6 +191,8 @@ public class LootScreenShower : MonoBehaviour, IClosable
     IEnumerator Loot(float lootTime)
     {
         float currTime = 0;
+
+
         while (currTime < lootTime)
         {
             int progress = Mathf.RoundToInt(currTime / lootTime * 100);

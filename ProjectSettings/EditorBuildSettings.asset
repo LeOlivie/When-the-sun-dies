@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GoingScene.unity
     guid: 1d7709eb92c9ff64e90b1334a52dfdd2
   - enabled: 1
-    path: Assets/Scenes/Forrest.unity
+    path: Assets/Scenes/Forest.unity
     guid: ec92db7d76b640f4b8770891e9faaeba
+  - enabled: 1
+    path: Assets/Scenes/Bookshop.unity
+    guid: 2b8f600e40d5bff4daa4a45bbde96af1
   m_configObjects: {}

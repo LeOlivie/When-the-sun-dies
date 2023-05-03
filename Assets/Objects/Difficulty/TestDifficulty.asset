@@ -15,5 +15,5 @@ MonoBehaviour:
   _dayCycleLength: 24
   _maxWeight: 15
   _foodMemoryLength: 4
-  _weatherMaxDuration: 2160
+  _weatherMaxDuration: 24
   _sleepTimePerDay: 8
