@@ -7,7 +7,7 @@ using TMPro;
 public class MapScreenShower : MonoBehaviour, IClosable
 {
     [Serializable]
-    private struct LocationsClusterButton
+    public struct LocationsClusterButton
     {
         [SerializeField] private IndexedButtonHandler _locationBtnHandler;
         [SerializeField] private LocationsClusterData _locationClusterData;
@@ -20,8 +20,9 @@ public class MapScreenShower : MonoBehaviour, IClosable
         public Sprite UnselectedBtnSprite => _unselectedBtnSprite;
     }
 
-    [SerializeField] private LocationsClusterButton[] _locationClustersButtons;
+    [SerializeField] private List<LocationsClusterButton> _locationClustersButtons;
     [SerializeField] private IndexedButtonHandler[] _locationBtns;
+    [SerializeField] private RadioScreenOpener _radioScreenOpener;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private TextMeshProUGUI _infoText;
     [SerializeField] private TextMeshProUGUI _selectBtnText;
@@ -37,6 +38,7 @@ public class MapScreenShower : MonoBehaviour, IClosable
     [SerializeField] private Color _unavailableColor;
     [SerializeField] private Color _availableColor;
     [SerializeField] private Item _noLightSourceItem;
+    private Radio _radio;
     private ScreensCloser _screensCloser;
     private LocationData _selectedLocation;
     private int _raidTime;
@@ -48,12 +50,13 @@ public class MapScreenShower : MonoBehaviour, IClosable
     private void Awake()
     {
         _screensCloser = GameObject.FindObjectOfType<ScreensCloser>(true);
+        _radio = _radioScreenOpener.Radio;
         this.gameObject.SetActive(false);
     }
 
     private void Start()
     {
-        for (int i = 0; i < _locationClustersButtons.Length; i++)
+        for (int i = 0; i < _locationClustersButtons.Count; i++)
         {
             _locationClustersButtons[i].LocationBtnHandler.SetIndex(i);
             _locationClustersButtons[i].LocationBtnHandler.AddListener(ChooseLocationFromCluster);
@@ -86,6 +89,15 @@ public class MapScreenShower : MonoBehaviour, IClosable
         _lightSourcesNames = new List<string>();
         _lightSources.Add(_noLightSourceItem);
 
+        foreach (LocationsClusterButton locationClusterButton in _locationClustersButtons)
+        {
+            if (locationClusterButton.LocationClusterData is EventLocClusterData)
+            {
+                bool isEventActive = _radio.ActiveEventLocCluster != null && _radio.ActiveEventLocCluster == locationClusterButton.LocationClusterData && _radio.EventSwitchOffTime > GlobalRepository.GlobalTime;
+                locationClusterButton.LocationBtnHandler.gameObject.SetActive(isEventActive);
+            }
+        }
+
         foreach (Item item in GlobalRepository.Inventory.Items)
         {
             if (item == null || item.ItemData == null)
@@ -102,7 +114,7 @@ public class MapScreenShower : MonoBehaviour, IClosable
             _lightSourcesNames.Add(item.Name);
         }
 
-        for (int i = 0; i < _locationClustersButtons.Length; i++)
+        for (int i = 0; i < _locationClustersButtons.Count; i++)
         {
             _locationClustersButtons[i].LocationBtnHandler.GetComponent<Image>().sprite = _locationClustersButtons[i].UnselectedBtnSprite;
         }
@@ -126,14 +138,14 @@ public class MapScreenShower : MonoBehaviour, IClosable
         _raidTime = Mathf.FloorToInt(_selectedLocation.Distance / 2f * 60) * (-2);
         int globalTime = GlobalRepository.GlobalTime - GlobalRepository.GlobalTime / 1440 * 1440;
 
-        if (globalTime < 6 * 60) //Dawn at 6:00
+        if (globalTime < GlobalRepository.Difficulty.ScavTimeEnd * 60) //Dawn
         {
-            _raidTime += 6 * 60 - globalTime;
+            _raidTime += GlobalRepository.Difficulty.ScavTimeEnd * 60 - globalTime;
         }
-        else if (globalTime >= 23 * 60) //Sunset at 23:00
+        else if (globalTime >= GlobalRepository.Difficulty.ScavTimeStart * 60) //Sunset
         {
             _raidTime += 24 * 60 - globalTime;
-            _raidTime += 6 * 60;
+            _raidTime += GlobalRepository.Difficulty.ScavTimeEnd * 60;
         }
 
         if (_raidTime <= 0)
@@ -148,7 +160,7 @@ public class MapScreenShower : MonoBehaviour, IClosable
         _selectBtn.gameObject.SetActive(false);
         _selectLocFromClusterMenu.SetActive(true);
 
-        for (int i = 0; i < _locationClustersButtons.Length; i++)
+        for (int i = 0; i < _locationClustersButtons.Count; i++)
         {
             _locationClustersButtons[i].LocationBtnHandler.GetComponent<Image>().sprite = _locationClustersButtons[i].UnselectedBtnSprite;
         }
@@ -210,7 +222,7 @@ public class MapScreenShower : MonoBehaviour, IClosable
         string timeInfo = string.Format("<size=30>{0}</size>\n\n\n", _selectedLocation.Name);
         timeInfo += TimeConverter.InsertTime("Time to arrive: {0}:{1}\n\n", Mathf.FloorToInt(_selectedLocation.Distance / 2f * 60), TimeConverter.InsertionType.HourMinute);
         timeInfo += TimeConverter.InsertTime("Time to return: {0}:{1}\n\n", Mathf.FloorToInt(_selectedLocation.Distance / 2f * 60), TimeConverter.InsertionType.HourMinute);
-        timeInfo += "Safe scavange time: 23:00-06:00\n\n";
+        timeInfo += $"Safe scavange time: {GlobalRepository.Difficulty.ScavTimeStart}:00-0{GlobalRepository.Difficulty.ScavTimeEnd}:00\n\n";
         
         if(_raidTime <= 0)
         {
@@ -260,10 +272,10 @@ public class MapScreenShower : MonoBehaviour, IClosable
         LightSourceData lsData = (LightSourceData)_lightSources[_lightSourceIndex].ItemData;
         _lightSourceItemShower.ShowItem(_lightSources[_lightSourceIndex]);
         _lightSourceInfoText.text = lsData.Name + "\n\n";
-        _lightSourceInfoText.text += $"Search speed: {lsData.SearchSpeed * 100}%\n";
-        _lightSourceInfoText.text += $"Harvest speed: {lsData.HarvestSpeed * 100}%\n";
-        _lightSourceInfoText.text += $"Light radius: {lsData.LightRadius * 100}%\n";
-        _lightSourceInfoText.text += $"Light intensity: {lsData.LightIntensity * 100}%\n\n";
+        _lightSourceInfoText.text += $"Search time: {ConvertLightStat(lsData.SearchSpeed * 100)}%\n";
+        _lightSourceInfoText.text += $"Harvest time: {ConvertLightStat(lsData.HarvestSpeed * 100)}%\n";
+        _lightSourceInfoText.text += $"Light radius: {ConvertLightStat(lsData.LightRadius * 100)}%\n";
+        _lightSourceInfoText.text += $"Light intensity: {ConvertLightStat(lsData.LightIntensity * 100)}%\n\n";
 
         if (lsData.DisposableItem.ItemData != null)
         {
@@ -286,6 +298,16 @@ public class MapScreenShower : MonoBehaviour, IClosable
         _selectBtn.AddListener(Departure);
     }
 
+    private string ConvertLightStat(float stat)
+    {
+        if (stat-100 >= 0)
+        {
+            return $"+{stat-100}";
+        }
+
+        return $"{stat-100}";
+    }
+
     private void Departure()
     {
         if (_raidTime <= 0) 
@@ -293,6 +315,7 @@ public class MapScreenShower : MonoBehaviour, IClosable
             return;
         }
 
+        GameObject.FindObjectOfType<Saver>().SavePlayer();
         GameObject.FindObjectOfType<Saver>().SaveBase();
         GlobalRepository.SetLightSourceData((LightSourceData)_lightSources[_lightSourceIndex].ItemData);
         GlobalRepository.Inventory.RemoveItem(((LightSourceData)_lightSources[_lightSourceIndex].ItemData).DisposableItem, 1);

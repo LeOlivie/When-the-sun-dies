@@ -20,6 +20,8 @@ MonoBehaviour:
   _isUsable: 1
   _itemsToAddAfterUse: []
   _lootPointsToSpawn: 0
+  _kcalPrice: 50
+  _mlPrice: 0
   _calories: 15
   _water: -50
   _maxHappinessAdd: 4

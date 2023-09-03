@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c825112c245974cbe1ab20a7db8f3e, type: 3}
+  m_Name: TheThief
+  m_EditorClassIdentifier: 
+  _questName: The thief
+  _questDescription: 'Hey man, can I trust you? Would you do anything I ask you?
+    I guess you are not some liar and we can do business together. Listen in then:
+    one guy of mine has betrayed me and has stolen my stuff. Others are already "teaching"
+    him not to steal again, but someone still needs to return what he took. Would
+    you do it? His stash is located in the National Park, probably in the toilets.
+    Hah, come to think of it, if he tried to hide stuff in there, then he''s even
+    dumber than I thought. Anyway, I need you to go there and return my things. By
+    the way, feel free to take some loot from his stash in the process, bastard has
+    to know who he is dealing with.'
+  _questLocationName: Forest
+  _questReward:
+  - _itemData: {fileID: 11400000, guid: e3b7ae565e6f43349b877081d8cbc72d, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 45964dd8d2ca5e44aa30730d2ca0e38c, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: cae2157ad2186304da0f8fd3b80cc76b, type: 2}
+    _count: 2
+  - _itemData: {fileID: 11400000, guid: 1551cae61deceac4bb974bf74301ecb5, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 03ac1570e6878d743971ebd1cd048c9e, type: 2}
+    _count: 1
+  _questHiddenReward: []
+  _questTaskDatas:
+  - {fileID: 11400000, guid: c8973c6bee4f50f42b106d5649e9acef, type: 2}
+  - {fileID: 11400000, guid: 870a5e2f1fb76e349a1cce827946ff9a, type: 2}
+  - {fileID: 11400000, guid: 0d1722da36690264aa39ee8837bfe33d, type: 2}

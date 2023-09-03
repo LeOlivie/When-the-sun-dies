@@ -65,9 +65,9 @@ public class CraftingStation : IUpgradable, ICrafter
 
     public void LoadSaveData(SaveDatas.CraftingStationSaveData saveData)
     {
-        _level = saveData.UpgradableSave.CurrLevel;
-        _upgradeTimeLeft = saveData.UpgradableSave.UpgradeTimeLeft;
-        _isBeingUpgraded = saveData.UpgradableSave.IsBeingUpgraded;
+        _level = saveData.CurrLevel;
+        _upgradeTimeLeft = saveData.UpgradeTimeLeft;
+        _isBeingUpgraded = saveData.IsBeingUpgraded;
         _activeCraftData = saveData.ActiveCraft;
         _craftTimeLeft = saveData.CraftingTimeLeft;
     }

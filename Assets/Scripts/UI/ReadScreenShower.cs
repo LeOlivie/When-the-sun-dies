@@ -40,7 +40,7 @@ public class ReadScreenShower : MonoBehaviour, IClosable
         _startBtnHandler.AddListener(PauseReading);
         _startBtnText.text = "Pause";
         GlobalRepository.OnTimeUpdated += ReadProgress;
-        Time.timeScale = 40;
+        Time.timeScale = 40 * GlobalRepository.Difficulty.DayCycleLength / 24;
     }
 
     private void ReadProgress()

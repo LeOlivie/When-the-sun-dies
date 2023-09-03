@@ -10,7 +10,7 @@ public class GoingSceneShower : MonoBehaviour
     {
         GlobalRepository.OnTimeUpdated += ShowText;
         ShowText();
-        Time.timeScale = 30;
+        Time.timeScale = 30 * GlobalRepository.Difficulty.DayCycleLength / 24;
     }
 
     private void ShowText()

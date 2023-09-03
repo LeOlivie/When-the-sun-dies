@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8a66f933b4cf04aa3b240f3cba2392, type: 3}
+  m_Name: Hard
+  m_EditorClassIdentifier: 
+  _difficultyName: A year in
+  _difficultyDescription: It has been a whole year. Almost nothing left, everything
+    has been robbed. Only the hardest ones survived to this day. The only rule that
+    works is that it is survival of the fittest.
+  _difficultyColor:
+    serializedVersion: 2
+    rgba: 4284966842
+  _dayCycleLength: 30
+  _scavTimeStart: 23
+  _scavTimeEnd: 6
+  _maxWeight: 13
+  _foodMemoryLength: 7
+  _weatherMaxDuration: 24
+  _sleepTimePerDay: 10
+  _lootAmbulanceMultiplier: 0.7
+  _lootSpawnChanceMultiplier: 0.7
+  _radioCooldownMultiplier: 1.8

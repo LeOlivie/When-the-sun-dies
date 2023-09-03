@@ -8,7 +8,7 @@ public static class SaveLoadManager
         string jsonDataString = JsonUtility.ToJson(saveData, false);
         PlayerPrefs.SetString(key, jsonDataString);
     }
-
+    
     public static T Load<T>(string key)
     {
         if (PlayerPrefs.HasKey(key))

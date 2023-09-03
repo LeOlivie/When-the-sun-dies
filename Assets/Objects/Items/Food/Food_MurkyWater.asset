@@ -23,6 +23,9 @@ MonoBehaviour:
   _itemsToAddAfterUse:
   - _itemData: {fileID: 11400000, guid: 46b07d2fe436f6b4a8f7f6c491e65563, type: 2}
     _count: 1
+  _lootPointsToSpawn: 0
+  _kcalPrice: 0
+  _mlPrice: 150
   _calories: 0
   _water: 400
   _maxHappinessAdd: -2

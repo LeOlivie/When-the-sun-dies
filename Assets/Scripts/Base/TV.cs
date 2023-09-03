@@ -73,9 +73,9 @@ public class TV : IUpgradable
 
     public void LoadSaveData(SaveDatas.TVSaveData saveData)
     {
-        _currLevel = saveData.UpgradableSave.CurrLevel;
-        _upgradeTimeLeft = saveData.UpgradableSave.UpgradeTimeLeft;
-        _isBeingUpgraded = saveData.UpgradableSave.IsBeingUpgraded;
+        _currLevel = saveData.CurrLevel;
+        _upgradeTimeLeft = saveData.UpgradeTimeLeft;
+        _isBeingUpgraded = saveData .IsBeingUpgraded;
         _watchTime = saveData.WatchTime;
     }
 }

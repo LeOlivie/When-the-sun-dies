@@ -35,8 +35,8 @@ public class DoorOpenScreenShower : MonoBehaviour, IClosable
 
     public void OpenDoorMenu(OnDoorOpenedDelegate onDoorOpened, ClosedDoorOpener.OpeningMethod[] openingMethods)
     {
-        this.gameObject.SetActive(true);
         _screensCloser.CloseAllScreens();
+        this.gameObject.SetActive(true);
         _joystick.enabled = false;
         _doorOpeningScreen.SetActive(false);
         _openingMethods = openingMethods;

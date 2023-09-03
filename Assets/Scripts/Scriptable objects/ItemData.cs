@@ -11,8 +11,12 @@ public class ItemData : ScriptableObject
     [SerializeField] private int _maxInStack;
     [SerializeField] private bool _isUsable;
     [SerializeField] private Item[] _itemsToAddAfterUse;
-    [SerializeField] private int _lootPointsToSpawn; 
+    [SerializeField] private int _lootPointsToSpawn;
+    [SerializeField] private int _kcalPrice;
+    [SerializeField] private int _mlPrice;
 
+    public int KcalPrice => _kcalPrice;
+    public int MLPrice => _mlPrice;
     public Sprite Icon => _icon;
     public string Name => _name;
     public string Description => _description;
@@ -24,7 +28,7 @@ public class ItemData : ScriptableObject
 
     public virtual string GetAdditionalInfo()
     {
-        return "Weight: " + Weight + "kg";
+        return $"<sprite name=\"WeightIcon\">{_weight}kg  <sprite name=\"SellFoodIcon\">{_kcalPrice}kcal  <sprite name=\"SellWaterIcon\">{_mlPrice}ml";
     }
 
     public virtual void Use()

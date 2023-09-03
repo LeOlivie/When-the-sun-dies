@@ -36,24 +36,25 @@ public class FoodData : ItemData
 
         if (Calories != 0)
         {
-            info += "Calories: " + Calories + "kcal\n";
+            info += "<sprite name=\"EatFoodIcon\">" + Calories + "kcal";
         }
 
         if (Water != 0)
         {
-            info += "Water: " + Water + "ml\n";
+            info += "  <sprite name=\"DrinkWaterIcon\">" + Water + "ml";
         }
 
         if (_happinessAdd > 0)
         {
-            info += "Happiness: +" + _happinessAdd + "\n";
+            info += "  +" + _happinessAdd + "";
         }
         else if(_happinessAdd < 0)
         {
-            info += "Happiness: " + _happinessAdd + "\n";
+            info += "  " + _happinessAdd + "";
         }
 
-        info += "Weight: " + Weight + "kg";
+        info += "  <sprite name=\"WeightIcon\">" + Weight + "kg\n";
+        info += $"<sprite name=\"SellFoodIcon\">{KcalPrice}kcal  <sprite name=\"SellWaterIcon\">{MLPrice}ml";
 
         return info;
     }

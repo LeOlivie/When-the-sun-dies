@@ -92,9 +92,9 @@ public class WaterCollector : IUpgradable
 
     public void LoadSaveData(SaveDatas.WaterCollectorSaveData saveData)
     {
-        _currLevel = saveData.UpgradableSave.CurrLevel;
-        _upgradeTimeLeft = saveData.UpgradableSave.UpgradeTimeLeft;
-        _isBeingUpgraded = saveData.UpgradableSave.IsBeingUpgraded;
+        _currLevel = saveData.CurrLevel;
+        _upgradeTimeLeft = saveData.UpgradeTimeLeft;
+        _isBeingUpgraded = saveData.IsBeingUpgraded;
         _waterCollected = saveData.WaterCollected;
         _waterCollectionStart = saveData.WaterCollectionStart;
     }

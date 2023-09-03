@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae2ce9b28a06014b963bf2d54717fd4, type: 3}
+  m_Name: Key_StashKey
+  m_EditorClassIdentifier: 
+  _icon: {fileID: -8434435697378338723, guid: ce9be2adb77a36147b0a7e814b461597, type: 3}
+  _name: Stash key
+  _description: 'Key from the apartment complex. The label says: "Stash. 4th floor".'
+  _weight: 0.01
+  _maxInStack: 1
+  _isUsable: 0
+  _itemsToAddAfterUse: []
+  _lootPointsToSpawn: 200
+  _kcalPrice: 1000
+  _mlPrice: 600

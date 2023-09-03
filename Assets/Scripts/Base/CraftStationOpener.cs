@@ -1,6 +1,7 @@
 using UnityEngine;
+using SaveDatas;
 
-public class CraftStationOpener : MonoBehaviour
+public class CraftStationOpener : Savable
 {
     [SerializeField] private ButtonHandler _interractBtn;
     [SerializeField] private CraftingStation _station;
@@ -42,9 +43,14 @@ public class CraftStationOpener : MonoBehaviour
         }
     }
 
-    public void LoadSaveData(SaveDatas.CraftingStationSaveData saveData)
+    public override SaveData GetSaveData()
     {
-        _station.LoadSaveData(saveData);
+        return new CraftingStationSaveData(_station);
+    }
+
+    public override void LoadSaveData(SaveData saveData)
+    {
+        _station.LoadSaveData((CraftingStationSaveData)saveData);
         ChangeSprite();
     }
 }

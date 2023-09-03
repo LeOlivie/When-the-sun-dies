@@ -85,10 +85,13 @@ public class Hydroponics : IUpgradable
         _lastWateringTime = GlobalRepository.GlobalTime;
     }
 
-    public void LoadSaveData(SaveDatas.UpgradableSaveData saveData)
+    public void LoadSaveData(SaveDatas.HydroponicsSaveData saveData)
     {
         _currLevel = saveData.CurrLevel;
         _upgradeTimeLeft = saveData.UpgradeTimeLeft;
         _isBeingUpgraded = saveData.IsBeingUpgraded;
+        _growingCropData = saveData.GrowingCropData;
+        _growStartTime = saveData.GrowStartTime;
+        _lastWateringTime = saveData.LastWateringTime;
     }
 }

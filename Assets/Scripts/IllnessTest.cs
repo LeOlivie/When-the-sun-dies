@@ -3,10 +3,9 @@ using UnityEngine.UI;
 
 public class IllnessTest : MonoBehaviour
 {
-    [SerializeField] private DifficultyData _difficultyData;
+    [SerializeField] private QuestData _questData;
 
     private void Awake()
     {
-        GlobalRepository.SetDifficulty(_difficultyData);
     }
 }

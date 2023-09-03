@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c825112c245974cbe1ab20a7db8f3e, type: 3}
+  m_Name: Colleagues
+  m_EditorClassIdentifier: 
+  _questName: Colleagues
+  _questDescription: 'Hey there, Traveller. Looking for a job? Okay, listen in then:
+    a few days ago I''ve sent one of my boys on a scavenging mission to the gas station
+    near the city to get some food, meds, you know. But he never came back, probably
+    dead already.  However I have a feeling that experienced guy like him wouldn''t
+    die simply ''cause of a sun. Could check, what happened to him? I''ll give some
+    stuff as payment, of course.'
+  _questLocationName: GasStation
+  _questReward:
+  - _itemData: {fileID: 11400000, guid: 274a5b064e8a5b6408a4d7dec4858258, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: dfaea22c2e7ee3840a1ac4c57f2ea177, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+    _count: 1
+  _questHiddenReward: []
+  _questTaskDatas:
+  - {fileID: 11400000, guid: eaa75d4f0f9c0c14c9c18e0b16779142, type: 2}
+  - {fileID: 11400000, guid: 76cad3a1c6c43e14ba062f8f90b15549, type: 2}

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d758a34f71cba24289806af7c356ea2, type: 3}
+  m_Name: Fridge(Shop)
+  m_EditorClassIdentifier: 
+  _itemSpawnDatas:
+  - _itemData: {fileID: 11400000, guid: f76e98f1addb2944fa0f1fac17ffee9a, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 274a5b064e8a5b6408a4d7dec4858258, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: f16a372da71c9314a96f83a6d11121c4, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: f16a372da71c9314a96f83a6d11121c4, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: dfaea22c2e7ee3840a1ac4c57f2ea177, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 6336380fcedb4004882312d7fae14436, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: bf8836ccb3c663c46808b39d67bf8df8, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 03ac1570e6878d743971ebd1cd048c9e, type: 2}
+    _spawnChance: 60
+    _count: 1
+  _containerSize: 6
+  _containerName: Fridge
+  _lootTime: 5
+  _lootPointsMax: 250

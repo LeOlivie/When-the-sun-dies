@@ -12,12 +12,16 @@ public class Bed : IUpgradable
         [SerializeField] private uint _upgradeTime;
         [SerializeField] private Sprite _upgradedSprite;
         [SerializeField] private float _fatigueMultiplier;
+        [SerializeField] private float _kcalDeacreaseBuff;
+        [SerializeField] private float _waterDecreaseBuff;
 
         public Item[] UpgradeRequierements => _upgradeRequierements;
         public IUpgradable.SkillRequirement[] SkillRequirements => _skillRequirements;
         public uint UpgradeTime => _upgradeTime;
         public Sprite UpgradedSprite => _upgradedSprite;
         public float FatigueMultiplier => _fatigueMultiplier;
+        public float KcalDeacreaseBuff => _kcalDeacreaseBuff;
+        public float WaterDecreaseBuff => _waterDecreaseBuff;
     }
 
     [SerializeField] private string _name;
@@ -39,6 +43,8 @@ public class Bed : IUpgradable
     public uint MaxLevel => (uint)(_upgrades.Length - 1);
     public bool IsBeingUpgraded => _isBeingUpgraded;
     public Sprite UpgradedSprite => _upgrades[_currLevel].UpgradedSprite;
+    public float KcalDecreaseBuff => _upgrades[_currLevel].KcalDeacreaseBuff;
+    public float WaterDecreaseBuff => _upgrades[_currLevel].WaterDecreaseBuff;
 
     public void DecreaseUpgradeTimeLeft()
     {

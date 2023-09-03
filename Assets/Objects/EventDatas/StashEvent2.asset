@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88dce55627d801c459f1ce0bfee40a62, type: 3}
+  m_Name: StashEvent2
+  m_EditorClassIdentifier: 
+  _locationDatas:
+  - {fileID: 11400000, guid: abb850b61243b6d41b659c868bce795d, type: 2}
+  _radioText: "RADIO CONTACT: 79.69 MHz\n \n<size=15> >> Hey Jake, I've set a new
+    stash. You know that small building near crossroad?\n\n>> You, idiot! Don't broadcast
+    it through the radio!\n\n>> Aw, cmon! Nobody's listening!\n\n>> Imbecile...</size>"
+  _availableTime: 1440

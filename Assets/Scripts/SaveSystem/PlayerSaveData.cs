@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 namespace SaveDatas {
@@ -24,14 +25,25 @@ namespace SaveDatas {
         public float Water;
         public ContainerSaveData InventorySaveData;
         public int GlobalTime;
+        public QuestSaveData QuestSave;
+        public int QuestsProgress;
+        public DifficultyData DifficultyData;
 
-        public PlayerSaveData(Vector3 playerPos, float calories, float water, ContainerSaveData inventorySaveData, int globalTime)
+        public PlayerSaveData(Vector3 playerPos, ContainerSaveData inventorySaveData)
         {
             PlayerPos = new Vec3(playerPos.x, playerPos.y, playerPos.z);
-            Calories = calories;
-            Water = water;
+            Calories = GlobalRepository.Kcal;
+            Water = GlobalRepository.Water;
             InventorySaveData = inventorySaveData;
-            GlobalTime = globalTime;
+            GlobalTime = GlobalRepository.GlobalTime;
+            QuestsProgress = GlobalRepository.QuestsProgress;
+            DifficultyData = GlobalRepository.Difficulty;
+            QuestSave = null;
+
+            if (GlobalRepository.ActiveQuest != null)
+            {
+                QuestSave = new QuestSaveData(GlobalRepository.ActiveQuest);
+            }
         }
 
         public PlayerSaveData()

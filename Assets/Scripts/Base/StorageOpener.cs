@@ -1,7 +1,7 @@
 using UnityEngine;
 using SaveDatas;
 
-public class StorageOpener : MonoBehaviour
+public class StorageOpener : Savable
 {
     [SerializeField] private Storage _storage = new Storage();
     [SerializeField] private HiddableButtonHandler _interractButton;
@@ -49,9 +49,14 @@ public class StorageOpener : MonoBehaviour
         _storageSpriteRenderer.sprite = _storage.UpgradedSprite;
     }
 
-    public void LoadSaveData(SaveDatas.StorageSaveData saveData)
+    public override SaveData GetSaveData()
     {
-        _storage.LoadStorage(saveData);
+        return new StorageSaveData(_storage);
+    }
+
+    public override void LoadSaveData(SaveData saveData)
+    {
+        _storage.LoadStorage((StorageSaveData)saveData);
         ChangeSprite();
     }
 }

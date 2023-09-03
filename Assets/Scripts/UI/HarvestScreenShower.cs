@@ -147,7 +147,7 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
         _harvestTimeLeft = Mathf.RoundToInt(_harvestTimeLeft * GlobalRepository.LightSourceData.HarvestSpeed);
         _harvestTimeLeftText.text = TimeConverter.InsertTime("Time to harvest: {0}:{1}", _harvestTimeLeft, TimeConverter.InsertionType.HourMinute);
         GlobalRepository.OnTimeUpdated += HarvestInProgress;
-        Time.timeScale = 20;
+        Time.timeScale = 20 * GlobalRepository.Difficulty.DayCycleLength / 24;
     }
 
     private void HarvestInProgress()

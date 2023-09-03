@@ -15,6 +15,7 @@ public class BedScreenShower : MonoBehaviour, IClosable
     [SerializeField] private ButtonHandler _bedMenuBtn;
     [SerializeField] private ButtonHandler _upgradesBtn;
     [SerializeField] private Upgrader _upgrader;
+    [SerializeField] private TimeCounter _timeCounter;
 
     private Bed _bed;
     private ScreensCloser _screensCloser;
@@ -65,7 +66,9 @@ public class BedScreenShower : MonoBehaviour, IClosable
     {
         _bedMenu.SetActive(true);
         _upgradesMenu.SetActive(false);
-        _fatigueMultiplierText.text = $"Fatigue recovery multiplier: {_bed.FatigueMultiplier * 100}%";
+        _fatigueMultiplierText.text = $"Fatigue recovery multiplier: {_bed.FatigueMultiplier * 100}%\n";
+        _fatigueMultiplierText.text += $"Kcal deacrease buff: +{(1 - _bed.KcalDecreaseBuff) * 100}%\n";
+        _fatigueMultiplierText.text += $"Water deacrease buff: +{(1 - _bed.WaterDecreaseBuff) * 100}%";
     }
 
     private void OpenUpgradesMenu()
@@ -78,8 +81,10 @@ public class BedScreenShower : MonoBehaviour, IClosable
     private void StartSleeping()
     {
         _sleepingScreen.SetActive(true);
-        Time.timeScale = 70;
+        Time.timeScale = 70 * GlobalRepository.Difficulty.DayCycleLength / 30;
         GlobalRepository.OnTimeUpdated += SleepProgress;
+        _timeCounter.KcalDecreaseBuff = _bed.KcalDecreaseBuff;
+        _timeCounter.WaterDecreaseBebuff = _bed.WaterDecreaseBuff;
     }
 
     private void SleepProgress()
@@ -100,5 +105,7 @@ public class BedScreenShower : MonoBehaviour, IClosable
         _sleepingScreen.SetActive(false);
         Time.timeScale = 1;
         GlobalRepository.OnTimeUpdated -= SleepProgress;
+        _timeCounter.KcalDecreaseBuff = 1;
+        _timeCounter.WaterDecreaseBebuff = 1;
     }
 }

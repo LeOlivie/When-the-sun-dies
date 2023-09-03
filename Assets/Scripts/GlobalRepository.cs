@@ -16,12 +16,14 @@ public static class GlobalRepository
     private static int _raidTimeLeft = 90;
     private static int _timeBeforeArrival = 0;
     private static int _weatherChangeTime = 1;
+    private static int _questsProgress;
     private static float _fatigue = -10000;
     private static WeatherTypeEnum _weatherType;
     private static LocationData _currentLocationData;
     private static List<string> _lastEatenFood = new List<string>();
     private static Dictionary<SkillType, int> _skills = new Dictionary<SkillType, int>();
     private static LightSourceData _lightSourceData;
+    private static Quest _activeQuest = null;
 
     private static DifficultyData _difficulty;
     private static ItemContainer _inventory = new ItemContainer(16, CountWeight);
@@ -38,12 +40,14 @@ public static class GlobalRepository
     public static int RaidTimeLeft => _raidTimeLeft;
     public static int TimeBeforeArrival => _timeBeforeArrival;
     public static int Fatigue => Mathf.FloorToInt(_fatigue);
+    public static int QuestsProgress => _questsProgress;
     public static WeatherTypeEnum WeatherType => _weatherType;
     public static LocationData CurrentLocationData => _currentLocationData;
     public static List<string> LastEatenFood => _lastEatenFood;
     public static DifficultyData Difficulty => _difficulty;
     public static ItemContainer Inventory => _inventory;
     public static LightSourceData LightSourceData => _lightSourceData;
+    public static Quest ActiveQuest => _activeQuest;
     public static Dictionary<SkillType, int> Skills
     {
         get
@@ -204,6 +208,17 @@ public static class GlobalRepository
         _lightSourceData = lightSourceData;
     }
 
+    public static void SetActiveQuest(Quest quest)
+    {
+        _activeQuest = quest;
+        GlobalRepository.ActiveQuest.OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+    }
+
+    public static void SetQuestProgress(int progress)
+    {
+        _questsProgress = progress;
+    }
+
     public static void LoadSaveData(SaveDatas.PlayerSaveData playerSaveData)
     {
         _inventory = new ItemContainer(playerSaveData.InventorySaveData);
@@ -211,8 +226,15 @@ public static class GlobalRepository
         _kcal = playerSaveData.Calories;
 
         Vector3 playerPos = new Vector3(playerSaveData.PlayerPos.xPos, playerSaveData.PlayerPos.yPos, playerSaveData.PlayerPos.zPos);
-        GameObject.FindGameObjectWithTag("Player").transform.localPosition = playerPos;
+        //GameObject.FindGameObjectWithTag("Player").transform.localPosition = playerPos;
+        _difficulty = playerSaveData.DifficultyData;
 
         _globalTime = playerSaveData.GlobalTime;
+        _questsProgress = playerSaveData.QuestsProgress;
+
+        if (playerSaveData.QuestSave != null && playerSaveData.QuestSave.Data != null)
+        {
+            _activeQuest = new Quest(playerSaveData.QuestSave);
+        }
     }
 }

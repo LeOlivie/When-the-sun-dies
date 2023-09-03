@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c825112c245974cbe1ab20a7db8f3e, type: 3}
+  m_Name: WhatHappenedP2
+  m_EditorClassIdentifier: 
+  _questName: What happened? - Part 2
+  _questDescription: I've read the newspaper you found in the store, almost no useful
+    information, all we know right now is that the scientists few days before discovered
+    some kind of a strange fenomenon in space, but nothing more specific. Our next
+    clue is my old friend, he was keen on astrology and could spent all day whatching
+    in his telescope. I guess he would spot something interesting. I need you to
+    go at his place and look around, maybe he wrote something. Have you seen the
+    apartment complex in the streets? The 4 stories one, yes.
+  _questLocationName: Streets
+  _questReward:
+  - _itemData: {fileID: 11400000, guid: 6f1ccec17bec29045868d29c6fe9e1a7, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 37d9c5846f29e89409fb111126f18c8f, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 34d3e5f4a6979f7469a16e63a4a6c979, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 0b1a62022a0608d4990964ad2265c433, type: 2}
+    _count: 1
+  _questHiddenReward: []
+  _questTaskDatas:
+  - {fileID: 11400000, guid: 6d8e2d247126bad47849bef882048aa1, type: 2}
+  - {fileID: 11400000, guid: c9843bce1ba7b114e90b2778ef0ed0ab, type: 2}

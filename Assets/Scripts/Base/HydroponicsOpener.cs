@@ -1,6 +1,7 @@
 using UnityEngine;
+using SaveDatas;
 
-public class HydroponicsOpener : MonoBehaviour
+public class HydroponicsOpener : Savable
 {
     [SerializeField] private Hydroponics _hydropnics = new Hydroponics();
     [SerializeField] private HiddableButtonHandler _interractButton;
@@ -48,9 +49,14 @@ public class HydroponicsOpener : MonoBehaviour
         _hydroponicsSpriteRenderer.sprite = _hydropnics.UpgradedSprite;
     }
 
-    public void LoadSaveData(SaveDatas.UpgradableSaveData saveData)
+    public override SaveData GetSaveData()
     {
-        _hydropnics.LoadSaveData(saveData);
+        return new HydroponicsSaveData(_hydropnics);
+    }
+
+    public override void LoadSaveData(SaveData saveData)
+    {
+        _hydropnics.LoadSaveData((HydroponicsSaveData)saveData);
         ChangeSprite();
     }
 }

@@ -3,7 +3,7 @@ using System;
 namespace SaveDatas
 {
     [Serializable]
-    public class UpgradableSaveData
+    public class UpgradableSaveData : SaveData
     {
         public bool IsBeingUpgraded;
         public int UpgradeTimeLeft;

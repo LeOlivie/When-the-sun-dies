@@ -1,3 +1,4 @@
+using UnityEngine;
 using System;
 
 namespace SaveDatas
@@ -10,6 +11,12 @@ namespace SaveDatas
 
         public LootSpawnerSaveData(LootSpawner lootSpawner)
         {
+            if (lootSpawner.ItemContainer == null)
+            {
+                Debug.Log("Empty item container");
+                return;
+            }
+
             ContainerSave = new ContainerSaveData(lootSpawner.ItemContainer.Items);
             IsLooted = lootSpawner.IsLooted;
         }

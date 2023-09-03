@@ -20,6 +20,8 @@ MonoBehaviour:
   _isUsable: 0
   _itemsToAddAfterUse: []
   _lootPointsToSpawn: 350
+  _kcalPrice: 4000
+  _mlPrice: 2500
   _searchSpeed: 0.9
   _harvestSpeed: 0.8
   _lightRadius: 1.25

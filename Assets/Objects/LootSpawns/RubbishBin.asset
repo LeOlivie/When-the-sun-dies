@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: RubbishBin
   m_EditorClassIdentifier: 
   _itemSpawnDatas:
+  - _itemData: {fileID: 11400000, guid: 1551cae61deceac4bb974bf74301ecb5, type: 2}
+    _spawnChance: 45
+    _count: 1
   - _itemData: {fileID: 11400000, guid: 05258ec3340e2c942b66c5df75bc8ebb, type: 2}
     _spawnChance: 30
     _count: 1

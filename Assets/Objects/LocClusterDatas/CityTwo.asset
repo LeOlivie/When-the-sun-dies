@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0393a2f9df661c244a5183cf5939c384, type: 3}
   m_Name: CityTwo
   m_EditorClassIdentifier: 
-  _name: 
-  _description: 
   _locationDatas:
   - {fileID: 11400000, guid: 3a04f9289dcabaf4680ff9d4dcc17907, type: 2}
   - {fileID: 11400000, guid: d0e965620605f654599d90de5a0d620e, type: 2}
+  - {fileID: 11400000, guid: e51a2564f4c0eee42b08fd801b8b16b9, type: 2}

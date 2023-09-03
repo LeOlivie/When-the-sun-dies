@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c825112c245974cbe1ab20a7db8f3e, type: 3}
+  m_Name: Moonshine
+  m_EditorClassIdentifier: 
+  _questName: Moonshine
+  _questDescription: Hey. Do you remember old times? When you could come home after
+    work, sit in an armchair and relax with a glass of scotch... Yeah, so much we
+    lost. In my childhood my dad used to tell stories about how grandpa made moonshine
+    during the prohibition. Do you think it's worth a shot? I still need some resources
+    though.
+  _questLocationName: Trader
+  _questReward:
+  - _itemData: {fileID: 11400000, guid: d3a49b563efed214494c285d80ba5cfb, type: 2}
+    _count: 2
+  - _itemData: {fileID: 11400000, guid: 531e231ca5e8f874a8d9c8001c8b3374, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: d507734da61523f45bb19a86d8fc9ac4, type: 2}
+    _count: 6
+  - _itemData: {fileID: 11400000, guid: 6f1ccec17bec29045868d29c6fe9e1a7, type: 2}
+    _count: 1
+  _questTaskDatas:
+  - {fileID: 11400000, guid: 9133e6b09f03d9b40b0221f95246dbdd, type: 2}
+  - {fileID: 11400000, guid: a5156dd59a77ed2479379d2ebd4dcfd3, type: 2}
+  - {fileID: 11400000, guid: 46858d9e436a3dc4f9338fae5a49a0d6, type: 2}
+  - {fileID: 11400000, guid: 076f8dba0d8a3a34cabdcc427f3ced0f, type: 2}

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d758a34f71cba24289806af7c356ea2, type: 3}
+  m_Name: ToolBox2
+  m_EditorClassIdentifier: 
+  _itemSpawnDatas:
+  - _itemData: {fileID: 11400000, guid: d7fe16a943dc96348b63fe39414330ca, type: 2}
+    _spawnChance: 50
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 544b56a3faf7e814ba44ec9b29856af7, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 955440116049e9744ab54f27be488363, type: 2}
+    _spawnChance: 60
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: b2deec2f732d3e0469061f901246b373, type: 2}
+    _spawnChance: 50
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 45964dd8d2ca5e44aa30730d2ca0e38c, type: 2}
+    _spawnChance: 50
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: cae2157ad2186304da0f8fd3b80cc76b, type: 2}
+    _spawnChance: 50
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 3cdb7dca9a1cf174393a7ceb65b0ca37, type: 2}
+    _spawnChance: 50
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: f7b45f28db5f55144bbfe3946eb3b99f, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: f7b45f28db5f55144bbfe3946eb3b99f, type: 2}
+    _spawnChance: 35
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 39c37daf75dbe3347a4c1dd5077ce48c, type: 2}
+    _spawnChance: 25
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: a7762881a954a45499d2a036fdbf7de5, type: 2}
+    _spawnChance: 35
+    _count: 1
+  _containerSize: 4
+  _containerName: Toolbox
+  _lootTime: 4
+  _lootPointsMax: 400

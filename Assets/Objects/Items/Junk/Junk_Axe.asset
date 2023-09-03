@@ -20,3 +20,5 @@ MonoBehaviour:
   _isUsable: 0
   _itemsToAddAfterUse: []
   _lootPointsToSpawn: 250
+  _kcalPrice: 700
+  _mlPrice: 100

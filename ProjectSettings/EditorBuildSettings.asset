@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/DifficultySelector.unity
+    guid: ad9de6330e98fe442b7c32494cd6b0b0
+  - enabled: 1
+    path: Assets/Scenes/Base.unity
+    guid: 46308bfea01e7784e92e0afc15d04552
+  - enabled: 1
     path: Assets/Scenes/GasStation.unity
     guid: 098cda0c81f5ee14c925e253645c1738
   - enabled: 1
@@ -17,4 +23,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bookshop.unity
     guid: 2b8f600e40d5bff4daa4a45bbde96af1
+  - enabled: 1
+    path: Assets/Scenes/Streets.unity
+    guid: a001098ff03bb1c4c9736b761448ccfb
+  - enabled: 1
+    path: Assets/Scenes/StashEvent1.unity
+    guid: af02858073b01d84583ac550124bb05d
+  - enabled: 1
+    path: Assets/Scenes/AirdropEvent1.unity
+    guid: 13184bbef51b26c439f0e7c8b193d0e2
+  - enabled: 1
+    path: Assets/Scenes/StashEvent2.unity
+    guid: 6609b3d54fdfdce44be985980cbb2ce7
+  - enabled: 1
+    path: Assets/Scenes/Trader.unity
+    guid: 470bbd6e9f3bc5944a002ea4fa831ddf
   m_configObjects: {}

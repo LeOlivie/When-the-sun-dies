@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c825112c245974cbe1ab20a7db8f3e, type: 3}
+  m_Name: Supplier
+  m_EditorClassIdentifier: 
+  _questName: Supplier
+  _questDescription: Hi, Traveller. Lately it has been some real tough times and
+    my supplies are running low. Yeah, even guy like me can have force-majeures hah.
+    Any help would be really appreciated. And I still have some stuff, so don't worry
+    about payment.
+  _questLocationName: Trader
+  _questReward:
+  - _itemData: {fileID: 11400000, guid: 46b07d2fe436f6b4a8f7f6c491e65563, type: 2}
+    _count: 3
+  - _itemData: {fileID: 11400000, guid: 4171ebc1104afa247a09b51a0a399405, type: 2}
+    _count: 2
+  - _itemData: {fileID: 11400000, guid: 544b56a3faf7e814ba44ec9b29856af7, type: 2}
+    _count: 4
+  - _itemData: {fileID: 11400000, guid: cae2157ad2186304da0f8fd3b80cc76b, type: 2}
+    _count: 3
+  _questTaskDatas:
+  - {fileID: 11400000, guid: 4f183408ffe242b478b0e494656ed8c4, type: 2}
+  - {fileID: 11400000, guid: 826216ca4ae193c438b8423df2943650, type: 2}
+  - {fileID: 11400000, guid: 0fbba895ab867f0459a907d134140940, type: 2}
+  - {fileID: 11400000, guid: 1ab5d0d8f4714914b86ae15bbccaeb9b, type: 2}

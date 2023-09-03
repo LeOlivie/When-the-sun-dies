@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88dce55627d801c459f1ce0bfee40a62, type: 3}
+  m_Name: StashEvent1
+  m_EditorClassIdentifier: 
+  _locationDatas:
+  - {fileID: 11400000, guid: 6d3137385476b9d419f21088643d33d8, type: 2}
+  _radioText: "RADIO CONTACT: 95.34 MHz\n \n<size=15>I'm going to die. The sunrise
+    will be 20 minutes or so, no way I'll be able to get back. If anyone can hear
+    this: I've left all my stuff 2.6 km south of the city, I won't need it anyway.
+    Christ, why did it turn out like this? Somebody, please... Survive... For me
+    and for all of the humanity.</size>"
+  _availableTime: 1440

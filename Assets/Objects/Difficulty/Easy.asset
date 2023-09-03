@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8a66f933b4cf04aa3b240f3cba2392, type: 3}
+  m_Name: Easy
+  m_EditorClassIdentifier: 
+  _difficultyName: It has just begun
+  _difficultyDescription: The apocalypse has just begun. Not a lot of places have
+    been looted yet and the dangers are bearable. Best setting for beginners.
+  _difficultyColor:
+    serializedVersion: 2
+    rgba: 4286630025
+  _dayCycleLength: 40
+  _scavTimeStart: 21
+  _scavTimeEnd: 6
+  _maxWeight: 20
+  _foodMemoryLength: 2
+  _weatherMaxDuration: 24
+  _sleepTimePerDay: 6
+  _lootAmbulanceMultiplier: 1.2
+  _lootSpawnChanceMultiplier: 1.2
+  _radioCooldownMultiplier: 0.8

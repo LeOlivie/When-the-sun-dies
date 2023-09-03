@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8a66f933b4cf04aa3b240f3cba2392, type: 3}
   m_Name: TestDifficulty
   m_EditorClassIdentifier: 
+  _difficultyName: 
+  _difficultyDescription: 
   _dayCycleLength: 24
   _maxWeight: 15
   _foodMemoryLength: 4
   _weatherMaxDuration: 24
   _sleepTimePerDay: 8
+  _lootAmbulanceMultiplier: 0
+  _lootSpawnChanceMultiplier: 0
+  _radioEventFrequency: 0

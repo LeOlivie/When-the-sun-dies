@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c825112c245974cbe1ab20a7db8f3e, type: 3}
+  m_Name: Courier
+  m_EditorClassIdentifier: 
+  _questName: Courier
+  _questDescription: Hello again. Remeber the guy you found? Yeah, the dead one on
+    the gas station. Did he have a bag with him, the blue one, like an ice bag? No?
+    Hm... Okay. Could you make a lil' errand for me? I need you to go to the Red
+    Forest National Park and check for a stash of mine, maybe he left the bag in
+    there. Oh and I have a list of stuff that in there, so don't even think about
+    anything.
+  _questLocationName: Forest
+  _questReward:
+  - _itemData: {fileID: 11400000, guid: 687e6b8138a2ce848b2fad872069244c, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 0d3bc6067a2857c469109da5bf8aa3f1, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+    _count: 2
+  _questHiddenReward: []
+  _questTaskDatas:
+  - {fileID: 11400000, guid: 018a43024adf34e49bb1f1e547020e25, type: 2}
+  - {fileID: 11400000, guid: e224aad0aa7b1614cabf0613886af6e4, type: 2}

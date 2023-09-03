@@ -14,34 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemSpawnDatas:
   - _itemData: {fileID: 11400000, guid: f16a372da71c9314a96f83a6d11121c4, type: 2}
-    _spawnChance: 30
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: bf8836ccb3c663c46808b39d67bf8df8, type: 2}
     _spawnChance: 40
     _count: 1
-  - _itemData: {fileID: 11400000, guid: 0d3bc6067a2857c469109da5bf8aa3f1, type: 2}
+  - _itemData: {fileID: 11400000, guid: bf8836ccb3c663c46808b39d67bf8df8, type: 2}
     _spawnChance: 50
     _count: 1
+  - _itemData: {fileID: 11400000, guid: 0d3bc6067a2857c469109da5bf8aa3f1, type: 2}
+    _spawnChance: 60
+    _count: 1
   - _itemData: {fileID: 11400000, guid: 0b1a62022a0608d4990964ad2265c433, type: 2}
-    _spawnChance: 30
+    _spawnChance: 40
     _count: 1
   - _itemData: {fileID: 11400000, guid: 51e6ec4bd56e88441ba8a1c33c07ed24, type: 2}
     _spawnChance: 30
     _count: 1
   - _itemData: {fileID: 11400000, guid: b2d382e5dadc7754a9494b6488fe05f4, type: 2}
-    _spawnChance: 20
+    _spawnChance: 35
     _count: 1
   - _itemData: {fileID: 11400000, guid: c479c5201a502f549b1955f0044bc268, type: 2}
-    _spawnChance: 30
+    _spawnChance: 40
     _count: 1
   - _itemData: {fileID: 11400000, guid: 6336380fcedb4004882312d7fae14436, type: 2}
-    _spawnChance: 50
+    _spawnChance: 60
     _count: 1
   - _itemData: {fileID: 11400000, guid: 274a5b064e8a5b6408a4d7dec4858258, type: 2}
-    _spawnChance: 55
+    _spawnChance: 70
     _count: 1
   - _itemData: {fileID: 11400000, guid: f76e98f1addb2944fa0f1fac17ffee9a, type: 2}
-    _spawnChance: 35
+    _spawnChance: 45
     _count: 1
   _containerSize: 9
   _containerName: Store shelf

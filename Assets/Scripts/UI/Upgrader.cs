@@ -116,7 +116,7 @@ public class Upgrader : MonoBehaviour
         foreach (Item inputItem in _upgradableObject.UpgradeRequirements)
         {
             GlobalRepository.Inventory.RemoveItem(inputItem, inputItem.Count);
-        }
+        }   
 
         ResumeUpgrade();
     }
@@ -124,7 +124,7 @@ public class Upgrader : MonoBehaviour
     public void ResumeUpgrade()
     {
         GlobalRepository.OnTimeUpdated += UpgradeInProgress;
-        Time.timeScale = 40;
+        Time.timeScale = 40 * GlobalRepository.Difficulty.DayCycleLength / 24;
         _pauseUpgradeBtn.RemoveListener(ResumeUpgrade);
         _pauseUpgradeBtn.AddListener(PauseUpgrade);
     }

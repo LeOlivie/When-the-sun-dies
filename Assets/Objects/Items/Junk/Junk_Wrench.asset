@@ -18,4 +18,7 @@ MonoBehaviour:
   _weight: 0.3
   _maxInStack: 3
   _isUsable: 0
+  _itemsToAddAfterUse: []
   _lootPointsToSpawn: 300
+  _kcalPrice: 700
+  _mlPrice: 250

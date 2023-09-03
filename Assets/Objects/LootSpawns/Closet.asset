@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d758a34f71cba24289806af7c356ea2, type: 3}
+  m_Name: Closet
+  m_EditorClassIdentifier: 
+  _itemSpawnDatas:
+  - _itemData: {fileID: 11400000, guid: 8b470c3168f71ec408ef7d5d1611ec1f, type: 2}
+    _spawnChance: 60
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 8b470c3168f71ec408ef7d5d1611ec1f, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: a09a1c0022225ab45916ce229ef6c52f, type: 2}
+    _spawnChance: 50
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
+    _spawnChance: 50
+    _count: 2
+  - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
+    _spawnChance: 70
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
+    _spawnChance: 60
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: cae2157ad2186304da0f8fd3b80cc76b, type: 2}
+    _spawnChance: 45
+    _count: 1
+  _containerSize: 9
+  _containerName: Closet
+  _lootTime: 6
+  _lootPointsMax: 250

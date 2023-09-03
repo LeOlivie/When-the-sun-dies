@@ -18,7 +18,10 @@ MonoBehaviour:
   _weight: 0.5
   _maxInStack: 3
   _isUsable: 1
+  _itemsToAddAfterUse: []
   _lootPointsToSpawn: 120
+  _kcalPrice: 200
+  _mlPrice: 400
   _calories: 200
   _water: 400
   _maxHappinessAdd: 1

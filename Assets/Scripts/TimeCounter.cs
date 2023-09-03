@@ -8,6 +8,9 @@ public class TimeCounter : MonoBehaviour
     private float _waterDecrease = -2000 / 1440f;
     private float _fatigueDeacrease = -100 / 1440f;
 
+    public float KcalDecreaseBuff = 1;
+    public float WaterDecreaseBebuff = 1;
+
     private void Start()
     {
         _oneMinuteLength = GlobalRepository.Difficulty.DayCycleLength / 24f;
@@ -20,8 +23,8 @@ public class TimeCounter : MonoBehaviour
         {
             yield return new WaitForSeconds(_oneMinuteLength);
             GlobalRepository.AddTime(1);
-            GlobalRepository.AddKcal(_kcalDecrease);
-            GlobalRepository.AddWater(_waterDecrease);
+            GlobalRepository.AddKcal(_kcalDecrease * KcalDecreaseBuff);
+            GlobalRepository.AddWater(_waterDecrease * WaterDecreaseBebuff);
             GlobalRepository.AddFatigue(_fatigueDeacrease);
         }
     }

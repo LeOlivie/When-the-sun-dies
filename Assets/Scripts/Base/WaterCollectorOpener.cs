@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SaveDatas;
 
-public class WaterCollectorOpener : MonoBehaviour
+public class WaterCollectorOpener : Savable
 {
     [SerializeField] private WaterCollector _waterCollector = new WaterCollector();
     [SerializeField] private HiddableButtonHandler _interractButton;
@@ -55,9 +56,14 @@ public class WaterCollectorOpener : MonoBehaviour
         _waterCollectorSpriteRenderer.sprite = _waterCollector.UpgradedSprite;
     }
 
-    public void LoadSaveData(SaveDatas.WaterCollectorSaveData saveData)
+    public override SaveData GetSaveData()
     {
-        _waterCollector.LoadSaveData(saveData);
+        return new WaterCollectorSaveData(_waterCollector);
+    }
+
+    public override void LoadSaveData(SaveData saveData)
+    {
+        _waterCollector.LoadSaveData((WaterCollectorSaveData)saveData);
         ChangeSprite();
     }
 }

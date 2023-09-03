@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8ef86564ab3f14bb371ba1bac9fc31, type: 3}
+  m_Name: Craft_Flashlight
+  m_EditorClassIdentifier: 
+  _itemRequirements:
+  - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
+    _count: 5
+  - _itemData: {fileID: 11400000, guid: 544b56a3faf7e814ba44ec9b29856af7, type: 2}
+    _count: 2
+  - _itemData: {fileID: 11400000, guid: 05258ec3340e2c942b66c5df75bc8ebb, type: 2}
+    _count: 3
+  - _itemData: {fileID: 11400000, guid: cae2157ad2186304da0f8fd3b80cc76b, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: a7762881a954a45499d2a036fdbf7de5, type: 2}
+    _count: 1
+  _time: 150
+  _output:
+  - _itemData: {fileID: 11400000, guid: b54da16b02d23744ebe491a5bd6534e4, type: 2}
+    _count: 1

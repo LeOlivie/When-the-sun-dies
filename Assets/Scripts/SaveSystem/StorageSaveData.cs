@@ -3,14 +3,12 @@ using System;
 namespace SaveDatas
 {
     [Serializable]
-    public class StorageSaveData
+    public class StorageSaveData : UpgradableSaveData
     {
-        public UpgradableSaveData UpgradableSave;
         public ContainerSaveData ContainerSave;
 
-        public StorageSaveData(Storage storage)
+        public StorageSaveData(Storage storage) : base(storage)
         {
-            UpgradableSave = new UpgradableSaveData(storage);
             ContainerSave = new ContainerSaveData(storage.ItemContainer.Items);
         }
     }

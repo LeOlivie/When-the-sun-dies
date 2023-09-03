@@ -26,11 +26,11 @@ public class BookData : ItemData
             minsToRead = "0" + minsToRead;
         }
 
-        info += string.Format("Time to read: {0}:{1}\n",hrsToRead,minsToRead);
-
         info += "Skill: " + _skillType.ToString() + "\n";
 
-        info += "Weight: " + Weight + "kg";
+        info += string.Format("<sprite name=\"TimeIcon\"> {0}:{1}", hrsToRead,minsToRead);
+
+        info += "  <sprite name=\"WeightIcon\">" + Weight + "kg";
 
         return info;
     }

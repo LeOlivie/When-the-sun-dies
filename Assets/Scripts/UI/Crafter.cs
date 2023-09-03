@@ -113,7 +113,7 @@ public class Crafter : MonoBehaviour
     public void ResumeCraft()
     {
         GlobalRepository.OnTimeUpdated += CraftInProgress;
-        Time.timeScale = 20;
+        Time.timeScale = 20 * GlobalRepository.Difficulty.DayCycleLength / 24;
         _pauseCraftBtn.RemoveListener(ResumeCraft);
         _pauseCraftBtn.AddListener(PauseCraft);
     }

@@ -76,9 +76,9 @@ public class Storage : IUpgradable
 
     public void LoadStorage(SaveDatas.StorageSaveData storageSaveData)
     {
-        _currLevel = storageSaveData.UpgradableSave.CurrLevel;
-        _upgradeTimeLeft = storageSaveData.UpgradableSave.UpgradeTimeLeft;
-        _isBeingUpgraded = storageSaveData.UpgradableSave.IsBeingUpgraded;
+        _currLevel = storageSaveData.CurrLevel;
+        _upgradeTimeLeft = storageSaveData.UpgradeTimeLeft;
+        _isBeingUpgraded = storageSaveData.IsBeingUpgraded;
         _itemContainer = new ItemContainer(storageSaveData.ContainerSave);
     }
 }

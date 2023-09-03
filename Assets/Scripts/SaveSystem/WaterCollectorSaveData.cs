@@ -1,15 +1,13 @@
 namespace SaveDatas
 {
     [System.Serializable]
-    public class WaterCollectorSaveData
+    public class WaterCollectorSaveData : UpgradableSaveData
     {
-        public UpgradableSaveData UpgradableSave;
         public ushort WaterCollected;
         public uint WaterCollectionStart;
 
-        public WaterCollectorSaveData(WaterCollector waterCollector)
+        public WaterCollectorSaveData(WaterCollector waterCollector) : base(waterCollector)
         {
-            UpgradableSave = new UpgradableSaveData(waterCollector);
             WaterCollected = waterCollector.WaterCollected;
             WaterCollectionStart = waterCollector.WaterCollectionStart;
         }

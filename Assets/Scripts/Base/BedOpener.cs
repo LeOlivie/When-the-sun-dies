@@ -1,6 +1,7 @@
 using UnityEngine;
+using SaveDatas;
 
-public class BedOpener : MonoBehaviour
+public class BedOpener : Savable
 {
     [SerializeField] private Bed _bed = new Bed();
     [SerializeField] private HiddableButtonHandler _interractButton;
@@ -11,7 +12,7 @@ public class BedOpener : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag != "Player")
+        if (collision.tag != "Player")
         {
             return;
         }
@@ -42,15 +43,20 @@ public class BedOpener : MonoBehaviour
         _interractButton.RemoveListener(OpenBedScreen);
         _bed.OnUpgradedEvent -= ChangeSprite;
     }
-    
+
     private void ChangeSprite()
     {
         _bedSpriteRenderer.sprite = _bed.UpgradedSprite;
     }
 
-    public void LoadSaveData(SaveDatas.UpgradableSaveData saveData)
+    public override SaveData GetSaveData()
     {
-        _bed.LoadSaveData(saveData);
+        return new UpgradableSaveData(Bed);
+    }
+
+    public override void LoadSaveData(SaveData saveData)
+    {
+        _bed.LoadSaveData((UpgradableSaveData)saveData);
         ChangeSprite();
     }
 }

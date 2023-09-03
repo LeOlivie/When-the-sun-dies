@@ -7,6 +7,7 @@ public class IndexedButtonHandler : MonoBehaviour, IPointerDownHandler
     public delegate void IndexedButtonDelegate(int index);
     protected event IndexedButtonDelegate DoOnPress;
 
+    public int Index => _index;
     public void SetIndex(int index)
     {
         _index = index;

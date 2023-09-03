@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemSpawnDatas:
   - _itemData: {fileID: 11400000, guid: e3b7ae565e6f43349b877081d8cbc72d, type: 2}
-    _spawnChance: 30
+    _spawnChance: 35
     _count: 1
   - _itemData: {fileID: 11400000, guid: f76e98f1addb2944fa0f1fac17ffee9a, type: 2}
     _spawnChance: 60
     _count: 1
   - _itemData: {fileID: 11400000, guid: 531e231ca5e8f874a8d9c8001c8b3374, type: 2}
-    _spawnChance: 10
+    _spawnChance: 25
     _count: 1
   - _itemData: {fileID: 11400000, guid: 1b752bd194d97d94787a8564481228ba, type: 2}
     _spawnChance: 20
@@ -32,10 +32,10 @@ MonoBehaviour:
     _spawnChance: 40
     _count: 1
   - _itemData: {fileID: 11400000, guid: bf8836ccb3c663c46808b39d67bf8df8, type: 2}
-    _spawnChance: 20
+    _spawnChance: 30
     _count: 1
   - _itemData: {fileID: 11400000, guid: e18a4f57421eba649b683f17b8252e70, type: 2}
-    _spawnChance: 20
+    _spawnChance: 35
     _count: 2
   - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
     _spawnChance: 60

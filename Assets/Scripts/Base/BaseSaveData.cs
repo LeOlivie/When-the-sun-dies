@@ -1,23 +1,39 @@
 namespace SaveDatas
 {
+    using System.Collections.Generic;
+    using UnityEngine;
+    using System;
+
     [System.Serializable]
     public class BaseSaveData
     {
-        public CraftingStationSaveData WorkbenchSave;
-        public CraftingStationSaveData CookingStationSave;
-        public StorageSaveData StorageSave;
-        public TVSaveData TVSave;
-        public UpgradableSaveData BedSave;
-        public WaterCollectorSaveData WaterCollectorSave;
+        public List<string> SaveDatasJsons;
+        public List<string> SaveDatasTypes;
 
-        public BaseSaveData(CraftingStation workbench,CraftingStation cookingStation,Storage storage, TV tv, Bed bed, WaterCollector waterCollector)
+        public SaveData[] GetSaveDatas()
         {
-            WorkbenchSave = new CraftingStationSaveData(workbench);
-            CookingStationSave = new CraftingStationSaveData(cookingStation);
-            StorageSave = new StorageSaveData(storage);
-            TVSave = new TVSaveData(tv);
-            BedSave = new UpgradableSaveData(bed);
-            WaterCollectorSave = new WaterCollectorSaveData(waterCollector);
+            List<SaveData> saveDatas = new List<SaveData>();
+
+            for(int i = 0; i < SaveDatasJsons.Count; i++)
+            {
+                saveDatas.Add((SaveData)JsonUtility.FromJson(SaveDatasJsons[i], Type.GetType(SaveDatasTypes[i])));
+            }
+
+            return saveDatas.ToArray();
+        }
+
+
+        public BaseSaveData(params SaveData[] saveDatas)
+        {
+            SaveDatasJsons = new List<string>();
+            SaveDatasTypes = new List<string>();
+
+            foreach(SaveData saveData in saveDatas)
+            {
+                Type type = saveData.GetType();
+                SaveDatasTypes.Add(type.ToString());
+                SaveDatasJsons.Add(JsonUtility.ToJson(saveData));
+            }
         }
     }
 }

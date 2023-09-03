@@ -12,6 +12,6 @@ public class CameraMover : MonoBehaviour
 
     void Update()
     {
-        _cameraTrans.localPosition = _playerTrans.localPosition;
+        _cameraTrans.localPosition = _playerTrans.localPosition + new Vector3(0,0,-5);
     }
 }

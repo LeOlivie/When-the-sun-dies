@@ -20,5 +20,7 @@ MonoBehaviour:
   _isUsable: 1
   _itemsToAddAfterUse: []
   _lootPointsToSpawn: 150
+  _kcalPrice: 700
+  _mlPrice: 300
   _timeToRead: 200
   _skillType: 2

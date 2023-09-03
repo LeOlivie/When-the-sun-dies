@@ -34,7 +34,9 @@ MonoBehaviour:
       _count: 1
     _upgradeTime: 540
     _upgradedSprite: {fileID: 21300000, guid: 703d0033e6b957c4d8a544003f0d9300, type: 3}
-  - _recipies: []
+  - _recipies:
+    - {fileID: 11400000, guid: 89a012ca3f56e6d44afea82a3a80e145, type: 2}
+    - {fileID: 11400000, guid: 1cd1f36a14f124146b1bb2b2b44b300f, type: 2}
     _skillRequirements:
     - _skillType: 3
       _skillLevel: 2
@@ -55,6 +57,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5ed81db3db5951f43ba1244170ac6413, type: 2}
     - {fileID: 11400000, guid: 5a8a3ebc72f32294ea568b5e5ba696bd, type: 2}
     - {fileID: 11400000, guid: a8d01e9c4b54596449a1e06e8f3a06a0, type: 2}
+    - {fileID: 11400000, guid: 271b3f2c4449c4744a13f3b800d6df00, type: 2}
     _skillRequirements: []
     _upgradeRequierements: []
     _upgradeTime: 0

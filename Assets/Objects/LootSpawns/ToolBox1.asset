@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d758a34f71cba24289806af7c356ea2, type: 3}
+  m_Name: ToolBox1
+  m_EditorClassIdentifier: 
+  _itemSpawnDatas:
+  - _itemData: {fileID: 11400000, guid: dab8a6a84487839449470b480e5779be, type: 2}
+    _spawnChance: 60
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: e3b7ae565e6f43349b877081d8cbc72d, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 05258ec3340e2c942b66c5df75bc8ebb, type: 2}
+    _spawnChance: 60
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 05258ec3340e2c942b66c5df75bc8ebb, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 05258ec3340e2c942b66c5df75bc8ebb, type: 2}
+    _spawnChance: 25
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 49fa1c0295ad71b459ee4b7ce3153121, type: 2}
+    _spawnChance: 50
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: fb26c626f7ac9b643bf33a59a4eca0fa, type: 2}
+    _spawnChance: 50
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: fb26c626f7ac9b643bf33a59a4eca0fa, type: 2}
+    _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: ff103ee404af94143af61b89c6340f1e, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
+    _spawnChance: 60
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
+    _spawnChance: 60
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
+    _spawnChance: 60
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
+    _spawnChance: 60
+    _count: 1
+  _containerSize: 4
+  _containerName: Toolbox
+  _lootTime: 4
+  _lootPointsMax: 400

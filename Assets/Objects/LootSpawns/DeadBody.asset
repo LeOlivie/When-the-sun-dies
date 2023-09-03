@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemSpawnDatas:
   - _itemData: {fileID: 11400000, guid: 3cdb7dca9a1cf174393a7ceb65b0ca37, type: 2}
-    _spawnChance: 20
+    _spawnChance: 25
     _count: 1
   - _itemData: {fileID: 11400000, guid: 0d3bc6067a2857c469109da5bf8aa3f1, type: 2}
-    _spawnChance: 40
+    _spawnChance: 50
     _count: 1
   - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
-    _spawnChance: 30
+    _spawnChance: 35
     _count: 1
   - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
-    _spawnChance: 30
+    _spawnChance: 35
     _count: 1
   - _itemData: {fileID: 11400000, guid: 89f7f3c326e85a342ab018f4c58b8db0, type: 2}
     _spawnChance: 60
@@ -53,7 +53,7 @@ MonoBehaviour:
     _spawnChance: 50
     _count: 1
   - _itemData: {fileID: 11400000, guid: 274a5b064e8a5b6408a4d7dec4858258, type: 2}
-    _spawnChance: 30
+    _spawnChance: 40
     _count: 1
   _containerSize: 6
   _containerName: Dead body

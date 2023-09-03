@@ -3,6 +3,8 @@ using TMPro;
 
 public class RaidEnder : MonoBehaviour
 {
+    public delegate void RaidEndedDelegate();
+    public event RaidEndedDelegate RaidEnded;
     [SerializeField] private ButtonHandler _leaveButton;
     [SerializeField] private LocationData _baseData;
     [SerializeField] private TextMeshProUGUI _timeLeftText;
@@ -51,6 +53,8 @@ public class RaidEnder : MonoBehaviour
 
     public void EndRaid()
     {
+        RaidEnded?.Invoke();
+        RaidEnded = null;
         saver.SaveLocation();
         GlobalRepository.ChangeLocation(_baseData, 0, Mathf.CeilToInt(GlobalRepository.CurrentLocationData.Distance / 2f * 60f));
     }

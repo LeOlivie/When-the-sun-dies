@@ -1,6 +1,7 @@
 using UnityEngine;
+using SaveDatas;
 
-public class TVScreenOpener : MonoBehaviour
+public class TVScreenOpener : Savable
 {
     [SerializeField] private TV _tv = new TV();
     [SerializeField] private HiddableButtonHandler _interractButton;
@@ -53,9 +54,14 @@ public class TVScreenOpener : MonoBehaviour
         _tvSpriteRenderer.sprite = _tv.UpgradedSprite;
     }
 
-    public void LoadSaveData(SaveDatas.TVSaveData saveData)
+    public override SaveData GetSaveData()
     {
-        _tv.LoadSaveData(saveData);
+        return new TVSaveData(_tv);
+    }
+
+    public override void LoadSaveData(SaveData saveData)
+    {
+        _tv.LoadSaveData((TVSaveData)saveData);
         ChangeSprite();
     }
 }

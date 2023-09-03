@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemSpawnDatas:
   - _itemData: {fileID: 11400000, guid: 1551cae61deceac4bb974bf74301ecb5, type: 2}
-    _spawnChance: 40
+    _spawnChance: 60
     _count: 1
   - _itemData: {fileID: 11400000, guid: b2deec2f732d3e0469061f901246b373, type: 2}
     _spawnChance: 50

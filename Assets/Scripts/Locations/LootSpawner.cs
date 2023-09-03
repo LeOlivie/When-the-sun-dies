@@ -12,6 +12,7 @@ public class LootSpawner : MonoBehaviour
     private ItemContainer _itemContainer;
 
     public ItemContainer ItemContainer => _itemContainer;
+    public LootSpawnerData LootSpawnerData => _lootSpawnerData;
     public bool IsLooted => _isLooted;
 
     private void Awake()

@@ -1,14 +1,12 @@
 namespace SaveDatas
 {
     [System.Serializable]
-    public class TVSaveData
+    public class TVSaveData : UpgradableSaveData
     {
-        public UpgradableSaveData UpgradableSave;
         public ushort WatchTime;
 
-        public TVSaveData(TV tv)
+        public TVSaveData(TV tv): base(tv)
         {
-            UpgradableSave = new UpgradableSaveData(tv);
             WatchTime = tv.WatchTime;
         }
     }

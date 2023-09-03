@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3904e2c0df6321b469d399ce89ce25f6, type: 3}
+  m_Name: Moonshine_GiveBerries
+  m_EditorClassIdentifier: 
+  _taskType: 3
+  _id: GiveItemsTaskPoint
+  _subQuestText: Give berries
+  _itemsRequired:
+    _itemData: {fileID: 11400000, guid: 42bc80699c003554a9ea49c1968094d9, type: 2}
+    _count: 10

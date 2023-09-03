@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8a66f933b4cf04aa3b240f3cba2392, type: 3}
+  m_Name: Medium
+  m_EditorClassIdentifier: 
+  _difficultyName: A few weeks in
+  _difficultyDescription: 'You''ve made it a few weeks in. Some loot has been taken
+    already and people are getting used to this life. This world is more dangerous
+    than the previous one. '
+  _difficultyColor:
+    serializedVersion: 2
+    rgba: 4286557896
+  _dayCycleLength: 35
+  _scavTimeStart: 22
+  _scavTimeEnd: 6
+  _maxWeight: 17
+  _foodMemoryLength: 5
+  _weatherMaxDuration: 24
+  _sleepTimePerDay: 8
+  _lootAmbulanceMultiplier: 1
+  _lootSpawnChanceMultiplier: 1
+  _radioCooldownMultiplier: 1
