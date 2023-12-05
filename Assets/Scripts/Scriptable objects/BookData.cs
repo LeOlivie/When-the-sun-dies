@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BookData", menuName = "ScriptableObjects/BookData", order = 2)]
+[CreateAssetMenu(fileName = "BookData", menuName = "ScriptableObjects/Items/BookData", order = 2)]
 public class BookData : ItemData
 {
     [SerializeField] private int _timeToRead;

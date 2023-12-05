@@ -26,3 +26,6 @@ MonoBehaviour:
   _water: 400
   _maxHappinessAdd: 5
   _minHappinessAdd: 0
+  _statusSpawnChances:
+  - _timedStatusData: {fileID: 11400000, guid: 8d45390800d2f7b4c95008461d4892fc, type: 2}
+    _spawnChance: 100

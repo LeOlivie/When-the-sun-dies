@@ -13,7 +13,6 @@ namespace SaveDatas
         {
             if (lootSpawner.ItemContainer == null)
             {
-                Debug.Log("Empty item container");
                 return;
             }
 

@@ -19,6 +19,12 @@ MonoBehaviour:
   _difficultyColor:
     serializedVersion: 2
     rgba: 4284966842
+  _startKitDescription: Poor start kit
+  _startKit:
+  - _itemData: {fileID: 11400000, guid: dc28448536438684e893b750fc69ca6e, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+    _count: 2
   _dayCycleLength: 30
   _scavTimeStart: 23
   _scavTimeEnd: 6

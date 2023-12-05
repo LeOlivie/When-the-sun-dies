@@ -19,6 +19,20 @@ MonoBehaviour:
   _difficultyColor:
     serializedVersion: 2
     rgba: 4286557896
+  _startKitDescription: Moderate start kit
+  _startKit:
+  - _itemData: {fileID: 11400000, guid: dc28448536438684e893b750fc69ca6e, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 1551cae61deceac4bb974bf74301ecb5, type: 2}
+    _count: 3
+  - _itemData: {fileID: 11400000, guid: d3a49b563efed214494c285d80ba5cfb, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+    _count: 3
+  - _itemData: {fileID: 11400000, guid: f16a372da71c9314a96f83a6d11121c4, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 88bbddfea2663174c8234b23f4eb83b0, type: 2}
+    _count: 1
   _dayCycleLength: 35
   _scavTimeStart: 22
   _scavTimeEnd: 6

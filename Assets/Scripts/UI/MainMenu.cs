@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
     private void NewGame()
     {
         SceneManager.LoadScene("DifficultySelector");
+        PlayerPrefs.DeleteAll();
     }
 
     private void Continue()

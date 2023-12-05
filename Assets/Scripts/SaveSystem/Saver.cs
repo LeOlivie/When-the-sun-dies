@@ -11,8 +11,6 @@ public class Saver : MonoBehaviour
     private void Start()
     {
         _saveName = SceneManager.GetActiveScene().name;
-        Debug.Log(SceneManager.GetActiveScene().name);
-
         if (_saveName == _baseName)
         {
             LoadBase();
@@ -24,7 +22,6 @@ public class Saver : MonoBehaviour
         {
             return;
         }
-
 
         LoadLocation();
     }
@@ -70,7 +67,7 @@ public class Saver : MonoBehaviour
 
         }
 
-        SaveLoadManager.Save<BaseSaveData>("BaseSaveData", new BaseSaveData(saveDatas));
+        SaveLoadManager.Save<BaseSaveData>(_baseName, new BaseSaveData(saveDatas));
 
         Debug.Log("Base saved");
     }
@@ -78,7 +75,7 @@ public class Saver : MonoBehaviour
     public void LoadBase()
     {
         Savable[] loadables = GameObject.FindObjectsOfType<Savable>(true);
-        BaseSaveData baseSaveData = SaveLoadManager.Load<BaseSaveData>("BaseSaveData");
+        BaseSaveData baseSaveData = SaveLoadManager.Load<BaseSaveData>(_baseName);
         SaveData[] saveDatas = baseSaveData.GetSaveDatas();
 
         for (int i = 0; i < loadables.Length; i++)

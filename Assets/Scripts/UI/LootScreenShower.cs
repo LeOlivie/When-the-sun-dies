@@ -5,6 +5,7 @@ using System;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using Statuses;
 
 public class LootScreenShower : MonoBehaviour, IClosable
 {
@@ -191,7 +192,23 @@ public class LootScreenShower : MonoBehaviour, IClosable
     IEnumerator Loot(float lootTime)
     {
         float currTime = 0;
+        float lootTimeDebuff = 0;
 
+        foreach (Statuses.Status status in GlobalRepository.ActiveStatuses)
+        {
+            foreach (EffectData effectData in status.GetActiveEffects())
+            {
+                foreach (EffectData.BuffData buff in effectData.Buffs)
+                {
+                    if (buff.StatToChange == Statuses.StatToChangeEnum.SearchSpeed)
+                    {
+                        lootTimeDebuff += buff.Change;
+                    }
+                }
+            }
+        }
+
+        lootTime *= 1 - lootTimeDebuff;
 
         while (currTime < lootTime)
         {

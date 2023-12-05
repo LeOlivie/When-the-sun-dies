@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00663b7e45dddaf44aab65a86d358363, type: 3}
+  m_Name: Harvester_Spotlight
+  m_EditorClassIdentifier: 
+  _harvestOptionDatas:
+  - _itemToHarvest:
+      _itemData: {fileID: 11400000, guid: a6a6a4fe043a23f4c9055ac6a38c0cad, type: 2}
+      _count: 1
+    _requirements: []
+    _timeToHarvest: 10
+    _kcalDebuff: 0
+    _waterDebuff: 0
+    _maxHarvests: 1
+    _availabilityChance: 75
+  - _itemToHarvest:
+      _itemData: {fileID: 11400000, guid: 05258ec3340e2c942b66c5df75bc8ebb, type: 2}
+      _count: 1
+    _requirements:
+    - _itemRequirement:
+        _itemData: {fileID: 11400000, guid: e3b7ae565e6f43349b877081d8cbc72d, type: 2}
+        _count: 1
+      _isDisposable: 0
+    _timeToHarvest: 15
+    _kcalDebuff: -1
+    _waterDebuff: -1
+    _maxHarvests: 2
+    _availabilityChance: 60

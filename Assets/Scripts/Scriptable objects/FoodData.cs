@@ -1,13 +1,25 @@
 using UnityEngine;
+using Statuses;
 using System;
 
-[CreateAssetMenu(fileName = "FoodData", menuName = "ScriptableObjects/FoodData", order = 2)]
+[CreateAssetMenu(fileName = "FoodData", menuName = "ScriptableObjects/Items/FoodData", order = 2)]
 public class FoodData : ItemData
 {
+    [Serializable]
+    private struct StatusSpawnChance
+    {
+        [SerializeField] private TimedStatusData _timedStatusData;
+        [SerializeField] private int _spawnChance;
+
+        public TimedStatusData TimedStatusData => _timedStatusData;
+        public int SpawnChance => _spawnChance;
+    }
+
     [SerializeField] private int _calories;
     [SerializeField] private int _water;
     [SerializeField] private sbyte _maxHappinessAdd;
     [SerializeField] private sbyte _minHappinessAdd;
+    [SerializeField] private StatusSpawnChance[] _statusSpawnChances = new StatusSpawnChance[0];
     private sbyte _happinessAdd;
 
     public int Calories => _calories;
@@ -69,6 +81,14 @@ public class FoodData : ItemData
             }
         }
 
+        foreach (StatusSpawnChance status in _statusSpawnChances)
+        {
+            if (UnityEngine.Random.Range(0, 101) < status.SpawnChance)
+            {
+                GlobalRepository.AddStatus(new TimedStatus(status.TimedStatusData));
+            }
+        }
+        
         GlobalRepository.AddLastEatenFood(this.Name);
         GlobalRepository.AddKcal(_calories);
         GlobalRepository.AddWater(_water);

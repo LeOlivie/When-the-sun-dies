@@ -6,6 +6,8 @@ public class DifficultyData : ScriptableObject
     [SerializeField] private string _difficultyName;
     [SerializeField, TextArea] private string _difficultyDescription;
     [SerializeField] private Color32 _difficultyColor;
+    [SerializeField] private string _startKitDescription;
+    [SerializeField] private Item[] _startKit;
     [SerializeField] private ushort _dayCycleLength;
     [SerializeField] private ushort _scavTimeStart;
     [SerializeField] private ushort _scavTimeEnd;
@@ -20,6 +22,8 @@ public class DifficultyData : ScriptableObject
     public string DifficultyName => _difficultyName;
     public string DifficultyDescription => _difficultyDescription;
     public Color32 DifficultyColor => _difficultyColor;
+    public string StartKitDescription => _startKitDescription;
+    public Item[] StartKit => _startKit;
     public ushort DayCycleLength => _dayCycleLength;
     public ushort ScavTimeStart => _scavTimeStart;
     public ushort ScavTimeEnd => _scavTimeEnd;

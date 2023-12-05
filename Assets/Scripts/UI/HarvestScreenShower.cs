@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using Statuses;
 
 public class HarvestScreenShower : MonoBehaviour, IClosable
 {
@@ -141,10 +142,25 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
 
     private void StartHarvest()
     {
+        float harvestTimeDebuff = 0;
+
+        foreach (Statuses.Status status in GlobalRepository.ActiveStatuses)
+        {
+            foreach (EffectData effectData in status.GetActiveEffects())
+            {
+                foreach (EffectData.BuffData buff in effectData.Buffs)
+                {
+                    if (buff.StatToChange == Statuses.StatToChangeEnum.HarvestSpeed)
+                    {
+                        harvestTimeDebuff += buff.Change;
+                    }
+                }
+            }
+        }
+
         _harvestInProgress.SetActive(true);
         _itemBeingHarvestedShower.ShowItem(_harvestOptions[_optionIndex].HarvestOptionData.ItemToHarvest);
-        _harvestTimeLeft = _harvestOptions[_optionIndex].HarvestOptionData.TimeToHarvest;
-        _harvestTimeLeft = Mathf.RoundToInt(_harvestTimeLeft * GlobalRepository.LightSourceData.HarvestSpeed);
+        _harvestTimeLeft = Mathf.RoundToInt(_harvestTimeLeft * (1 - harvestTimeDebuff) * GlobalRepository.LightSourceData.HarvestSpeed);
         _harvestTimeLeftText.text = TimeConverter.InsertTime("Time to harvest: {0}:{1}", _harvestTimeLeft, TimeConverter.InsertionType.HourMinute);
         GlobalRepository.OnTimeUpdated += HarvestInProgress;
         Time.timeScale = 20 * GlobalRepository.Difficulty.DayCycleLength / 24;

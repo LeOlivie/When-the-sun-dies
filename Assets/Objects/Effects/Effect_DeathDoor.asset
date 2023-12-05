@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd09a8b0eb455e49a02141b96b427dc, type: 3}
   m_Name: Effect_DeathDoor
   m_EditorClassIdentifier: 
-  _name: At the death's door
-  _description: Feeling of the coming death.
+  _name: Death's door
+  _description: 'The end is coming near...
+
+    ( -3 HP/min)'
+  _buffs:
+  - _statToChange: 2
+    _change: -3

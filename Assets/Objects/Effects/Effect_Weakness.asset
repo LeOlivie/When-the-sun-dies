@@ -15,4 +15,11 @@ MonoBehaviour:
   _name: Weakness
   _description: 'Feeling weak.
 
-    (-25% stamina regeneration)'
+    (-5% Search, -10% Fatigue, -1 HP/min)'
+  _buffs:
+  - _statToChange: 0
+    _change: -0.05
+  - _statToChange: 5
+    _change: -0.1
+  - _statToChange: 2
+    _change: -1

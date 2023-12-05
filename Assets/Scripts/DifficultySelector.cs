@@ -39,6 +39,7 @@ public class DifficultySelector : MonoBehaviour
         _diffDescText.text = _difficultyDatas[_selectedDiffIndex].DifficultyDescription;
 
         _diffModsText.text = "Modifiers\n\n";
+        _diffModsText.text += _difficultyDatas[_selectedDiffIndex].StartKitDescription + "\n";
         _diffModsText.text += "Day cycle length: " + _difficultyDatas[_selectedDiffIndex].DayCycleLength + " minutes\n";
         _diffModsText.text += $"Safe scavange time: {_difficultyDatas[_selectedDiffIndex].ScavTimeStart}:00-0{_difficultyDatas[_selectedDiffIndex].ScavTimeEnd}:00\n";
         _diffModsText.text += "Sleep time per day: " + _difficultyDatas[_selectedDiffIndex].SleepTimePerDay + " hours\n";

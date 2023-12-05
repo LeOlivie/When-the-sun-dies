@@ -1,29 +1,35 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Statuses;
+using UnityEngine.PlayerLoop;
 
 public static class GlobalRepository
 {
     public enum SkillType { DIY, Electronics, Bakery, Building };
     public enum WeatherTypeEnum { ClearWeather, Foggy, Rainy, Windy };
-    private static int _globalTime =2810; //2160 = 1 day 12:00
+    private static int _globalTime =2710; //2160 = 1 day 12:00
     private static float _kcal = 2000;
     private static float _water = 2000;
     private static float _weight;
     private static float _maxWeight = 15;
-    private static sbyte _happiness = 50;
+    private static float _happiness = 50;
     private static int _raidTimeLeft = 90;
     private static int _timeBeforeArrival = 0;
     private static int _weatherChangeTime = 1;
     private static int _questsProgress;
-    private static float _fatigue = -10000;
+    private static float _fatigue = 100;
     private static WeatherTypeEnum _weatherType;
     private static LocationData _currentLocationData;
     private static List<string> _lastEatenFood = new List<string>();
     private static Dictionary<SkillType, int> _skills = new Dictionary<SkillType, int>();
     private static LightSourceData _lightSourceData;
     private static Quest _activeQuest = null;
+    private static List<Status> _activeStatuses = new List<Status>();
+    public static bool IsStartKitReceived;
+    public static bool ShowDayChange = true;
 
     private static DifficultyData _difficulty;
     private static ItemContainer _inventory = new ItemContainer(16, CountWeight);
@@ -36,7 +42,7 @@ public static class GlobalRepository
     public static float Water => _water;
     public static float Weight => _weight;
     public static float MaxWeight => _maxWeight;
-    public static sbyte Happiness => _happiness;
+    public static float Happiness => Mathf.RoundToInt(_happiness);
     public static int RaidTimeLeft => _raidTimeLeft;
     public static int TimeBeforeArrival => _timeBeforeArrival;
     public static int Fatigue => Mathf.FloorToInt(_fatigue);
@@ -48,6 +54,7 @@ public static class GlobalRepository
     public static ItemContainer Inventory => _inventory;
     public static LightSourceData LightSourceData => _lightSourceData;
     public static Quest ActiveQuest => _activeQuest;
+    public static List<Status> ActiveStatuses => _activeStatuses;
     public static Dictionary<SkillType, int> Skills
     {
         get
@@ -119,6 +126,11 @@ public static class GlobalRepository
 
         _globalTime += (int)minutesCount;
 
+        if (_globalTime%1440 == 0)
+        {
+            ShowDayChange = true;
+        }
+
         OnTimeUpdated?.Invoke();
     }
 
@@ -154,7 +166,7 @@ public static class GlobalRepository
         }
     }
 
-    public static void AddHappiness(sbyte value)
+    public static void AddHappiness(float value)
     {
         _happiness += value;
 
@@ -162,9 +174,9 @@ public static class GlobalRepository
         {
             _happiness = 50;
         }
-        else if (_happiness < -50)
+        else if (_happiness < 0)
         {
-            _happiness -= 50;
+            _happiness = 0;
         }
     }
 
@@ -211,12 +223,41 @@ public static class GlobalRepository
     public static void SetActiveQuest(Quest quest)
     {
         _activeQuest = quest;
-        GlobalRepository.ActiveQuest.OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        if (_activeQuest != null)
+        {
+            _activeQuest.OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        }
     }
 
     public static void SetQuestProgress(int progress)
     {
         _questsProgress = progress;
+    }
+
+    public static void AddStatus(Status status)
+    {
+        foreach (Status stat in _activeStatuses)
+        {
+            if (stat.Data == status.Data)
+            {
+                return;
+            }
+        }
+
+        OnTimeUpdated += status.TimeUpdated;
+        _activeStatuses.Add(status);
+        Debug.Log("Added status");
+    }
+
+    public static void RemoveStatus(Status status)
+    {
+        if (!_activeStatuses.Contains(status))
+        {
+            return;
+        }
+
+        OnTimeUpdated -= status.TimeUpdated;
+        _activeStatuses.Remove(status);
     }
 
     public static void LoadSaveData(SaveDatas.PlayerSaveData playerSaveData)

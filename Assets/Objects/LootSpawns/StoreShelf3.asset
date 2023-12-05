@@ -22,11 +22,20 @@ MonoBehaviour:
   - _itemData: {fileID: 11400000, guid: 80db4f0022a44e243ab3b9ffe5da5f56, type: 2}
     _spawnChance: 55
     _count: 1
+  - _itemData: {fileID: 11400000, guid: e8e84cf7ec968ed4db77d78f84afda1f, type: 2}
+    _spawnChance: 40
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: d6c70d0e1ca721e4fa3d8a77134b0a18, type: 2}
+    _spawnChance: 35
+    _count: 1
   - _itemData: {fileID: 11400000, guid: 0b1a62022a0608d4990964ad2265c433, type: 2}
     _spawnChance: 40
     _count: 1
   - _itemData: {fileID: 11400000, guid: 51e6ec4bd56e88441ba8a1c33c07ed24, type: 2}
     _spawnChance: 30
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 687e6b8138a2ce848b2fad872069244c, type: 2}
+    _spawnChance: 25
     _count: 1
   - _itemData: {fileID: 11400000, guid: b2d382e5dadc7754a9494b6488fe05f4, type: 2}
     _spawnChance: 30
@@ -55,4 +64,4 @@ MonoBehaviour:
   _containerSize: 9
   _containerName: Store shelf
   _lootTime: 5
-  _lootPointsMax: 350
+  _lootPointsMax: 500

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0027a89a070da874595c5962c9f571a3, type: 3}
+  m_Name: Depression
+  m_EditorClassIdentifier: 
+  _name: Dehydration
+  _maxProgress: 2880
+  _effectStructs:
+  - _progressRequired: 0
+    _effectData: {fileID: 11400000, guid: 51d1e6e4b415b6a40b5578092db68491, type: 2}
+  - _progressRequired: 2380
+    _effectData: {fileID: 11400000, guid: 6d63608dca7429e46858807cd3cea6f0, type: 2}

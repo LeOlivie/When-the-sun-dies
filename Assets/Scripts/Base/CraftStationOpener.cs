@@ -6,7 +6,7 @@ public class CraftStationOpener : Savable
     [SerializeField] private ButtonHandler _interractBtn;
     [SerializeField] private CraftingStation _station;
     [SerializeField] private SpriteRenderer _stationSpriteRenderer;
-    [SerializeField]  private CraftingMenuShower _menuShower;
+    [SerializeField] private CraftingMenuShower _menuShower;
 
     public CraftingStation Station => _station;
 

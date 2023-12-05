@@ -52,4 +52,4 @@ MonoBehaviour:
   _containerSize: 9
   _containerName: Store shelf
   _lootTime: 5
-  _lootPointsMax: 350
+  _lootPointsMax: 500

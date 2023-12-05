@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LightSourceItem", menuName = "ScriptableObjects/LightSourceItem", order = 3)]
+[CreateAssetMenu(fileName = "LightSourceItem", menuName = "ScriptableObjects/Items/LightSourceItem", order = 3)]
 public class LightSourceData : ItemData
 {
     [SerializeField] private float _searchSpeed;

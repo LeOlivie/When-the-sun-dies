@@ -25,6 +25,9 @@ MonoBehaviour:
   - _itemData: {fileID: 11400000, guid: 1b752bd194d97d94787a8564481228ba, type: 2}
     _spawnChance: 20
     _count: 1
+  - _itemData: {fileID: 11400000, guid: e8e84cf7ec968ed4db77d78f84afda1f, type: 2}
+    _spawnChance: 30
+    _count: 1
   - _itemData: {fileID: 11400000, guid: f16a372da71c9314a96f83a6d11121c4, type: 2}
     _spawnChance: 35
     _count: 1
@@ -42,6 +45,9 @@ MonoBehaviour:
     _count: 1
   - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
     _spawnChance: 50
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
+    _spawnChance: 40
     _count: 1
   - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
     _spawnChance: 40

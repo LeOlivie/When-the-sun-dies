@@ -18,6 +18,28 @@ MonoBehaviour:
   _difficultyColor:
     serializedVersion: 2
     rgba: 4286630025
+  _startKitDescription: Rich start kit
+  _startKit:
+  - _itemData: {fileID: 11400000, guid: dc28448536438684e893b750fc69ca6e, type: 2}
+    _count: 2
+  - _itemData: {fileID: 11400000, guid: dc28448536438684e893b750fc69ca6e, type: 2}
+    _count: 2
+  - _itemData: {fileID: 11400000, guid: 2614025aef30b4045a1c5f851b92a6db, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 1551cae61deceac4bb974bf74301ecb5, type: 2}
+    _count: 4
+  - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+    _count: 3
+  - _itemData: {fileID: 11400000, guid: 03ac1570e6878d743971ebd1cd048c9e, type: 2}
+    _count: 3
+  - _itemData: {fileID: 11400000, guid: 88bbddfea2663174c8234b23f4eb83b0, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: 88bbddfea2663174c8234b23f4eb83b0, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: f76e98f1addb2944fa0f1fac17ffee9a, type: 2}
+    _count: 1
+  - _itemData: {fileID: 11400000, guid: cd9bff366f8cd8a4c92956f46fd011bd, type: 2}
+    _count: 1
   _dayCycleLength: 40
   _scavTimeStart: 21
   _scavTimeEnd: 6

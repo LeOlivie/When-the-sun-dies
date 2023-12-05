@@ -1,16 +1,22 @@
+using System;
 using UnityEngine;
 
 public class MenuShower : MonoBehaviour, IClosable
 {
+    [Serializable]
+    private struct Screen
+    {
+        [SerializeField] private GameObject _gameObject;
+        [SerializeField] private IndexedButtonHandler _buttonHandler;
+
+        public GameObject GameObject => _gameObject;
+        public IndexedButtonHandler ButtonHandler => _buttonHandler;
+    }
+
     [SerializeField] private Joystick _joystick;
     [SerializeField] private ButtonHandler _openBtn;
     [SerializeField] private GameObject _menu;
-    [SerializeField] private GameObject _inventory;
-    [SerializeField] private GameObject _healthScreen;
-    [SerializeField] private GameObject _questsScreen;
-    [SerializeField] private ButtonHandler _inventoryBtn;
-    [SerializeField] private ButtonHandler _healthBtn;
-    [SerializeField] private ButtonHandler _questsBtn;
+    [SerializeField] private Screen[] _screens;
     private ScreensCloser _screensCloser;
     
     private void Awake()
@@ -18,9 +24,12 @@ public class MenuShower : MonoBehaviour, IClosable
         _screensCloser = GameObject.FindObjectOfType<ScreensCloser>();
         _openBtn.AddListener(OpenMenu);
         _openBtn.RemoveListener(CloseScreen);
-        _inventoryBtn.AddListener(OpenInventory);
-        _healthBtn.AddListener(OpenHealthScreen);
-        _questsBtn.AddListener(OpenQuestsScreen);
+
+        for (int i = 0; i < _screens.Length; i++)
+        {
+            _screens[i].ButtonHandler.SetIndex(i);
+            _screens[i].ButtonHandler.AddListener(SelectScreen);
+        }
     }
 
     private void OpenMenu()
@@ -30,7 +39,7 @@ public class MenuShower : MonoBehaviour, IClosable
         _openBtn.AddListener(CloseScreen);
         _joystick.enabled = false;
         _menu.SetActive(true);
-        OpenInventory();
+        SelectScreen(0);
     }
 
     public void CloseScreen()
@@ -41,24 +50,13 @@ public class MenuShower : MonoBehaviour, IClosable
         _menu.SetActive(false);
     }
 
-    private void OpenInventory()
+    private void SelectScreen(int i)
     {
-        _inventory.SetActive(true);
-        _healthScreen.SetActive(false);
-        _questsScreen.SetActive(false);
-    }
+        foreach (Screen screen in _screens)
+        {
+            screen.GameObject.SetActive(false);
+        }
 
-    private void OpenHealthScreen()
-    {
-        _inventory.SetActive(false);
-        _healthScreen.SetActive(true);
-        _questsScreen.SetActive(false);
-    }
-
-    private void OpenQuestsScreen()
-    {
-        _inventory.SetActive(false);
-        _healthScreen.SetActive(false);
-        _questsScreen.SetActive(true);
+        _screens[i].GameObject.SetActive(true);
     }
 }

@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: Effect_Vomit
   m_EditorClassIdentifier: 
   _name: Vomit
-  _description: 'Disgorging the contents of the stomach through the mouth.
+  _description: 'Vomitting.
 
-    (-30%
-    thirst regeneration)'
+    ( -10% Search, -10% Harvest, -20% Hydration, -1
+    HP/min)'
+  _buffs:
+  - _statToChange: 4
+    _change: -0.2
+  - _statToChange: 0
+    _change: -0.1
+  - _statToChange: 1
+    _change: -0.1
+  - _statToChange: 2
+    _change: -1

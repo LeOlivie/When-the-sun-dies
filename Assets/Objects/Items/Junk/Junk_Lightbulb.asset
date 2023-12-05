@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae2ce9b28a06014b963bf2d54717fd4, type: 3}
+  m_Name: Junk_Lightbulb
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 159b7be8d72055242a95447357ee5a7e, type: 3}
+  _name: Lightbulb
+  _description: In these trying times it can save a life.
+  _weight: 0.1
+  _maxInStack: 8
+  _isUsable: 0
+  _itemsToAddAfterUse: []
+  _lootPointsToSpawn: 150
+  _kcalPrice: 100
+  _mlPrice: 60

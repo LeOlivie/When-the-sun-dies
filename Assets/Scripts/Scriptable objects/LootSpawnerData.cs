@@ -5,7 +5,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "LootSpawnerData", menuName = "ScriptableObjects/LootSpawnerData", order = 2)]
 public class LootSpawnerData : ScriptableObject
 {
-    public enum ContainerSizeEnum : ushort { size2X2 = 4, size2X3 = 6, size3X3 = 9 }
+    public enum ContainerSizeEnum : int { size2X2 = 4, size2X3 = 6, size3X3 = 9, size3x4 = 12, size4x4 = 16}
 
     [Serializable]
     private struct ItemSpawnData

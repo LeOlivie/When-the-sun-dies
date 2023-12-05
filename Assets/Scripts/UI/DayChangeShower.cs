@@ -15,9 +15,9 @@ public class DayChangeShower : MonoBehaviour
 
     private void CheckDayChange()
     {
-        int time = GlobalRepository.GlobalTime;
-        if (time - time / 1440 * 1440 == 0)
+        if (GlobalRepository.ShowDayChange)
         {
+            GlobalRepository.ShowDayChange = false;
             this.gameObject.SetActive(true);
             StartCoroutine(ShowDayChange());
         }

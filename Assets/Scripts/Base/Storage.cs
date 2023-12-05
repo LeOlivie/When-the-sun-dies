@@ -25,7 +25,7 @@ public class Storage : IUpgradable
     private int _upgradeTimeLeft;
     private uint _currLevel;
     private bool _isBeingUpgraded;
-    private ItemContainer _itemContainer = new ItemContainer(4);
+    private ItemContainer _itemContainer = new ItemContainer(9);
 
     public delegate void OnUpgradedDelegate();
     public event OnUpgradedDelegate OnUpgradedEvent;
