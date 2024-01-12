@@ -32,12 +32,13 @@ public class LootSpawnerData : ScriptableObject
 
     public Item[] GetSpawnedItems()
     {
-        int lootPointsLeft = _lootPointsMax;
+        int lootPointsLeft = Mathf.RoundToInt(_lootPointsMax * GlobalRepository.SystemVars.Difficulty.LootAmbulanceMultiplier);
         List<Item> items = new List<Item>();
 
         foreach (ItemSpawnData spawnData in _itemSpawnDatas)
         {
-            if (UnityEngine.Random.Range(0, 100) <= spawnData.SpawnChance && spawnData.ItemData.LootPointsToSpawn * spawnData.Count <= lootPointsLeft)
+            float spawnChance = spawnData.SpawnChance * GlobalRepository.SystemVars.Difficulty.LootSpawnChanceMultiplier;
+            if (UnityEngine.Random.Range(0, 100) <= spawnChance && spawnData.ItemData.LootPointsToSpawn * spawnData.Count <= lootPointsLeft)
             {
                 lootPointsLeft -= spawnData.ItemData.LootPointsToSpawn * spawnData.Count;
                 items.Add(new Item(spawnData.ItemData, spawnData.Count));

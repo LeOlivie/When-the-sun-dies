@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "BookData", menuName = "ScriptableObjects/Items/BookData", order = 2)]
 public class BookData : ItemData
 {
+    [Space, Header("Book info")]
     [SerializeField] private int _timeToRead;
     [SerializeField] private GlobalRepository.SkillType _skillType;
 
@@ -28,18 +30,23 @@ public class BookData : ItemData
 
         info += "Skill: " + _skillType.ToString() + "\n";
 
-        info += string.Format("<sprite name=\"TimeIcon\"> {0}:{1}", hrsToRead,minsToRead);
+        info += string.Format("<sprite name=\"TimeIcon\"> {0}:{1}  ", hrsToRead,minsToRead);
 
-        info += "  <sprite name=\"WeightIcon\">" + Weight + "kg";
+        info += "<sprite name=\"WeightIcon\">" + Weight + "kg";
 
         return info;
     }
 
     public override void Use()
     {
+        if (SceneManager.GetActiveScene().name == "Base")
+        {
+            return;
+        }
+
         foreach (Item item in this.ItemsToAddAfterUse)
         {
-            GlobalRepository.Inventory.AddItem(item, false);
+            GlobalRepository.PlayerVars.Inventory.AddItem(item, false);
         }
 
         GameObject.FindObjectOfType<ReadScreenShower>(true).OpenScreen(this);

@@ -15,8 +15,7 @@ MonoBehaviour:
   _name: Vomit
   _description: 'Vomitting.
 
-    ( -10% Search, -10% Harvest, -20% Hydration, -1
-    HP/min)'
+    (-10% Search, -10% Harvest, -20% Hydration, -1 HP/min)'
   _buffs:
   - _statToChange: 4
     _change: -0.2

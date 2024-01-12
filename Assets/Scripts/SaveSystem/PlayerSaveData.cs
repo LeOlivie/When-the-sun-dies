@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections.Generic;
+using Statuses;
 
 namespace SaveDatas {
 
@@ -28,21 +30,33 @@ namespace SaveDatas {
         public QuestSaveData QuestSave;
         public int QuestsProgress;
         public DifficultyData DifficultyData;
+        public List<StatusSaveData> statusSaveDatas = new List<StatusSaveData>();
+        public float Health;
+        public bool IsStartKitReceived;
+        public List<string> LastEatenFood = new List<string>();
 
         public PlayerSaveData(Vector3 playerPos, ContainerSaveData inventorySaveData)
         {
             PlayerPos = new Vec3(playerPos.x, playerPos.y, playerPos.z);
-            Calories = GlobalRepository.Kcal;
-            Water = GlobalRepository.Water;
+            Calories = GlobalRepository.PlayerVars.KCal;
+            Water = GlobalRepository.PlayerVars.KCal;
             InventorySaveData = inventorySaveData;
-            GlobalTime = GlobalRepository.GlobalTime;
-            QuestsProgress = GlobalRepository.QuestsProgress;
-            DifficultyData = GlobalRepository.Difficulty;
+            GlobalTime = GlobalRepository.SystemVars.GlobalTime;
+            QuestsProgress = GlobalRepository.PlayerVars.QuestsProgress;
+            DifficultyData = GlobalRepository.SystemVars.Difficulty;
             QuestSave = null;
+            Health = GlobalRepository.PlayerVars.Health;
+            IsStartKitReceived = GlobalRepository.SystemVars.IsStartKitReceived;
+            LastEatenFood = GlobalRepository.PlayerVars.LastEatenFood;
 
-            if (GlobalRepository.ActiveQuest != null)
+            if (GlobalRepository.SystemVars.ActiveQuest != null)
             {
-                QuestSave = new QuestSaveData(GlobalRepository.ActiveQuest);
+                QuestSave = new QuestSaveData(GlobalRepository.SystemVars.ActiveQuest);
+            }
+
+            foreach (Status status in GlobalRepository.PlayerVars.ActiveStatuses)
+            {
+                statusSaveDatas.Add(new StatusSaveData(status));
             }
         }
 

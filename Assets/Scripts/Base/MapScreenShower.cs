@@ -93,12 +93,12 @@ public class MapScreenShower : MonoBehaviour, IClosable
         {
             if (locationClusterButton.LocationClusterData is EventLocClusterData)
             {
-                bool isEventActive = _radio.ActiveEventLocCluster != null && _radio.ActiveEventLocCluster == locationClusterButton.LocationClusterData && _radio.EventSwitchOffTime > GlobalRepository.GlobalTime;
+                bool isEventActive = _radio.ActiveEventLocCluster != null && _radio.ActiveEventLocCluster == locationClusterButton.LocationClusterData && _radio.EventSwitchOffTime > GlobalRepository.SystemVars.GlobalTime;
                 locationClusterButton.LocationBtnHandler.gameObject.SetActive(isEventActive);
             }
         }
 
-        foreach (Item item in GlobalRepository.Inventory.Items)
+        foreach (Item item in GlobalRepository.PlayerVars.Inventory.Items)
         {
             if (item == null || item.ItemData == null)
             {
@@ -136,16 +136,16 @@ public class MapScreenShower : MonoBehaviour, IClosable
         }
 
         _raidTime = Mathf.FloorToInt(_selectedLocation.Distance / 2f * 60) * (-2);
-        int globalTime = GlobalRepository.GlobalTime - GlobalRepository.GlobalTime / 1440 * 1440;
+        int globalTime = GlobalRepository.SystemVars.GlobalTime - GlobalRepository.SystemVars.GlobalTime / 1440 * 1440;
 
-        if (globalTime < GlobalRepository.Difficulty.ScavTimeEnd * 60) //Dawn
+        if (globalTime < GlobalRepository.SystemVars.Difficulty.ScavTimeEnd * 60) //Dawn
         {
-            _raidTime += GlobalRepository.Difficulty.ScavTimeEnd * 60 - globalTime;
+            _raidTime += GlobalRepository.SystemVars.Difficulty.ScavTimeEnd * 60 - globalTime;
         }
-        else if (globalTime >= GlobalRepository.Difficulty.ScavTimeStart * 60) //Sunset
+        else if (globalTime >= GlobalRepository.SystemVars.Difficulty.ScavTimeStart * 60) //Sunset
         {
             _raidTime += 24 * 60 - globalTime;
-            _raidTime += GlobalRepository.Difficulty.ScavTimeEnd * 60;
+            _raidTime += GlobalRepository.SystemVars.Difficulty.ScavTimeEnd * 60;
         }
 
         if (_raidTime <= 0)
@@ -222,7 +222,7 @@ public class MapScreenShower : MonoBehaviour, IClosable
         string timeInfo = string.Format("<size=30>{0}</size>\n\n\n", _selectedLocation.Name);
         timeInfo += TimeConverter.InsertTime("Time to arrive: {0}:{1}\n\n", Mathf.FloorToInt(_selectedLocation.Distance / 2f * 60), TimeConverter.InsertionType.HourMinute);
         timeInfo += TimeConverter.InsertTime("Time to return: {0}:{1}\n\n", Mathf.FloorToInt(_selectedLocation.Distance / 2f * 60), TimeConverter.InsertionType.HourMinute);
-        timeInfo += $"Safe scavange time: {GlobalRepository.Difficulty.ScavTimeStart}:00-0{GlobalRepository.Difficulty.ScavTimeEnd}:00\n\n";
+        timeInfo += $"Safe scavange time: {GlobalRepository.SystemVars.Difficulty.ScavTimeStart}:00-0{GlobalRepository.SystemVars.Difficulty.ScavTimeEnd}:00\n\n";
         
         if(_raidTime <= 0)
         {
@@ -281,7 +281,7 @@ public class MapScreenShower : MonoBehaviour, IClosable
         {
             _lightSourceInfoText.text += $"Disposable item\n{lsData.DisposableItem.ItemData.Name}";
 
-            if (!GlobalRepository.Inventory.CheckIfHas(lsData.DisposableItem.ItemData, lsData.DisposableItem.Count))
+            if (!GlobalRepository.PlayerVars.Inventory.CheckIfHas(lsData.DisposableItem.ItemData, lsData.DisposableItem.Count))
             {
                 _selectBtnText.text = "Depart";
                 _selectBtnText.color = _unavailableColor;
@@ -317,8 +317,8 @@ public class MapScreenShower : MonoBehaviour, IClosable
 
         GameObject.FindObjectOfType<Saver>().SavePlayer();
         GameObject.FindObjectOfType<Saver>().SaveBase();
-        GlobalRepository.SetLightSourceData((LightSourceData)_lightSources[_lightSourceIndex].ItemData);
-        GlobalRepository.Inventory.RemoveItem(((LightSourceData)_lightSources[_lightSourceIndex].ItemData).DisposableItem, 1);
+        GlobalRepository.SystemVars.LightSourceData =(LightSourceData)_lightSources[_lightSourceIndex].ItemData;
+        GlobalRepository.PlayerVars.Inventory.RemoveItem(((LightSourceData)_lightSources[_lightSourceIndex].ItemData).DisposableItem, 1);
         GlobalRepository.ChangeLocation(_selectedLocation, _raidTime,  Mathf.CeilToInt(_selectedLocation.Distance / 2f * 60f));
         GlobalRepository.OnTimeUpdated -= UpdateScavTime;
     }

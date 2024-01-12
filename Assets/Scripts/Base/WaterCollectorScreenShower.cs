@@ -33,7 +33,7 @@ public class WaterCollectorScreenShower : MonoBehaviour, IClosable
         _joystick.enabled = false;
         _waterCollector = waterCollector;
         _upgrader.ShowUpgradeMenu(_waterCollector, OpenWaterCollectorMenu);
-        GlobalRepository.Inventory.ContainerUpdated += ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated += ShowInventory;
         GlobalRepository.CountWeight();
         OpenWaterCollectorMenu();
         ShowInventory();
@@ -44,7 +44,7 @@ public class WaterCollectorScreenShower : MonoBehaviour, IClosable
     {
         _upgrader.CloseUpgradeMenu();
         _joystick.enabled = true;
-        GlobalRepository.Inventory.ContainerUpdated -= ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated -= ShowInventory;
         _collectWaterBtn.RemoveListener(CollectWaterInBottle);
         GlobalRepository.OnTimeUpdated -= ShowInfo;
         this.gameObject.SetActive(false);
@@ -52,9 +52,9 @@ public class WaterCollectorScreenShower : MonoBehaviour, IClosable
 
     private void ShowInventory()
     {
-        for (int i = 0; i < GlobalRepository.Inventory.Items.Length; i++)
+        for (int i = 0; i < GlobalRepository.PlayerVars.Inventory.Items.Length; i++)
         {
-            _inventoryItemShowers[i].ShowItem(GlobalRepository.Inventory.Items[i]);
+            _inventoryItemShowers[i].ShowItem(GlobalRepository.PlayerVars.Inventory.Items[i]);
         }
     }
 
@@ -67,12 +67,12 @@ public class WaterCollectorScreenShower : MonoBehaviour, IClosable
     private void ShowInfo()
     {
         _waterCollector.CheckWaterCollection(); 
-        int timeToCollect = (int)(_waterCollector.WaterCollectionStart + _waterCollector.TimeToCollectWater - GlobalRepository.GlobalTime);
+        int timeToCollect = (int)(_waterCollector.WaterCollectionStart + _waterCollector.TimeToCollectWater - GlobalRepository.SystemVars.GlobalTime);
         _infoText.text = TimeConverter.InsertTime("Time to collect water: {0}:{1}\n\n",timeToCollect,TimeConverter.InsertionType.HourMinute);
         _infoText.text += $"Water collected: {_waterCollector.WaterCollected}/{_waterCollector.MaxWaterAmount} bottles.";
         _collectWaterBtn.RemoveListener(CollectWaterInBottle);
 
-        if (GlobalRepository.Inventory.CheckIfHas(_emptyBottleItem.ItemData, 1) && GlobalRepository.Inventory.CheckIfCanFit(_waterBottleItem) && _waterCollector.WaterCollected > 0)
+        if (GlobalRepository.PlayerVars.Inventory.CheckIfHas(_emptyBottleItem.ItemData, 1) && GlobalRepository.PlayerVars.Inventory.CheckIfCanFit(_waterBottleItem) && _waterCollector.WaterCollected > 0)
         {
             _collectWaterBtn.AddListener(CollectWaterInBottle);
         }
@@ -80,10 +80,10 @@ public class WaterCollectorScreenShower : MonoBehaviour, IClosable
 
     private void CollectWaterInBottle()
     {
-        if (GlobalRepository.Inventory.CheckIfHas(_emptyBottleItem.ItemData, 1) && GlobalRepository.Inventory.CheckIfCanFit(_waterBottleItem) && _waterCollector.WaterCollected > 0)
+        if (GlobalRepository.PlayerVars.Inventory.CheckIfHas(_emptyBottleItem.ItemData, 1) && GlobalRepository.PlayerVars.Inventory.CheckIfCanFit(_waterBottleItem) && _waterCollector.WaterCollected > 0)
         {
-            GlobalRepository.Inventory.RemoveItem(_emptyBottleItem, 1);
-            GlobalRepository.Inventory.AddItem(_waterBottleItem, false);
+            GlobalRepository.PlayerVars.Inventory.RemoveItem(_emptyBottleItem, 1);
+            GlobalRepository.PlayerVars.Inventory.AddItem(_waterBottleItem, false);
             _waterCollector.AddWater(-1);
         }
     }

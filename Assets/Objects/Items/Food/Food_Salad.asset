@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83de7a3c44c1e3b4d8185fee3c64ea76, type: 3}
+  m_Name: Food_Salad
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: aa5d304858c870d44b4e303d2f1235f8, type: 3}
+  _name: Salad
+  _description: Fresh bowl of low carbs salad
+  _weight: 0.15
+  _maxInStack: 2
+  _isUsable: 1
+  _itemsToAddAfterUse: []
+  _lootPointsToSpawn: 0
+  _kcalPrice: 250
+  _mlPrice: 30
+  _calories: 100
+  _water: 15
+  _maxHappinessAdd: 7
+  _minHappinessAdd: 3
+  _statusSpawnChances: []

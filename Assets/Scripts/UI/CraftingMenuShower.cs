@@ -30,7 +30,7 @@ public class CraftingMenuShower : MonoBehaviour, IClosable
         _craftingStation = craftingStation;
         _upgrader.ShowUpgradeMenu(_craftingStation, OpenCraftsMenu);
         _craftingScr.SetActive(true);
-        GlobalRepository.Inventory.ContainerUpdated += ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated += ShowInventory;
         GlobalRepository.CountWeight();
         OpenCraftsMenu();
         ShowInventory();
@@ -44,15 +44,15 @@ public class CraftingMenuShower : MonoBehaviour, IClosable
         _upgrader.CloseUpgradeMenu();
         _joystick.enabled = true;
         _craftingScr.SetActive(false);
-        GlobalRepository.Inventory.ContainerUpdated -= ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated -= ShowInventory;
         _crafter.PauseCraft();
     }
 
     private void ShowInventory()
     {
-        for (int i = 0; i < GlobalRepository.Inventory.Items.Length; i++)
+        for (int i = 0; i < GlobalRepository.PlayerVars.Inventory.Items.Length; i++)
         {
-            _inventoryItemShowers[i].ShowItem(GlobalRepository.Inventory.Items[i]);
+            _inventoryItemShowers[i].ShowItem(GlobalRepository.PlayerVars.Inventory.Items[i]);
         }
     }
 

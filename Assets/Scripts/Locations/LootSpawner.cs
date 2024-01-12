@@ -44,7 +44,7 @@ public class LootSpawner : MonoBehaviour
     {
         if (!_lootScreen.activeInHierarchy)
         {
-            _lootScreenShower.OpenLootScreen(_itemContainer, _lootSpawnerData.ContainerName, _isLooted, OnLooted, _lootSpawnerData.LootTime * GlobalRepository.LightSourceData.SearchSpeed);
+            _lootScreenShower.OpenLootScreen(_itemContainer, _lootSpawnerData.ContainerName, _isLooted, OnLooted, _lootSpawnerData.LootTime * GlobalRepository.SystemVars.LightSourceData.SearchSpeed);
         }
         else
         {

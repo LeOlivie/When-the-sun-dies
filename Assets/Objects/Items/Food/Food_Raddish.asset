@@ -15,7 +15,7 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 9f49be13d1325ad49b7efaab77c833fe, type: 3}
   _name: Raddish
   _description: Raddish
-  _weight: 0.8
+  _weight: 0.05
   _maxInStack: 5
   _isUsable: 1
   _itemsToAddAfterUse: []
@@ -26,3 +26,4 @@ MonoBehaviour:
   _water: -50
   _maxHappinessAdd: 4
   _minHappinessAdd: 1
+  _statusSpawnChances: []

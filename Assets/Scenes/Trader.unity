@@ -950,38 +950,111 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interractButton: {fileID: 280073020}
-  _traderLoot:
-  - _itemData: {fileID: 11400000, guid: 6336380fcedb4004882312d7fae14436, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: f76e98f1addb2944fa0f1fac17ffee9a, type: 2}
-    _count: 3
-  - _itemData: {fileID: 11400000, guid: 3e5779b8079b72e43ab9e00d4d2b1473, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: e9dbee5ccc8a042459c77230e04cd800, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: bb3a0141975923640bd3b9c681ce9329, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: 46b07d2fe436f6b4a8f7f6c491e65563, type: 2}
-    _count: 5
-  - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
-    _count: 3
-  - _itemData: {fileID: 11400000, guid: 6f1ccec17bec29045868d29c6fe9e1a7, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: 1b752bd194d97d94787a8564481228ba, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: 0d3bc6067a2857c469109da5bf8aa3f1, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: f7b45f28db5f55144bbfe3946eb3b99f, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: 49fa1c0295ad71b459ee4b7ce3153121, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: d3ae7c80f0a5211448840db19fd995fe, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: 731ca4f726b078a42bc6999137a55658, type: 2}
-    _count: 1
-  - _itemData: {fileID: 11400000, guid: 544b56a3faf7e814ba44ec9b29856af7, type: 2}
-    _count: 1
   _traderMenuManager: {fileID: 1690170993}
+  _tradeItemsGroups:
+  - _items:
+    - _itemData: {fileID: 11400000, guid: 03ac1570e6878d743971ebd1cd048c9e, type: 2}
+      _count: 2
+    - _itemData: {fileID: 11400000, guid: f76e98f1addb2944fa0f1fac17ffee9a, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+      _count: 3
+    - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
+      _count: 3
+    - _itemData: {fileID: 11400000, guid: 274a5b064e8a5b6408a4d7dec4858258, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 274a5b064e8a5b6408a4d7dec4858258, type: 2}
+      _count: 2
+    - _itemData: {fileID: 11400000, guid: 531e231ca5e8f874a8d9c8001c8b3374, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: dfaea22c2e7ee3840a1ac4c57f2ea177, type: 2}
+      _count: 3
+    - _itemData: {fileID: 11400000, guid: bf8836ccb3c663c46808b39d67bf8df8, type: 2}
+      _count: 2
+    - _itemData: {fileID: 11400000, guid: d3a49b563efed214494c285d80ba5cfb, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 1551cae61deceac4bb974bf74301ecb5, type: 2}
+      _count: 2
+    - _itemData: {fileID: 11400000, guid: a3531a83bd38ecb48890fb56eb89cc35, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: e8e84cf7ec968ed4db77d78f84afda1f, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 34d3e5f4a6979f7469a16e63a4a6c979, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 0d3bc6067a2857c469109da5bf8aa3f1, type: 2}
+      _count: 1
+    _minAmount: 6
+    _maxAmount: 8
+  - _items:
+    - _itemData: {fileID: 11400000, guid: 3e5779b8079b72e43ab9e00d4d2b1473, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 9252b5d086258ef469620b0ce7fde252, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 49fa1c0295ad71b459ee4b7ce3153121, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: a7762881a954a45499d2a036fdbf7de5, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: dab8a6a84487839449470b480e5779be, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 955440116049e9744ab54f27be488363, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 687e6b8138a2ce848b2fad872069244c, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 3cdb7dca9a1cf174393a7ceb65b0ca37, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: e3b7ae565e6f43349b877081d8cbc72d, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 45964dd8d2ca5e44aa30730d2ca0e38c, type: 2}
+      _count: 1
+    _minAmount: 4
+    _maxAmount: 6
+  - _items:
+    - _itemData: {fileID: 11400000, guid: d6c70d0e1ca721e4fa3d8a77134b0a18, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: bb3a0141975923640bd3b9c681ce9329, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 4171ebc1104afa247a09b51a0a399405, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
+      _count: 5
+    - _itemData: {fileID: 11400000, guid: 46b07d2fe436f6b4a8f7f6c491e65563, type: 2}
+      _count: 6
+    - _itemData: {fileID: 11400000, guid: 58972b5158d0e0248974c97ae6e79077, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: d6f4001a4b688574d99e03c08781f42c, type: 2}
+      _count: 2
+    - _itemData: {fileID: 11400000, guid: fb26c626f7ac9b643bf33a59a4eca0fa, type: 2}
+      _count: 10
+    - _itemData: {fileID: 11400000, guid: 51e6ec4bd56e88441ba8a1c33c07ed24, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: b2d382e5dadc7754a9494b6488fe05f4, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 39c37daf75dbe3347a4c1dd5077ce48c, type: 2}
+      _count: 3
+    - _itemData: {fileID: 11400000, guid: e18a4f57421eba649b683f17b8252e70, type: 2}
+      _count: 5
+    - _itemData: {fileID: 11400000, guid: 41d59dd910230aa41b505b0aff9c39aa, type: 2}
+      _count: 15
+    - _itemData: {fileID: 11400000, guid: e8fda8347d5ad7644a0bac62b3e3487f, type: 2}
+      _count: 2
+    - _itemData: {fileID: 11400000, guid: 9f0da04ced3d06243994de00bdd66aeb, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: e9dbee5ccc8a042459c77230e04cd800, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: 05258ec3340e2c942b66c5df75bc8ebb, type: 2}
+      _count: 10
+    - _itemData: {fileID: 11400000, guid: b2deec2f732d3e0469061f901246b373, type: 2}
+      _count: 3
+    - _itemData: {fileID: 11400000, guid: 80db4f0022a44e243ab3b9ffe5da5f56, type: 2}
+      _count: 1
+    - _itemData: {fileID: 11400000, guid: d7fe16a943dc96348b63fe39414330ca, type: 2}
+      _count: 4
+    - _itemData: {fileID: 11400000, guid: c43930d07f3f20f4bb3e2bba458e763e, type: 2}
+      _count: 2
+    - _itemData: {fileID: 11400000, guid: 9fef963cbdfbc3d46ba48cde1ee64d1c, type: 2}
+      _count: 1
+    _minAmount: 6
+    _maxAmount: 10
 --- !u!212 &66324385
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6233,7 +6306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345591703}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -5.0600004, y: -12.7895, z: 5.3007183}
+  m_LocalPosition: {x: -5.0600004, y: -12.8757, z: 5.3007183}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1473862357}
@@ -6257,7 +6330,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 8.960545, y: 0.50800675}
+    newSize: {x: 8.788073, y: 0.50800675}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
@@ -6310,7 +6383,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 8.960545, y: 0.50800675}
+  m_Size: {x: 8.788073, y: 0.50800675}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -11415,7 +11488,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1
-  m_PointLightOuterRadius: 9
+  m_PointLightOuterRadius: 15
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -18881,8 +18954,8 @@ Camera:
   m_GameObject: {fileID: 990202899}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.39991993, g: 0.4056604, b: 0.40101334, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -18899,7 +18972,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

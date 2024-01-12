@@ -38,7 +38,7 @@ public class TradingScreenShower : MonoBehaviour, IClosable
     {
         this.gameObject.SetActive(true);
         _traderContainer = traderContainer;
-        _playerContainer = GlobalRepository.Inventory;
+        _playerContainer = GlobalRepository.PlayerVars.Inventory;
         UpdateItemShowers();
 
         foreach (ItemShower itemShower in _traderItemShowers)

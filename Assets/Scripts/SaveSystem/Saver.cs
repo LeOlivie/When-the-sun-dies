@@ -38,7 +38,7 @@ public class Saver : MonoBehaviour
     public void SavePlayer()
     {
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
-        ContainerSaveData invSave = new ContainerSaveData(GlobalRepository.Inventory.Items);
+        ContainerSaveData invSave = new ContainerSaveData(GlobalRepository.PlayerVars.Inventory.Items);
         PlayerSaveData playerSaveData = new PlayerSaveData(playerPos, invSave);
         SaveLoadManager.Save<PlayerSaveData>("PlayerSave", playerSaveData);
         Debug.Log("Player data saved");
@@ -47,24 +47,23 @@ public class Saver : MonoBehaviour
     public void SaveLocation()
     {
         LootSpawner[] lootSpawners = GameObject.FindObjectsOfType<LootSpawner>(true);
-
         Harvester[] harvesters = GameObject.FindObjectsOfType<Harvester>(true);
 
-        SaveLoadManager.Save<LocationSaveData>(_saveName, new LocationSaveData(lootSpawners, harvesters));
+        LocationSaveData saveData = new LocationSaveData(_saveName, lootSpawners, harvesters);
+
+        SaveLoadManager.Save<LocationSaveData>(_saveName, saveData);
+        Debug.Log("Save time: " + saveData.SaveTime);
         Debug.Log("Location saved");
     }
 
     public void SaveBase()
     {
-        
-        
         Savable[] savables = GameObject.FindObjectsOfType<Savable>(true);
         SaveData[] saveDatas = new SaveData[savables.Length];
 
         for (int i = 0; i < savables.Length; i++)
         {
             saveDatas[i] = savables[i].GetSaveData();
-
         }
 
         SaveLoadManager.Save<BaseSaveData>(_baseName, new BaseSaveData(saveDatas));
@@ -96,6 +95,13 @@ public class Saver : MonoBehaviour
     public void LoadLocation()
     {
         LocationSaveData locSave = SaveLoadManager.Load<LocationSaveData>(_saveName);
+        Debug.Log("Save time: " + locSave.SaveTime);
+        if (locSave.SaveTime + GlobalRepository.SystemVars.Difficulty.LocationResetDelay * 1440 <= GlobalRepository.SystemVars.GlobalTime)
+        {
+            PlayerPrefs.DeleteKey(_saveName);
+            Debug.Log("Location reset");
+            return;
+        }
 
         for (int i = 0; i < locSave.LootSpawnerSaveDatas.Length; i++)
         {
@@ -107,6 +113,6 @@ public class Saver : MonoBehaviour
             GameObject.FindObjectsOfType<Harvester>(true)[i].LoadSaveData(locSave.HarvestSaves[i]);
         }
 
-            Debug.Log("Location loaded");
+        Debug.Log("Location loaded");
     }
 }

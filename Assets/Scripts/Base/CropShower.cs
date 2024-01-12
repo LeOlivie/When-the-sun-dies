@@ -46,7 +46,7 @@ public class CropShower : MonoBehaviour
 
         foreach (Item item in cropData.Requirements)
         {
-            if (!GlobalRepository.Inventory.CheckIfHas(item.ItemData, item.Count))
+            if (!GlobalRepository.PlayerVars.Inventory.CheckIfHas(item.ItemData, item.Count))
             {
                 _startGrowingBtn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = _unavailableColor;
                 return;

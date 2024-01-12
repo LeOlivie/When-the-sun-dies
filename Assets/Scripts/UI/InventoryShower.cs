@@ -18,30 +18,30 @@ public class InventoryShower : MonoBehaviour
         ShowInventory();
         _sortBtn.AddListener(SortInventory);
         _useBtn.AddListener(Use);
-        GlobalRepository.Inventory.ContainerUpdated += ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated += ShowInventory;
     }
 
     private void ShowInventory()
     {
-        for (int i = 0; i < GlobalRepository.Inventory.Items.Length; i++)
+        for (int i = 0; i < GlobalRepository.PlayerVars.Inventory.Items.Length; i++)
         {
-            _itemShowers[i].ShowItem(GlobalRepository.Inventory.Items[i]);
+            _itemShowers[i].ShowItem(GlobalRepository.PlayerVars.Inventory.Items[i]);
             _itemShowers[i].InspectDelegate = InspectItem;
         }
         GlobalRepository.CountWeight();
 
-        float r = 0.6f - 0.3f / GlobalRepository.MaxWeight * (GlobalRepository.MaxWeight - GlobalRepository.Weight);
-        float g = 0.6f - 0.3f / GlobalRepository.MaxWeight * GlobalRepository.Weight;
+        float r = 0.6f - 0.3f / GlobalRepository.SystemVars.MaxWeight * (GlobalRepository.SystemVars.MaxWeight - GlobalRepository.PlayerVars.Weight);
+        float g = 0.6f - 0.3f / GlobalRepository.SystemVars.MaxWeight * GlobalRepository.PlayerVars.Weight;
 
         _weightBar.color = new Color(r, g, 0.3f);
-        _weightBar.rectTransform.localScale = new Vector3(0.216f / GlobalRepository.MaxWeight * GlobalRepository.Weight, 0.216f, 0.216f);
+        _weightBar.rectTransform.localScale = new Vector3(0.216f / GlobalRepository.SystemVars.MaxWeight * GlobalRepository.PlayerVars.Weight, 0.216f, 0.216f);
 
-        _weightText.text = string.Format("{0}/{1} KG", GlobalRepository.Weight, GlobalRepository.MaxWeight);
+        _weightText.text = string.Format("{0}/{1} KG", GlobalRepository.PlayerVars.Weight, GlobalRepository.SystemVars.MaxWeight);
     }
 
     private void SortInventory()
     {
-        GlobalRepository.Inventory.Sort();
+        GlobalRepository.PlayerVars.Inventory.Sort();
     }
 
     private void InspectItem(Item item)

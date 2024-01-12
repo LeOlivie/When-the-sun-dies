@@ -28,12 +28,14 @@ public class MainMenu : MonoBehaviour
 
     private void NewGame()
     {
+        GlobalRepository.Reset();
         SceneManager.LoadScene("DifficultySelector");
         PlayerPrefs.DeleteAll();
     }
 
     private void Continue()
     {
+        GlobalRepository.Reset();
         _saver.LoadPlayer();
         SceneManager.LoadScene("Base");
     }

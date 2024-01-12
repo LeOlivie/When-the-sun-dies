@@ -67,7 +67,7 @@ public class TV : IUpgradable
         if (_watchTime >= 60)
         {
             _watchTime = 0;
-            GlobalRepository.AddHappiness(HappinessBoost);
+            GlobalRepository.PlayerVars.Happiness += HappinessBoost;
         }
     }
 

@@ -19,9 +19,9 @@ public class BarsShower : MonoBehaviour
 
     private void ShowStats()
     {
-        _kcalBar.transform.localScale = new Vector2(_barMaxScale / 2000 * GlobalRepository.Kcal, _kcalBar.transform.localScale.y);
-        _waterBar.transform.localScale = new Vector2(_barMaxScale / 2000 * GlobalRepository.Water, _waterBar.transform.localScale.y);
-        _kcalText.text = Mathf.RoundToInt(GlobalRepository.Kcal).ToString();
-        _waterText.text = Mathf.RoundToInt(GlobalRepository.Water).ToString();
+        _kcalBar.transform.localScale = new Vector2(_barMaxScale / 2000 * GlobalRepository.PlayerVars.KCal, _kcalBar.transform.localScale.y);
+        _waterBar.transform.localScale = new Vector2(_barMaxScale / 2000 * GlobalRepository.PlayerVars.Water, _waterBar.transform.localScale.y);
+        _kcalText.text = Mathf.RoundToInt(GlobalRepository.PlayerVars.KCal).ToString();
+        _waterText.text = Mathf.RoundToInt(GlobalRepository.PlayerVars.Water).ToString();
     }
 }

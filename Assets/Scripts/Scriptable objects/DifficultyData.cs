@@ -6,17 +6,24 @@ public class DifficultyData : ScriptableObject
     [SerializeField] private string _difficultyName;
     [SerializeField, TextArea] private string _difficultyDescription;
     [SerializeField] private Color32 _difficultyColor;
+
+    [Space,Header("Start kit")]
     [SerializeField] private string _startKitDescription;
     [SerializeField] private Item[] _startKit;
+
+    [Space, Header("World settings")]
     [SerializeField] private ushort _dayCycleLength;
     [SerializeField] private ushort _scavTimeStart;
     [SerializeField] private ushort _scavTimeEnd;
-    [SerializeField] private ushort _maxWeight;
-    [SerializeField] private sbyte _foodMemoryLength;
     [SerializeField, Tooltip("Maximum duration of a single weather type in hours."), Range(2,36)] private ushort _weatherMaxDuration;
-    [SerializeField, Tooltip("Hours of sleep for 1 day."), Range(0,24)] private ushort _sleepTimePerDay;
     [SerializeField] private float _lootAmbulanceMultiplier;
     [SerializeField] private float _lootSpawnChanceMultiplier;
+    [SerializeField, Tooltip("Set in days")] private int _locationResetDelay;
+
+    [Space,Header("Player settings")]
+    [SerializeField] private ushort _maxWeight;
+    [SerializeField] private sbyte _foodMemoryLength;
+    [SerializeField, Tooltip("Hours of sleep for 1 day."), Range(0,24)] private ushort _sleepTimePerDay;
     [SerializeField] private float _radioCooldownMultiplier;
 
     public string DifficultyName => _difficultyName;
@@ -34,4 +41,5 @@ public class DifficultyData : ScriptableObject
     public float LootAmbulanceMultiplier => _lootAmbulanceMultiplier;
     public float LootSpawnChanceMultiplier => _lootSpawnChanceMultiplier;
     public float RadioCooldownMultiplier => _radioCooldownMultiplier;
+    public int LocationResetDelay => _locationResetDelay;
 }

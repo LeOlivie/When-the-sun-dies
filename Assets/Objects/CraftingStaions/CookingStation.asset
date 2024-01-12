@@ -48,7 +48,9 @@ MonoBehaviour:
       _count: 1
     _upgradeTime: 570
     _upgradedSprite: {fileID: -3853082709363784740, guid: 0e0b59eb216641f4f9f2438454a7f6b3, type: 3}
-  - _recipies: []
+  - _recipies:
+    - {fileID: 11400000, guid: 5416fa58e0571d847b7ef22fbe5e1a2e, type: 2}
+    - {fileID: 11400000, guid: 45789381de7bf8f4d864f942d12ebef4, type: 2}
     _skillRequirements:
     - _skillType: 3
       _skillLevel: 2

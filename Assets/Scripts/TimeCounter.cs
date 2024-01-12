@@ -1,25 +1,36 @@
 using UnityEngine;
 using System.Collections;
 using Statuses;
+using System;
+using UnityEngine.SceneManagement;
 
 public class TimeCounter : MonoBehaviour
 {
+    [Serializable]
+    private struct StatusCheck
+    {
+        [SerializeField] private DependentVarEnum _dependentVar;
+        [SerializeField] private float _triggerValue;
+        [SerializeField] private StatusData _data;
+
+        public DependentVarEnum DependentVar => _dependentVar;
+        public StatusData Data => _data;
+        public float TriggerValue => _triggerValue;
+    }
+
     private float _oneMinuteLength;
     private float _kcalDecrease = -2000 / 1440f;
     private float _waterDecrease = -2000 / 1440f;
     private float _fatigueDacrease = -100 / 1440f;
     private float _happinessDecrease = -50 / 4320f;
-    [SerializeField] private StatusData _starvationStatusData;
-    [SerializeField] private StatusData _dehydrationStatusData;
-    [SerializeField] private StatusData _depressionStatusData;
-    [SerializeField] private StatusData _fatigueStatusData;
+    [SerializeField] private StatusCheck[] _statusChecks;
 
     public float KcalDecreaseBuff = 1;
     public float WaterDecreaseBebuff = 1;
 
     private void Start()
     {
-        _oneMinuteLength = GlobalRepository.Difficulty.DayCycleLength / 24f;
+        _oneMinuteLength = GlobalRepository.SystemVars.Difficulty.DayCycleLength / 24f;
         StartCoroutine(AddTime());
     }
 
@@ -33,7 +44,7 @@ public class TimeCounter : MonoBehaviour
             float happinessDebuff = 0;
             float HPDebuff = 0;
 
-            foreach (Status status in GlobalRepository.ActiveStatuses)
+            foreach (Status status in GlobalRepository.PlayerVars.ActiveStatuses)
             {
                 foreach (EffectData effectData in status.GetActiveEffects())
                 {
@@ -64,26 +75,26 @@ public class TimeCounter : MonoBehaviour
 
             yield return new WaitForSeconds(_oneMinuteLength);
             GlobalRepository.AddTime(1);
-            GlobalRepository.AddKcal(_kcalDecrease * KcalDecreaseBuff * (1 - kcalDebuff));
-            GlobalRepository.AddWater(_waterDecrease * WaterDecreaseBebuff * (1 - mlDebuff));
-            GlobalRepository.AddFatigue(_fatigueDacrease * (1 - fatigueDebuff));
-            GlobalRepository.AddHappiness(_happinessDecrease * (1 - happinessDebuff));
+            GlobalRepository.PlayerVars.KCal += _kcalDecrease * KcalDecreaseBuff * (1 - kcalDebuff);
+            GlobalRepository.PlayerVars.Water += _waterDecrease * WaterDecreaseBebuff * (1 - mlDebuff);
+            GlobalRepository.PlayerVars.Fatigue += _fatigueDacrease * (1 - fatigueDebuff);
+            GlobalRepository.PlayerVars.Happiness += _happinessDecrease * (1 - happinessDebuff);
+            GlobalRepository.PlayerVars.Health += HPDebuff;
 
-            if (GlobalRepository.Kcal <= 0)
+            foreach (StatusCheck statusCheck in _statusChecks)
             {
-                GlobalRepository.AddStatus(new StarvationStatus(_starvationStatusData));
+                float value = (float)GlobalRepository.PlayerVars.GetType().GetProperty(statusCheck.DependentVar.ToString()).GetValue(GlobalRepository.PlayerVars);
+                if (value <= statusCheck.TriggerValue)
+                {
+                    GlobalRepository.AddStatus(new Status(statusCheck.Data));
+                }
             }
-            if (GlobalRepository.Water <= 0)
+            Debug.Log(GlobalRepository.PlayerVars.Health);
+
+            if (GlobalRepository.PlayerVars.Health <= 0)
             {
-                GlobalRepository.AddStatus(new DehydrationStatus(_dehydrationStatusData));
-            }
-            if (GlobalRepository.Happiness <= 0)
-            {
-                GlobalRepository.AddStatus(new DepressionStatus(_depressionStatusData));
-            }
-            if (GlobalRepository.Fatigue <= 15)
-            {
-                GlobalRepository.AddStatus(new FatigueStatus(_fatigueStatusData));
+                Time.timeScale = 1;
+                SceneManager.LoadScene("DeathScene");
             }
         }
     }

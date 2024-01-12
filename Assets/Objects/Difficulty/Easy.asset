@@ -43,10 +43,11 @@ MonoBehaviour:
   _dayCycleLength: 40
   _scavTimeStart: 21
   _scavTimeEnd: 6
-  _maxWeight: 20
-  _foodMemoryLength: 2
   _weatherMaxDuration: 24
-  _sleepTimePerDay: 6
   _lootAmbulanceMultiplier: 1.2
   _lootSpawnChanceMultiplier: 1.2
+  _locationResetDelay: 7
+  _maxWeight: 20
+  _foodMemoryLength: 2
+  _sleepTimePerDay: 6
   _radioCooldownMultiplier: 0.8

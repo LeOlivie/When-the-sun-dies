@@ -40,7 +40,7 @@ public class HydroponicsScreenShower : MonoBehaviour, IClosable
         _joystick.enabled = false;
         _hydroponics = hydroponics;
         _upgrader.ShowUpgradeMenu(_hydroponics, OpenCropsMenu);
-        GlobalRepository.Inventory.ContainerUpdated += ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated += ShowInventory;
         GlobalRepository.CountWeight();
         OpenCropsMenu();
         ShowInventory();
@@ -56,15 +56,15 @@ public class HydroponicsScreenShower : MonoBehaviour, IClosable
     {
         _upgrader.CloseUpgradeMenu();
         _joystick.enabled = true;
-        GlobalRepository.Inventory.ContainerUpdated -= ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated -= ShowInventory;
         this.gameObject.SetActive(false);
     }
 
     private void ShowInventory()
     {
-        for (int i = 0; i < GlobalRepository.Inventory.Items.Length; i++)
+        for (int i = 0; i < GlobalRepository.PlayerVars.Inventory.Items.Length; i++)
         {
-            _inventoryItemShowers[i].ShowItem(GlobalRepository.Inventory.Items[i]);
+            _inventoryItemShowers[i].ShowItem(GlobalRepository.PlayerVars.Inventory.Items[i]);
         }
     }
 
@@ -79,7 +79,7 @@ public class HydroponicsScreenShower : MonoBehaviour, IClosable
     {
         foreach (Item item in _hydroponics.CropsDatas[index].Requirements)
         {
-            GlobalRepository.Inventory.RemoveItem(item, item.Count);
+            GlobalRepository.PlayerVars.Inventory.RemoveItem(item, item.Count);
         }
 
         _hydroponics.StartGrowingCrop(_hydroponics.CropsDatas[index]);

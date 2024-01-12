@@ -18,18 +18,19 @@ public class StatusScreenShower : MonoBehaviour, IClosable
             buttonHandler.AddListener(ShowEffects);
         }
 
-        if (GlobalRepository.ActiveStatuses.Count == 0)
+        if (GlobalRepository.PlayerVars.ActiveStatuses.Count == 0)
         {
             _effectsText.text = "No active statuses";
             return;
         }
 
-        _effectsText.text = "-Select status-";
-        for (int i = 0; i < GlobalRepository.ActiveStatuses.Count; i++)
+        for (int i = 0; i < GlobalRepository.PlayerVars.ActiveStatuses.Count; i++)
         {
             _buttons[i].gameObject.SetActive(true);
             _buttons[i].SetIndex(i);
-            _buttons[i].transform.GetComponentInChildren<TextMeshProUGUI>().text = GlobalRepository.ActiveStatuses[i].Data.Name;
+
+            string name = $"<sprite name=\"{GlobalRepository.PlayerVars.ActiveStatuses[i].Data.IconName}\"> " + GlobalRepository.PlayerVars.ActiveStatuses[i].Data.Name;
+            _buttons[i].transform.GetComponentInChildren<TextMeshProUGUI>().text = name; 
         }
     }
 
@@ -45,7 +46,7 @@ public class StatusScreenShower : MonoBehaviour, IClosable
     private void ShowEffects(int index)
     {
         _effectsText.text = "";
-        foreach (EffectData effect in GlobalRepository.ActiveStatuses[index].GetActiveEffects())
+        foreach (EffectData effect in GlobalRepository.PlayerVars.ActiveStatuses[index].GetActiveEffects())
         {
             _effectsText.text += $"<size=25>{effect.Name}</size>\n<size=15>{effect.Description}</size>\n\n";
         }

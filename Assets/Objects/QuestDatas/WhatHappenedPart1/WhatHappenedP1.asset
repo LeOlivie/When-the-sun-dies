@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: WhatHappenedP1
   m_EditorClassIdentifier: 
   _questName: What happened? - Part 1
-  _questDescription: Hey man, have you even heard a reason why the reason begun to
-    kill us? That's right, I haven't as well, but we have to live with it. Could
+  _questDescription: Hey man, have you even heard a reason why the sun has begun
+    to kill us? That's right, I haven't as well, but we have to live with it. Could
     you check the bookshop for any information about that? Some newspapers maybe
     or some other stuff that could help. Not for free of course.
   _questLocationName: Bookshop
@@ -25,6 +25,5 @@ MonoBehaviour:
     _count: 1
   - _itemData: {fileID: 11400000, guid: f76e98f1addb2944fa0f1fac17ffee9a, type: 2}
     _count: 1
-  _questHiddenReward: []
   _questTaskDatas:
   - {fileID: 11400000, guid: e55f2aea99354ce44a1b3975e48b7f15, type: 2}

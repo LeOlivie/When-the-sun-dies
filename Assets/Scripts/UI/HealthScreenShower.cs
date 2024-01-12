@@ -9,14 +9,15 @@ public class HealthScreenShower : MonoBehaviour
 
     private void Update()
     {
-        string kcal = Mathf.Round(GlobalRepository.Kcal).ToString();
+        string kcal = Mathf.Round(GlobalRepository.PlayerVars.KCal).ToString();
 
         _nutrientsText.text = "Skills\n";
 
         foreach (string str in Enum.GetNames(typeof(GlobalRepository.SkillType)))
         {
             GlobalRepository.SkillType skillType = (GlobalRepository.SkillType)Enum.Parse(typeof(GlobalRepository.SkillType), str);
-            _nutrientsText.text += string.Format("<size=25><color=#E5DE1B>{0}</color>: {1} Lvl.\n</size>", skillType.ToString(), GlobalRepository.Skills[skillType]);
+            _nutrientsText.text += string.Format("<size=25><color=#E5DE1B>{0}</color>: {1} Lvl.\n</size>", 
+            skillType.ToString(), GlobalRepository.PlayerVars.Skills[skillType]);
         }
 
         while (kcal.Length < 4)
@@ -24,7 +25,7 @@ public class HealthScreenShower : MonoBehaviour
             kcal = "0" + kcal;
         }
 
-        string water = Mathf.Round(GlobalRepository.Water).ToString();
+        string water = Mathf.Round(GlobalRepository.PlayerVars.Water).ToString();
 
         while (water.Length < 4)
         {
@@ -33,8 +34,8 @@ public class HealthScreenShower : MonoBehaviour
 
 
         _nutrientsText.text += string.Format("\n\nNutrients\n<size=25><color=#FFA500>{0}/2000</color>kcal    <color=#00E3FF>{1}/2000</color>ml</size>", kcal, water);
-        _nutrientsText.text += string.Format("\n<size=25>Fatigue: {0}/100</size>", GlobalRepository.Fatigue);
-        _nutrientsText.text += string.Format("\n<size=25>Happiness: {0}/50</size>", GlobalRepository.Happiness);
+        _nutrientsText.text += string.Format("\n<size=25>Fatigue: {0}/100</size>", Mathf.Round(GlobalRepository.PlayerVars.Fatigue));
+        _nutrientsText.text += string.Format("\n<size=25>Happiness: {0}/50</size>", Mathf.Round(GlobalRepository.PlayerVars.Happiness));
 
     }
 }

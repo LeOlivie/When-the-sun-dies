@@ -2585,9 +2585,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lootSpawnerData: {fileID: 11400000, guid: 0ff0bcd273f38bb40ae2015f0ed3cfc3, type: 2}
-  _lootScreen: {fileID: 0}
-  _interractBtn: {fileID: 0}
-  _lootScreenShower: {fileID: 0}
+  _lootScreen: {fileID: 1985343204}
+  _interractBtn: {fileID: 280073020}
+  _lootScreenShower: {fileID: 1985343206}
   _isLooted: 0
 --- !u!61 &630437058
 BoxCollider2D:
@@ -3039,7 +3039,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1
-  m_PointLightOuterRadius: 9
+  m_PointLightOuterRadius: 15
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -3487,9 +3487,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7737488406de8e543bfbe4392f0a6b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _harvestScreenShower: {fileID: 0}
+  _harvestScreenShower: {fileID: 294929109}
   _harvesterData: {fileID: 11400000, guid: b25ba979f2d677e41a165ddfb8720a53, type: 2}
-  _interractBtn: {fileID: 0}
+  _interractBtn: {fileID: 280073020}
 --- !u!61 &790224659
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4495,7 +4495,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8501,14 +8501,6 @@ PrefabInstance:
     - target: {fileID: 1740375842768252279, guid: 5468662d83ee5624e8f1098257266676, type: 3}
       propertyPath: m_Name
       value: HUD
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308902406171998212, guid: 5468662d83ee5624e8f1098257266676, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 186.29999
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308902406171998212, guid: 5468662d83ee5624e8f1098257266676, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -38.299988
       objectReference: {fileID: 0}
     - target: {fileID: 8580487738425292137, guid: 5468662d83ee5624e8f1098257266676, type: 3}
       propertyPath: m_Camera

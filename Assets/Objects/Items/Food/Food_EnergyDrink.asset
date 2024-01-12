@@ -27,5 +27,5 @@ MonoBehaviour:
   _maxHappinessAdd: 5
   _minHappinessAdd: 0
   _statusSpawnChances:
-  - _timedStatusData: {fileID: 11400000, guid: 8d45390800d2f7b4c95008461d4892fc, type: 2}
+  - _statusData: {fileID: 11400000, guid: 119fb7ab0cd32094fa91291f6d7909fd, type: 2}
     _spawnChance: 100

@@ -44,7 +44,7 @@ public class CraftingRecipieShower : MonoBehaviour
 
         foreach (Item input in recipieData.ItemRequirements)
         {
-            if (input != null && input.ItemData != null && !GlobalRepository.Inventory.CheckIfHas(input.ItemData, input.Count))
+            if (input != null && input.ItemData != null && !GlobalRepository.PlayerVars.Inventory.CheckIfHas(input.ItemData, input.Count))
             {
                 return;
             }

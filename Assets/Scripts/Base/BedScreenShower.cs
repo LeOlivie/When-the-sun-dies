@@ -35,7 +35,7 @@ public class BedScreenShower : MonoBehaviour, IClosable
         _joystick.enabled = false;
         _bed = bed;
         _upgrader.ShowUpgradeMenu(_bed, OpenBedMenu);
-        GlobalRepository.Inventory.ContainerUpdated += ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated += ShowInventory;
         GlobalRepository.CountWeight();
         _startSleepingBtn.AddListener(StartSleeping);
         _stopSleepingBtn.AddListener(StopSleeping);
@@ -48,7 +48,7 @@ public class BedScreenShower : MonoBehaviour, IClosable
         _upgrader.CloseUpgradeMenu();
         StopSleeping();
         _joystick.enabled = true;
-        GlobalRepository.Inventory.ContainerUpdated -= ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated -= ShowInventory;
         _startSleepingBtn.RemoveListener(StartSleeping);
         _stopSleepingBtn.RemoveListener(StopSleeping);
         this.gameObject.SetActive(false);
@@ -56,9 +56,9 @@ public class BedScreenShower : MonoBehaviour, IClosable
 
     private void ShowInventory()
     {
-        for (int i = 0; i < GlobalRepository.Inventory.Items.Length; i++)
+        for (int i = 0; i < GlobalRepository.PlayerVars.Inventory.Items.Length; i++)
         {
-            _inventoryItemShowers[i].ShowItem(GlobalRepository.Inventory.Items[i]);
+            _inventoryItemShowers[i].ShowItem(GlobalRepository.PlayerVars.Inventory.Items[i]);
         }
     }
 
@@ -66,9 +66,9 @@ public class BedScreenShower : MonoBehaviour, IClosable
     {
         _bedMenu.SetActive(true);
         _upgradesMenu.SetActive(false);
-        _fatigueMultiplierText.text = $"Fatigue recovery multiplier: {_bed.FatigueMultiplier * 100}%\n";
-        _fatigueMultiplierText.text += $"Kcal deacrease buff: +{(1 - _bed.KcalDecreaseBuff) * 100}%\n";
-        _fatigueMultiplierText.text += $"Water deacrease buff: +{(1 - _bed.WaterDecreaseBuff) * 100}%";
+        _fatigueMultiplierText.text = $"Fatigue recovery multiplier: {Mathf.Round(_bed.FatigueMultiplier) * 100}%\n";
+        _fatigueMultiplierText.text += $"Kcal deacrease buff: +{Mathf.Round(1 - _bed.KcalDecreaseBuff) * 100}%\n";
+        _fatigueMultiplierText.text += $"Water deacrease buff: +{Mathf.Round(1 - _bed.WaterDecreaseBuff) * 100}%";
     }
 
     private void OpenUpgradesMenu()
@@ -81,7 +81,7 @@ public class BedScreenShower : MonoBehaviour, IClosable
     private void StartSleeping()
     {
         _sleepingScreen.SetActive(true);
-        Time.timeScale = 70 * GlobalRepository.Difficulty.DayCycleLength / 30;
+        Time.timeScale = 70 * GlobalRepository.SystemVars.Difficulty.DayCycleLength / 30;
         GlobalRepository.OnTimeUpdated += SleepProgress;
         _timeCounter.KcalDecreaseBuff = _bed.KcalDecreaseBuff;
         _timeCounter.WaterDecreaseBebuff = _bed.WaterDecreaseBuff;
@@ -89,8 +89,9 @@ public class BedScreenShower : MonoBehaviour, IClosable
 
     private void SleepProgress()
     {
-        GlobalRepository.AddFatigue(100f / GlobalRepository.Difficulty.SleepTimePerDay / 60f * _bed.FatigueMultiplier + 100 / 1440f);
-        string fatigueString = GlobalRepository.Fatigue.ToString();
+        GlobalRepository.PlayerVars.Fatigue += 100f / GlobalRepository.SystemVars.Difficulty.SleepTimePerDay / 60f * _bed.FatigueMultiplier + 100 / 1440f;
+        GlobalRepository.PlayerVars.Health += 0.1f;
+        string fatigueString = Mathf.Round(GlobalRepository.PlayerVars.Fatigue).ToString();
 
         while (fatigueString.Length < 3)
         {

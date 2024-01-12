@@ -30,7 +30,7 @@ public class TVScreenShower : MonoBehaviour, IClosable
         _joystick.enabled = false;
         _tv = tv;
         _upgrader.ShowUpgradeMenu(_tv, OpenTVMenu);
-        GlobalRepository.Inventory.ContainerUpdated += ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated += ShowInventory;
         GlobalRepository.CountWeight();
         OpenTVMenu();
         ShowInventory();
@@ -41,16 +41,16 @@ public class TVScreenShower : MonoBehaviour, IClosable
     {
         _upgrader.CloseUpgradeMenu();
         _joystick.enabled = true;
-        GlobalRepository.Inventory.ContainerUpdated -= ShowInventory;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated -= ShowInventory;
         GlobalRepository.OnTimeUpdated -= ShowInfo;
         this.gameObject.SetActive(false);
     }
 
     private void ShowInventory()
     {
-        for (int i = 0; i < GlobalRepository.Inventory.Items.Length; i++)
+        for (int i = 0; i < GlobalRepository.PlayerVars.Inventory.Items.Length; i++)
         {
-            _inventoryItemShowers[i].ShowItem(GlobalRepository.Inventory.Items[i]);
+            _inventoryItemShowers[i].ShowItem(GlobalRepository.PlayerVars.Inventory.Items[i]);
         }
     }
 

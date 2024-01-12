@@ -16,7 +16,7 @@ public class RaidEnder : MonoBehaviour
         _leaveButton.AddListener(EndRaid);
         GlobalRepository.OnTimeUpdated += ShowRaidTime;
 
-        if (GlobalRepository.CurrentLocationData == null || GlobalRepository.CurrentLocationData.Name == "Base")
+        if (GlobalRepository.SystemVars.CurrentLocationData == null || GlobalRepository.SystemVars.CurrentLocationData.Name == "Base")
         {
             _leaveButton.gameObject.SetActive(false);
         }
@@ -24,8 +24,8 @@ public class RaidEnder : MonoBehaviour
 
     private void ShowRaidTime()
     {
-        string hrsLeft = (GlobalRepository.RaidTimeLeft / 60).ToString();
-        string minsLeft = (GlobalRepository.RaidTimeLeft - GlobalRepository.RaidTimeLeft / 60 * 60).ToString();
+        string hrsLeft = (GlobalRepository.SystemVars.RaidTimeLeft / 60).ToString();
+        string minsLeft = (GlobalRepository.SystemVars.RaidTimeLeft - GlobalRepository.SystemVars.RaidTimeLeft / 60 * 60).ToString();
         string timeColor = "#FFFFFF";
 
         if (hrsLeft.Length < 2)
@@ -38,14 +38,14 @@ public class RaidEnder : MonoBehaviour
             minsLeft = "0" + minsLeft;
         }
 
-        if (GlobalRepository.RaidTimeLeft / 60 <= 0)
+        if (GlobalRepository.SystemVars.RaidTimeLeft / 60 <= 0)
         {
             timeColor = "#FF0000";
         }
 
         _timeLeftText.text = string.Format("Time before leaving\n<size=20><color={0}>{1}:{2}</color></size>", timeColor, hrsLeft, minsLeft);
 
-        if (GlobalRepository.RaidTimeLeft <= 0)
+        if (GlobalRepository.SystemVars.RaidTimeLeft <= 0)
         {
             EndRaid();
         }
@@ -56,6 +56,6 @@ public class RaidEnder : MonoBehaviour
         RaidEnded?.Invoke();
         RaidEnded = null;
         saver.SaveLocation();
-        GlobalRepository.ChangeLocation(_baseData, 0, Mathf.CeilToInt(GlobalRepository.CurrentLocationData.Distance / 2f * 60f));
+        GlobalRepository.ChangeLocation(_baseData, 0, Mathf.CeilToInt(GlobalRepository.SystemVars.CurrentLocationData.Distance / 2f * 60f));
     }
 }

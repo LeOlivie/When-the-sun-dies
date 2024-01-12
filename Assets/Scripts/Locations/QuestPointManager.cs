@@ -18,7 +18,7 @@ public abstract class QuestPointManager : MonoBehaviour
 
     public virtual void QuestPointExecuted()
     {
-        _questInformer.ShowMessage("Task complete: " + GlobalRepository.ActiveQuest.Data.QuestName);
+        _questInformer.ShowMessage("Task complete: " + GlobalRepository.SystemVars.ActiveQuest.Data.QuestName);
         OnQuestPointExecuted?.Invoke(_id);
         OnQuestPointExecuted = null;
     }

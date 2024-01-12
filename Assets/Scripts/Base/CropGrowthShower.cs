@@ -39,7 +39,7 @@ public class CropGrowthShower : MonoBehaviour
 
         _infoText.text = "";
 
-        if ((_hydroponics.LastWateringTime + _hydroponics.GrowingCropData.WateringTime <= GlobalRepository.GlobalTime)&&(_hydroponics.GrowStartTime + _hydroponics.GrowingCropData.GrowTime >= _hydroponics.LastWateringTime + _hydroponics.GrowingCropData.WateringTime))
+        if ((_hydroponics.LastWateringTime + _hydroponics.GrowingCropData.WateringTime <= GlobalRepository.SystemVars.GlobalTime)&&(_hydroponics.GrowStartTime + _hydroponics.GrowingCropData.GrowTime >= _hydroponics.LastWateringTime + _hydroponics.GrowingCropData.WateringTime))
         {
             _infoText.text = "The plant has died!";
             _uprootBtn.gameObject.SetActive(true);
@@ -49,7 +49,7 @@ public class CropGrowthShower : MonoBehaviour
             return;
         }
 
-        if (_hydroponics.GrowStartTime + _hydroponics.GrowingCropData.GrowTime <= GlobalRepository.GlobalTime)
+        if (_hydroponics.GrowStartTime + _hydroponics.GrowingCropData.GrowTime <= GlobalRepository.SystemVars.GlobalTime)
         {
             _infoText.text = "The plant can be harvested.";
             _uprootBtn.gameObject.SetActive(false);
@@ -58,9 +58,12 @@ public class CropGrowthShower : MonoBehaviour
             _collectBtn.gameObject.SetActive(true);
             return;
         }
-        int waterLvl = 100-Mathf.RoundToInt(((GlobalRepository.GlobalTime - _hydroponics.LastWateringTime) / (float)_hydroponics.GrowingCropData.WateringTime)*100);
-        int waterTime = (int)(_hydroponics.LastWateringTime + _hydroponics.GrowingCropData.WateringTime - GlobalRepository.GlobalTime);
-        int growingTimeLeft = (int)(_hydroponics.GrowStartTime + _hydroponics.GrowingCropData.GrowTime - GlobalRepository.GlobalTime);
+
+        float waterLvlTemp = ((GlobalRepository.SystemVars.GlobalTime - _hydroponics.LastWateringTime) / (float)_hydroponics.GrowingCropData.WateringTime) * 100;
+        int waterLvl = 100-Mathf.RoundToInt(waterLvlTemp);
+        int waterTime = (int)(_hydroponics.LastWateringTime + _hydroponics.GrowingCropData.WateringTime - GlobalRepository.SystemVars.GlobalTime);
+        int growingTimeLeft = (int)(_hydroponics.GrowStartTime + _hydroponics.GrowingCropData.GrowTime - GlobalRepository.SystemVars.GlobalTime);
+
         _infoText.text += _hydroponics.GrowingCropData.Name + "\n\n";
         _infoText.text += $"Water level: {waterLvl}%\n";
         _infoText.text += TimeConverter.InsertTime("Plant's death in\n{0} days {1}:{2}\n\n", waterTime, TimeConverter.InsertionType.DayHourMinute);
@@ -73,24 +76,24 @@ public class CropGrowthShower : MonoBehaviour
 
     public void WaterCrop()
     {
-        if (!GlobalRepository.Inventory.CheckIfHas(_waterItem.ItemData, _waterItem.Count))
+        if (!GlobalRepository.PlayerVars.Inventory.CheckIfHas(_waterItem.ItemData, _waterItem.Count))
         {
             return;
         }
 
-        GlobalRepository.Inventory.RemoveItem(_waterItem, _waterItem.Count);
-        GlobalRepository.Inventory.AddItem(_waterBottleItem, false);
+        GlobalRepository.PlayerVars.Inventory.RemoveItem(_waterItem, _waterItem.Count);
+        GlobalRepository.PlayerVars.Inventory.AddItem(_waterBottleItem, false);
         _hydroponics.WaterCrop();
     }
 
     public void HarvestCrop()
     {
-        if (!GlobalRepository.Inventory.CheckIfHas(_waterItem.ItemData, _waterItem.Count))
+        if (!GlobalRepository.PlayerVars.Inventory.CheckIfHas(_waterItem.ItemData, _waterItem.Count))
         {
             return;
         }
 
-        GlobalRepository.Inventory.AddItem(_hydroponics.GrowingCropData.Output, false);
+        GlobalRepository.PlayerVars.Inventory.AddItem(_hydroponics.GrowingCropData.Output, false);
         _hydroponics.Reset();
         this.gameObject.SetActive(false);
         GlobalRepository.OnTimeUpdated -= ShowInfo;

@@ -75,7 +75,7 @@ public class DoorOpenScreenShower : MonoBehaviour, IClosable
         _openToolNameText.text = _openingMethods[_openMethodIndex].Item.Name;
         _timeRequieredText.text = TimeConverter.InsertTime("{0}:{1}", _openingMethods[_openMethodIndex].Time, TimeConverter.InsertionType.HourMinute);
 
-        if (GlobalRepository.Inventory.CheckIfHas(_openingMethods[_openMethodIndex].Item.ItemData, _openingMethods[_openMethodIndex].Item.Count))
+        if (GlobalRepository.PlayerVars.Inventory.CheckIfHas(_openingMethods[_openMethodIndex].Item.ItemData, _openingMethods[_openMethodIndex].Item.Count))
         {
             _openDoorBtn.AddListener(StartOpeningDoor);
             _openDoorBtn.transform.GetComponentInChildren<TextMeshProUGUI>().color = _availableColor;
@@ -104,7 +104,7 @@ public class DoorOpenScreenShower : MonoBehaviour, IClosable
 
     private void OpeningEnd()
     {
-        GlobalRepository.Inventory.RemoveItem(_openingMethods[_openMethodIndex].Item, _openingMethods[_openMethodIndex].Item.Count);
+        GlobalRepository.PlayerVars.Inventory.RemoveItem(_openingMethods[_openMethodIndex].Item, _openingMethods[_openMethodIndex].Item.Count);
         GlobalRepository.OnTimeUpdated -= OpenProgress;
         _onDoorOpened();
         CloseScreen();

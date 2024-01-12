@@ -15,7 +15,7 @@ public class QuestPointTypeGive : QuestPointManager, IClosable
 
         for (int i = 0; i < _itemShowers.Length; i++)
         {
-            if (i >= GlobalRepository.ActiveQuest.SubQuests.Length)
+            if (i >= GlobalRepository.SystemVars.ActiveQuest.SubQuests.Length)
             {
                 _giveButtons[i].SetIndex(i);
                 _giveButtons[i].gameObject.SetActive(false);
@@ -33,7 +33,7 @@ public class QuestPointTypeGive : QuestPointManager, IClosable
         {
             _interractBtn.AddListener(OpenGiveScreen);
         }
-        GlobalRepository.Inventory.ContainerUpdated += OnInventoryUpdated;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated += OnInventoryUpdated;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -42,7 +42,7 @@ public class QuestPointTypeGive : QuestPointManager, IClosable
         {
             _interractBtn.RemoveListener(OpenGiveScreen);
         }
-        GlobalRepository.Inventory.ContainerUpdated -= OnInventoryUpdated;
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated -= OnInventoryUpdated;
     }
 
     private void OpenGiveScreen()
@@ -54,18 +54,18 @@ public class QuestPointTypeGive : QuestPointManager, IClosable
 
     private void ShowGiveScreen()
     {
-        for (int i = 0; i < GlobalRepository.ActiveQuest.SubQuests.Length; i++)
+        for (int i = 0; i < GlobalRepository.SystemVars.ActiveQuest.SubQuests.Length; i++)
         {
-            if (GlobalRepository.ActiveQuest.SubQuests[i].IsCompleted)
+            if (GlobalRepository.SystemVars.ActiveQuest.SubQuests[i].IsCompleted)
             {
                 _giveButtons[i].gameObject.SetActive(false);
                 _itemShowers[i].ShowItem(null);
                 continue;
             }
 
-            ItemData itemData = GlobalRepository.ActiveQuest.SubQuests[i].SubQuestData.ItemsRequiered.ItemData;
-            int countNeeded = GlobalRepository.ActiveQuest.SubQuests[i].SubQuestData.ItemsRequiered.Count;
-            int countGiven = GlobalRepository.ActiveQuest.SubQuests[i].Progress;
+            ItemData itemData = GlobalRepository.SystemVars.ActiveQuest.SubQuests[i].SubQuestData.ItemsRequiered.ItemData;
+            int countNeeded = GlobalRepository.SystemVars.ActiveQuest.SubQuests[i].SubQuestData.ItemsRequiered.Count;
+            int countGiven = GlobalRepository.SystemVars.ActiveQuest.SubQuests[i].Progress;
 
             _itemShowers[i].ShowItem(new Item(itemData, countNeeded - countGiven));
         }
@@ -75,21 +75,26 @@ public class QuestPointTypeGive : QuestPointManager, IClosable
     {
         for(int i = 0; i < _invetoryItemShowers.Length; i++)
         {
-            _invetoryItemShowers[i].ShowItem(GlobalRepository.Inventory.Items[i]);
+            _invetoryItemShowers[i].ShowItem(GlobalRepository.PlayerVars.Inventory.Items[i]);
         }
     }
 
     private void GiveItem(int index)
     {
+        if (!GlobalRepository.PlayerVars.Inventory.CheckIfHas(_itemShowers[index].Item.ItemData, 1))
+        {
+            return;
+        }
+
         if (_itemShowers[index].Item.Count == 1)
         {
             _giveButtons[index].gameObject.SetActive(false);
         }
 
-        GlobalRepository.Inventory.AddItem(new Item(_itemShowers[index].Item.ItemData, -1), false);
+        GlobalRepository.PlayerVars.Inventory.AddItem(new Item(_itemShowers[index].Item.ItemData, -1), false);
         _itemShowers[index].Item.AddCount(-1);
         _itemShowers[index].ShowItem(_itemShowers[index].Item);
-        GlobalRepository.ActiveQuest.ChangeTaskProgress(ref GlobalRepository.ActiveQuest.SubQuests[index], 1);
+        GlobalRepository.SystemVars.ActiveQuest.ChangeTaskProgress(ref GlobalRepository.SystemVars.ActiveQuest.SubQuests[index], 1);
     }
 
     public void CloseScreen()

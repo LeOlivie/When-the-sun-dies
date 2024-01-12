@@ -74,10 +74,10 @@ public class WaterCollector : IUpgradable
     {
         if (_waterCollectionStart == 0)
         {
-            _waterCollectionStart = (uint)GlobalRepository.GlobalTime;
+            _waterCollectionStart = (uint)GlobalRepository.SystemVars.GlobalTime;
         }
 
-        while (GlobalRepository.GlobalTime >= _waterCollectionStart + TimeToCollectWater && _waterCollected < MaxWaterAmount)
+        while (GlobalRepository.SystemVars.GlobalTime >= _waterCollectionStart + TimeToCollectWater && _waterCollected < MaxWaterAmount)
         {
             _waterCollected++;
             _waterCollectionStart += TimeToCollectWater;
@@ -86,7 +86,7 @@ public class WaterCollector : IUpgradable
         if (_waterCollected >= MaxWaterAmount)
         {
             _waterCollected = MaxWaterAmount;
-            _waterCollectionStart = (uint)GlobalRepository.GlobalTime;
+            _waterCollectionStart = (uint)GlobalRepository.SystemVars.GlobalTime;
         }
     }
 

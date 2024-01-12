@@ -78,7 +78,7 @@ public class Upgrader : MonoBehaviour
         
         foreach (Item item in _upgradableObject.UpgradeRequirements)
         {
-            if (!GlobalRepository.Inventory.CheckIfHas(item.ItemData, item.Count))
+            if (!GlobalRepository.PlayerVars.Inventory.CheckIfHas(item.ItemData, item.Count))
             {
                 _upgradeBtn.RemoveListener(StartUpgrade);
                 _upgradeBtn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = _unavailableColor;
@@ -89,7 +89,7 @@ public class Upgrader : MonoBehaviour
 
         for (int i = 0; i < _upgradableObject.SkillRequirements.Length; i++)
         {
-            if (GlobalRepository.Skills[_upgradableObject.SkillRequirements[i].SkillType] < _upgradableObject.SkillRequirements[i].SkillLevel)
+            if (GlobalRepository.PlayerVars.Skills[_upgradableObject.SkillRequirements[i].SkillType] < _upgradableObject.SkillRequirements[i].SkillLevel)
             {
                 _upgradeBtn.RemoveListener(StartUpgrade);
                 _upgradeBtn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = _unavailableColor;
@@ -115,7 +115,7 @@ public class Upgrader : MonoBehaviour
 
         foreach (Item inputItem in _upgradableObject.UpgradeRequirements)
         {
-            GlobalRepository.Inventory.RemoveItem(inputItem, inputItem.Count);
+            GlobalRepository.PlayerVars.Inventory.RemoveItem(inputItem, inputItem.Count);
         }   
 
         ResumeUpgrade();
@@ -124,7 +124,7 @@ public class Upgrader : MonoBehaviour
     public void ResumeUpgrade()
     {
         GlobalRepository.OnTimeUpdated += UpgradeInProgress;
-        Time.timeScale = 40 * GlobalRepository.Difficulty.DayCycleLength / 24;
+        Time.timeScale = 40 * GlobalRepository.SystemVars.Difficulty.DayCycleLength / 24;
         _pauseUpgradeBtn.RemoveListener(ResumeUpgrade);
         _pauseUpgradeBtn.AddListener(PauseUpgrade);
     }

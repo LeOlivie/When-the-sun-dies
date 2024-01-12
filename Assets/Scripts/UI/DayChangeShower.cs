@@ -10,22 +10,22 @@ public class DayChangeShower : MonoBehaviour
     private void Start()
     {
         GlobalRepository.OnTimeUpdated += CheckDayChange;
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     private void CheckDayChange()
     {
-        if (GlobalRepository.ShowDayChange)
+        if (GlobalRepository.SystemVars.ShowDayChange)
         {
-            GlobalRepository.ShowDayChange = false;
-            this.gameObject.SetActive(true);
+            GlobalRepository.SystemVars.ShowDayChange = false;
+            gameObject.SetActive(true);
             StartCoroutine(ShowDayChange());
         }
     }
 
     IEnumerator ShowDayChange()
     {
-        int day = GlobalRepository.GlobalTime / 1440;
+        int day = GlobalRepository.SystemVars.GlobalTime / 1440;
         string prevDayText = $"Day {day - 1}";
 
         for (int i = 0; i < prevDayText.Length; i++)

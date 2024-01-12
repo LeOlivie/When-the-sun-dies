@@ -88,7 +88,7 @@ public class Crafter : MonoBehaviour
 
         foreach (Item inputItem in _recipies[index + _craftsPage * _recipieShowers.Length].ItemRequirements)
         {
-            GlobalRepository.Inventory.RemoveItem(inputItem, inputItem.Count);
+            GlobalRepository.PlayerVars.Inventory.RemoveItem(inputItem, inputItem.Count);
         }
 
         ResumeCraft();
@@ -98,7 +98,7 @@ public class Crafter : MonoBehaviour
     {
         foreach (Item item in _crafter.ActiveCraftData.Output)
         {
-            GlobalRepository.Inventory.AddItem(item, false);
+            GlobalRepository.PlayerVars.Inventory.AddItem(item, false);
         }
 
         _craftInProgress.SetActive(false);
@@ -113,7 +113,7 @@ public class Crafter : MonoBehaviour
     public void ResumeCraft()
     {
         GlobalRepository.OnTimeUpdated += CraftInProgress;
-        Time.timeScale = 20 * GlobalRepository.Difficulty.DayCycleLength / 24;
+        Time.timeScale = 20 * GlobalRepository.SystemVars.Difficulty.DayCycleLength / 24;
         _pauseCraftBtn.RemoveListener(ResumeCraft);
         _pauseCraftBtn.AddListener(PauseCraft);
     }

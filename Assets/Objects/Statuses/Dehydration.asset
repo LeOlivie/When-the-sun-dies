@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Dehydration
   m_EditorClassIdentifier: 
   _name: Dehydration
+  _iconName: LowWaterIcon
+  _dependentVar: 0
+  _removeValue: 200
+  _startProgress: 0
   _maxProgress: 4320
   _effectStructs:
   - _progressRequired: 0

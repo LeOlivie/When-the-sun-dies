@@ -8,13 +8,13 @@ public class QuestsScreenShower : MonoBehaviour
     
     private void OnEnable()
     {
-        if (GlobalRepository.ActiveQuest == null)
+        if (GlobalRepository.SystemVars.ActiveQuest == null)
         {
             _questInfoText.text = "[No quests active]";
             return;
         }
 
-        _questInfoText.text = GlobalRepository.ActiveQuest.GetInfo(_subQuestCompletedColor);
+        _questInfoText.text = GlobalRepository.SystemVars.ActiveQuest.GetInfo(_subQuestCompletedColor);
     }
 
 }

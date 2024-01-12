@@ -25,13 +25,16 @@ MonoBehaviour:
     _count: 1
   - _itemData: {fileID: 11400000, guid: c3877964d3a195a4995bd38ab0e680cc, type: 2}
     _count: 2
+  - _itemData: {fileID: 11400000, guid: 88bbddfea2663174c8234b23f4eb83b0, type: 2}
+    _count: 1
   _dayCycleLength: 30
   _scavTimeStart: 23
   _scavTimeEnd: 6
-  _maxWeight: 13
-  _foodMemoryLength: 7
   _weatherMaxDuration: 24
-  _sleepTimePerDay: 10
   _lootAmbulanceMultiplier: 0.7
   _lootSpawnChanceMultiplier: 0.7
+  _locationResetDelay: 14
+  _maxWeight: 13
+  _foodMemoryLength: 7
+  _sleepTimePerDay: 10
   _radioCooldownMultiplier: 1.8

@@ -72,15 +72,15 @@ public class Radio : IUpgradable
 
     public void CheckEvent()
     {
-        if (_nextEventTime <= GlobalRepository.GlobalTime)
+        if (_nextEventTime <= GlobalRepository.SystemVars.GlobalTime)
         {
             int eventIndex = UnityEngine.Random.Range(0, _upgrades[_currLevel].EventLocClusters.Length);
             _activeEventLocCluster = _upgrades[_currLevel].EventLocClusters[eventIndex];
-            _eventSwitchOffTime = GlobalRepository.GlobalTime + _activeEventLocCluster.AvailableTime;
+            _eventSwitchOffTime = GlobalRepository.SystemVars.GlobalTime + _activeEventLocCluster.AvailableTime;
             _nextEventTime = _eventSwitchOffTime + UnityEngine.Random.Range(_minTimeBeforeEvent, _maxTimeBeforeEvent);
         }
 
-        if (_eventSwitchOffTime <= GlobalRepository.GlobalTime)
+        if (_eventSwitchOffTime <= GlobalRepository.SystemVars.GlobalTime)
         {
             _activeEventLocCluster = null;
         }

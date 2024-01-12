@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Depression
   _description: 'All hope is lost...
 
-    ( -10% Search, -10% Harvest, -15% Fatigue)'
+    (-10% Search, -10% Harvest, -15% Fatigue)'
   _buffs:
   - _statToChange: 0
     _change: -0.1

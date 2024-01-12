@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8ef86564ab3f14bb371ba1bac9fc31, type: 3}
+  m_Name: Craft_Cloth
+  m_EditorClassIdentifier: 
+  _itemRequirements:
+  - _itemData: {fileID: 11400000, guid: 8b470c3168f71ec408ef7d5d1611ec1f, type: 2}
+    _count: 3
+  _time: 35
+  _output:
+  - _itemData: {fileID: 11400000, guid: 8ef3d785179c1634b9be8c0a889528f3, type: 2}
+    _count: 2

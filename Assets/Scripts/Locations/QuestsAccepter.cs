@@ -17,14 +17,14 @@ public class QuestsAccepter : MonoBehaviour
     {
         _acceptBtn.ResetListeners();
 
-        if (GlobalRepository.ActiveQuest != null)
+        if (GlobalRepository.SystemVars.ActiveQuest != null)
         {
-            _questInfoText.text = GlobalRepository.ActiveQuest.GetInfo(_subQuestCompletedColor);
-            ShowQuestRewards(GlobalRepository.ActiveQuest.Data.QuestReward);
+            _questInfoText.text = GlobalRepository.SystemVars.ActiveQuest.GetInfo(_subQuestCompletedColor);
+            ShowQuestRewards(GlobalRepository.SystemVars.ActiveQuest.Data.QuestReward);
             _acceptBtnText.text = "Finish";
             _acceptBtnText.color = Color.white;
 
-            if (GlobalRepository.ActiveQuest.IsCompleted)
+            if (GlobalRepository.SystemVars.ActiveQuest.IsCompleted)
             {
                 _acceptBtn.AddListener(FinishQuest);
                 _acceptBtnText.color = _subQuestCompletedColor;
@@ -32,7 +32,7 @@ public class QuestsAccepter : MonoBehaviour
         }
         else
         {
-            _questInfoText.text = new Quest(_questDatas[GlobalRepository.QuestsProgress]).GetInfo(_subQuestCompletedColor);
+            _questInfoText.text = new Quest(_questDatas[GlobalRepository.PlayerVars.QuestsProgress]).GetInfo(_subQuestCompletedColor);
             _acceptBtnText.text = "Accept";
             _acceptBtnText.color = _subQuestCompletedColor;
             ShowQuestRewards(new Item[0]);
@@ -47,7 +47,7 @@ public class QuestsAccepter : MonoBehaviour
 
     private void AcceptQuest()
     {
-        GlobalRepository.SetActiveQuest(new Quest(_questDatas[GlobalRepository.QuestsProgress]));
+        GlobalRepository.SystemVars.ActiveQuest=new Quest(_questDatas[GlobalRepository.PlayerVars.QuestsProgress]);
         OnEnable();
     }
 
@@ -66,12 +66,12 @@ public class QuestsAccepter : MonoBehaviour
 
     private void FinishQuest()
     {
-        foreach (Item item in GlobalRepository.ActiveQuest.Data.QuestReward)
+        foreach (Item item in GlobalRepository.SystemVars.ActiveQuest.Data.QuestReward)
         {
-            GlobalRepository.Inventory.AddItem(new Item(item.ItemData, item.Count), false);
+            GlobalRepository.PlayerVars.Inventory.AddItem(new Item(item.ItemData, item.Count), false);
         }
-        GlobalRepository.SetQuestProgress(GlobalRepository.QuestsProgress + 1);
-        GlobalRepository.SetActiveQuest(null);
+        GlobalRepository.PlayerVars.QuestsProgress = GlobalRepository.PlayerVars.QuestsProgress + 1;
+        GlobalRepository.SystemVars.ActiveQuest = null;
         OnEnable();
     }
 }

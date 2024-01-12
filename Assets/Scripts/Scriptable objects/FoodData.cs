@@ -8,13 +8,14 @@ public class FoodData : ItemData
     [Serializable]
     private struct StatusSpawnChance
     {
-        [SerializeField] private TimedStatusData _timedStatusData;
+        [SerializeField] private StatusData _statusData;
         [SerializeField] private int _spawnChance;
 
-        public TimedStatusData TimedStatusData => _timedStatusData;
+        public StatusData StatusData => _statusData;
         public int SpawnChance => _spawnChance;
     }
 
+    [Space, Header("Food info")]
     [SerializeField] private int _calories;
     [SerializeField] private int _water;
     [SerializeField] private sbyte _maxHappinessAdd;
@@ -35,37 +36,37 @@ public class FoodData : ItemData
 
         sbyte eatenCount = 0;
 
-        foreach(string eatenFoodName in GlobalRepository.LastEatenFood)
+        foreach(string eatenFoodName in GlobalRepository.PlayerVars.LastEatenFood)
         {
-            if (this.Name.Equals(eatenFoodName))
+            if (Name.Equals(eatenFoodName))
             {
                 eatenCount++;
             }
         }
 
-        _happinessAdd = (sbyte)(_maxHappinessAdd - (_maxHappinessAdd - _minHappinessAdd) / (float)GlobalRepository.Difficulty.FoodMemoryLength * eatenCount);
+        _happinessAdd = (sbyte)(_maxHappinessAdd - (_maxHappinessAdd - _minHappinessAdd) / (float)GlobalRepository.SystemVars.Difficulty.FoodMemoryLength * eatenCount);
 
 
         if (Calories != 0)
         {
-            info += "<sprite name=\"EatFoodIcon\">" + Calories + "kcal";
+            info += "<sprite name=\"EatFoodIcon\">" + Calories + "kcal  ";
         }
 
         if (Water != 0)
         {
-            info += "  <sprite name=\"DrinkWaterIcon\">" + Water + "ml";
+            info += "<sprite name=\"DrinkWaterIcon\">" + Water + "ml  ";
         }
 
         if (_happinessAdd > 0)
         {
-            info += "  +" + _happinessAdd + "";
+            info += "<sprite name=\"HappinessIcon\">+" + _happinessAdd + "  ";
         }
         else if(_happinessAdd < 0)
         {
-            info += "  " + _happinessAdd + "";
+            info += "<sprite name=\"HappinessIcon\">" + _happinessAdd + "  ";
         }
 
-        info += "  <sprite name=\"WeightIcon\">" + Weight + "kg\n";
+        info += "<sprite name=\"WeightIcon\">" + Weight + "kg\n";
         info += $"<sprite name=\"SellFoodIcon\">{KcalPrice}kcal  <sprite name=\"SellWaterIcon\">{MLPrice}ml";
 
         return info;
@@ -73,11 +74,11 @@ public class FoodData : ItemData
 
     public override void Use()
     {
-        if (ItemsToAddAfterUse != null && ItemsToAddAfterUse.Length > 0) 
+        if (ItemsToAddAfterUse != null && ItemsToAddAfterUse.Length > 0)
         {
             foreach (Item item in this.ItemsToAddAfterUse)
             {
-                GlobalRepository.Inventory.AddItem(item, false);
+                GlobalRepository.PlayerVars.Inventory.AddItem(item, false);
             }
         }
 
@@ -85,13 +86,20 @@ public class FoodData : ItemData
         {
             if (UnityEngine.Random.Range(0, 101) < status.SpawnChance)
             {
-                GlobalRepository.AddStatus(new TimedStatus(status.TimedStatusData));
+               GlobalRepository.AddStatus(new Status(status.StatusData));
             }
         }
-        
-        GlobalRepository.AddLastEatenFood(this.Name);
-        GlobalRepository.AddKcal(_calories);
-        GlobalRepository.AddWater(_water);
-        GlobalRepository.AddHappiness(_happinessAdd);
+
+        GlobalRepository.PlayerVars.LastEatenFood.Add(this.Name);
+        GlobalRepository.PlayerVars.KCal += _calories;
+        GlobalRepository.PlayerVars.Water += _water;
+        GlobalRepository.PlayerVars.Happiness += _happinessAdd;
+
+        int eatenFoodCount = GlobalRepository.PlayerVars.LastEatenFood.Count;
+        int lengthByDifficulty = GlobalRepository.SystemVars.Difficulty.FoodMemoryLength;
+        if(eatenFoodCount > lengthByDifficulty)
+        {
+            GlobalRepository.PlayerVars.LastEatenFood.RemoveRange(lengthByDifficulty-1, eatenFoodCount - lengthByDifficulty);
+        }
     }
 }

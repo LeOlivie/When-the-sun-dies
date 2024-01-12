@@ -37,6 +37,8 @@ MonoBehaviour:
   - _recipies:
     - {fileID: 11400000, guid: 89a012ca3f56e6d44afea82a3a80e145, type: 2}
     - {fileID: 11400000, guid: 1cd1f36a14f124146b1bb2b2b44b300f, type: 2}
+    - {fileID: 11400000, guid: b87dc60cb4fc9a946babd720bd5ac73a, type: 2}
+    - {fileID: 11400000, guid: 9908c2c0efebdc4458fcb7afa4acb0b6, type: 2}
     _skillRequirements:
     - _skillType: 3
       _skillLevel: 2

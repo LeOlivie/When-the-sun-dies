@@ -69,8 +69,8 @@ public class Hydroponics : IUpgradable
     public void StartGrowingCrop(CropsData cropData)
     {
         _growingCropData = cropData;
-        _growStartTime = GlobalRepository.GlobalTime;
-        _lastWateringTime = GlobalRepository.GlobalTime;
+        _growStartTime = GlobalRepository.SystemVars.GlobalTime;
+        _lastWateringTime = GlobalRepository.SystemVars.GlobalTime;
     }
 
     public void Reset()
@@ -82,7 +82,7 @@ public class Hydroponics : IUpgradable
     public void WaterCrop()
     {
         Debug.Log("Watered");
-        _lastWateringTime = GlobalRepository.GlobalTime;
+        _lastWateringTime = GlobalRepository.SystemVars.GlobalTime;
     }
 
     public void LoadSaveData(SaveDatas.HydroponicsSaveData saveData)

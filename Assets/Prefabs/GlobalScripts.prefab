@@ -44,10 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c82cae400625b34ca62d562b0a9ba73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _starvationStatusData: {fileID: 11400000, guid: 63084ef85a2510847b6ea4fd5304d10b, type: 2}
-  _dehydrationStatusData: {fileID: 11400000, guid: 6a6b32f0876b9bc4a9392a86bfd13f67, type: 2}
-  _depressionStatusData: {fileID: 11400000, guid: 3ee5fc499ae64b248ad977fdf1ab2ad8, type: 2}
-  _fatigueStatusData: {fileID: 11400000, guid: 87ab1b0b165740a47b5acb3240b878ed, type: 2}
+  _statusChecks:
+  - _dependentVar: 0
+    _triggerValue: 0
+    _data: {fileID: 11400000, guid: 6a6b32f0876b9bc4a9392a86bfd13f67, type: 2}
+  - _dependentVar: 1
+    _triggerValue: 0
+    _data: {fileID: 11400000, guid: 63084ef85a2510847b6ea4fd5304d10b, type: 2}
+  - _dependentVar: 2
+    _triggerValue: 0
+    _data: {fileID: 11400000, guid: 87ab1b0b165740a47b5acb3240b878ed, type: 2}
+  - _dependentVar: 3
+    _triggerValue: 0
+    _data: {fileID: 11400000, guid: 3ee5fc499ae64b248ad977fdf1ab2ad8, type: 2}
+  - _dependentVar: 5
+    _triggerValue: 500
+    _data: {fileID: 11400000, guid: 53aef68e74d599248bc3f943b5fadd99, type: 2}
   KcalDecreaseBuff: 1
   WaterDecreaseBebuff: 1
 --- !u!114 &8774129128439195609

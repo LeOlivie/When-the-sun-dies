@@ -4,6 +4,7 @@ using System;
 [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObjects/Items/ItemData", order = 2)]
 public class ItemData : ScriptableObject
 {
+    [Space, Header("General info")]
     [SerializeField] private Sprite _icon;
     [SerializeField] private string _name;
     [SerializeField, TextArea] private string _description;
@@ -12,6 +13,8 @@ public class ItemData : ScriptableObject
     [SerializeField] private bool _isUsable;
     [SerializeField] private Item[] _itemsToAddAfterUse;
     [SerializeField] private int _lootPointsToSpawn;
+
+    [Space,Header("Trading")]
     [SerializeField] private int _kcalPrice;
     [SerializeField] private int _mlPrice;
 

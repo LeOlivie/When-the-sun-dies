@@ -1,6 +1,4 @@
 using UnityEngine;
-using System;
-using UnityEditor.SearchService;
 
 [CreateAssetMenu(fileName = "LocationData", menuName = "ScriptableObjects/LocationData", order = 10)]
 public class LocationData : ScriptableObject

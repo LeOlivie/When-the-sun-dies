@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Fatigue
   m_EditorClassIdentifier: 
   _name: Fatigue
+  _iconName: LowFatigueIcon
+  _dependentVar: 2
+  _removeValue: 20
+  _startProgress: 0
   _maxProgress: 3000
   _effectStructs:
   - _progressRequired: 0

@@ -19,7 +19,7 @@ public class DynamicNatureShower : MonoBehaviour
     {
         SpriteRenderer renderer = this.GetComponent<SpriteRenderer>();
         renderer.enabled = false;
-        int day = GlobalRepository.GlobalTime / 1440;
+        int day = GlobalRepository.SystemVars.GlobalTime / 1440;
 
         foreach (Stage stage in _stages)
         {

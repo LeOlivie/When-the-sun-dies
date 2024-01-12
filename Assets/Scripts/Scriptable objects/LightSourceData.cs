@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LightSourceItem", menuName = "ScriptableObjects/Items/LightSourceItem", order = 3)]
 public class LightSourceData : ItemData
 {
+    [Space, Header("Light source info")]
     [SerializeField] private float _searchSpeed;
     [SerializeField] private float _harvestSpeed;
     [SerializeField] private float _lightRadius;

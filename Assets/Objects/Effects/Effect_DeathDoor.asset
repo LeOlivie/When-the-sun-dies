@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Death's door
   _description: 'The end is coming near...
 
-    ( -3 HP/min)'
+    (-3 HP/min)'
   _buffs:
   - _statToChange: 2
     _change: -3

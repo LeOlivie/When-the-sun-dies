@@ -14,8 +14,8 @@ public class TimeShower : MonoBehaviour
     private void ShowTime()
     {
         string text = "";
-        int days = GlobalRepository.GlobalTime / 1440;
-        int hours = (GlobalRepository.GlobalTime - days * 1440) / 60; 
+        int days = GlobalRepository.SystemVars.GlobalTime / 1440;
+        int hours = (GlobalRepository.SystemVars.GlobalTime - days * 1440) / 60; 
 
         if (hours < 10)
         {
@@ -23,7 +23,7 @@ public class TimeShower : MonoBehaviour
         }
 
         text += hours.ToString() + ";";
-        int minutes = GlobalRepository.GlobalTime - days * 1440 - hours * 60;
+        int minutes = GlobalRepository.SystemVars.GlobalTime - days * 1440 - hours * 60;
 
         if (minutes < 10)
         {

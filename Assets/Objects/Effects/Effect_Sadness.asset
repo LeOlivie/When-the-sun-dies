@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Sadness
   _description: 'Feeling sad.
 
-    ( -5% Search, -5% Harvest, -5% Fatigue)'
+    (-5% Search, -5% Harvest, -5% Fatigue)'
   _buffs:
   - _statToChange: 0
     _change: -0.05

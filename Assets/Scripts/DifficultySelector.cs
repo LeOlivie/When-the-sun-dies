@@ -45,13 +45,14 @@ public class DifficultySelector : MonoBehaviour
         _diffModsText.text += "Sleep time per day: " + _difficultyDatas[_selectedDiffIndex].SleepTimePerDay + " hours\n";
         _diffModsText.text += "Loot ambulance multiplier: x" + _difficultyDatas[_selectedDiffIndex].LootAmbulanceMultiplier + "\n";
         _diffModsText.text += "Loot spawn chance multiplier: x" + _difficultyDatas[_selectedDiffIndex].LootSpawnChanceMultiplier + "\n";
+        _diffModsText.text += "Locations are reset every " + _difficultyDatas[_selectedDiffIndex].LocationResetDelay + " days\n";
         _diffModsText.text += "Radio cooldown multiplier: x" + _difficultyDatas[_selectedDiffIndex].RadioCooldownMultiplier + "\n";
         _diffModsText.text += "Max weight: " + _difficultyDatas[_selectedDiffIndex].MaxWeight + "kg\n";
     }
         
     private void Begin()
     {
-        GlobalRepository.SetDifficulty(_difficultyDatas[_selectedDiffIndex]);
+        GlobalRepository.SystemVars.Difficulty=_difficultyDatas[_selectedDiffIndex];
         SceneManager.LoadScene("Base");
     }
 }

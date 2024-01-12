@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 7014be38b7a967a48bc61684f08b5aef, type: 3}
   _name: Rechargeable batteries
-  _description: Rechargeable batteries.
+  _description: Rechargeable batteries for power tools.
   _weight: 0.04
-  _maxInStack: 20
+  _maxInStack: 10
   _isUsable: 0
   _itemsToAddAfterUse: []
-  _lootPointsToSpawn: 70
-  _kcalPrice: 250
-  _mlPrice: 100
+  _lootPointsToSpawn: 225
+  _kcalPrice: 500
+  _mlPrice: 200

@@ -101,19 +101,19 @@ public class LootScreenShower : MonoBehaviour, IClosable
 
     private void ShowInventory()
     {
-        GlobalRepository.Inventory.ContainerUpdated?.Invoke();
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated?.Invoke();
         ShowContainer(_itemShowerSetsDict[(sbyte)_lootContainer.Items.Length], _lootContainer);
-        ShowContainer(_inventoryItemShowers, GlobalRepository.Inventory);
+        ShowContainer(_inventoryItemShowers, GlobalRepository.PlayerVars.Inventory);
 
         GlobalRepository.CountWeight();
 
-        float r = 0.6f - 0.3f / GlobalRepository.MaxWeight * (GlobalRepository.MaxWeight - GlobalRepository.Weight);
-        float g = 0.6f - 0.3f / GlobalRepository.MaxWeight * GlobalRepository.Weight;
+        float r = 0.6f - 0.3f / GlobalRepository.SystemVars.MaxWeight * (GlobalRepository.SystemVars.MaxWeight - GlobalRepository.PlayerVars.Weight);
+        float g = 0.6f - 0.3f / GlobalRepository.SystemVars.MaxWeight * GlobalRepository.PlayerVars.Weight;
 
         _weightBar.color = new Color(r, g, 0.3f);
-        _weightBar.rectTransform.localScale = new Vector3(0.216f / GlobalRepository.MaxWeight * GlobalRepository.Weight, 0.216f, 0.216f);
+        _weightBar.rectTransform.localScale = new Vector3(0.216f / GlobalRepository.SystemVars.MaxWeight * GlobalRepository.PlayerVars.Weight, 0.216f, 0.216f);
 
-        _weightText.text = string.Format("{0}/{1} KG", GlobalRepository.Weight, GlobalRepository.MaxWeight);
+        _weightText.text = string.Format("{0}/{1} KG", GlobalRepository.PlayerVars.Weight, GlobalRepository.SystemVars.MaxWeight);
     }
 
     private void ShowContainer(ItemShower[] itemShowers, ItemContainer itemContainer)
@@ -131,7 +131,7 @@ public class LootScreenShower : MonoBehaviour, IClosable
         _inspectItemShower.ShowItem(item);
 
         _inspectItemDesc.text = "";
-        _useBtn.RemoveListener(null);
+        _useBtn.RemoveListener(Use);
 
         if (item != null && item.ItemData != null)
         {
@@ -150,9 +150,9 @@ public class LootScreenShower : MonoBehaviour, IClosable
 
             Item itemToAdd = new Item(_inspectItemShower.Item.ItemData, 1);
 
-        if (GlobalRepository.Inventory.CheckIfCanFit(itemToAdd) && _lootContainer.Items.Contains(_inspectItemShower.Item))
+        if (GlobalRepository.PlayerVars.Inventory.CheckIfCanFit(itemToAdd) && _lootContainer.Items.Contains(_inspectItemShower.Item))
         {
-            GlobalRepository.Inventory.AddItem(itemToAdd, true);
+            GlobalRepository.PlayerVars.Inventory.AddItem(itemToAdd, true);
             _inspectItemShower.Item.AddCount(-1);
             InspectItem(_inspectItemShower.Item);
             ShowInventory();
@@ -168,7 +168,7 @@ public class LootScreenShower : MonoBehaviour, IClosable
 
         Item itemToAdd = new Item(_inspectItemShower.Item.ItemData, 1);
 
-        if (_lootContainer.CheckIfCanFit(itemToAdd) && GlobalRepository.Inventory.Items.Contains(_inspectItemShower.Item))
+        if (_lootContainer.CheckIfCanFit(itemToAdd) && GlobalRepository.PlayerVars.Inventory.Items.Contains(_inspectItemShower.Item))
         {
             _lootContainer.AddItem(itemToAdd, true);
             _inspectItemShower.Item.AddCount(-1);
@@ -194,7 +194,7 @@ public class LootScreenShower : MonoBehaviour, IClosable
         float currTime = 0;
         float lootTimeDebuff = 0;
 
-        foreach (Statuses.Status status in GlobalRepository.ActiveStatuses)
+        foreach (Statuses.Status status in GlobalRepository.PlayerVars.ActiveStatuses)
         {
             foreach (EffectData effectData in status.GetActiveEffects())
             {

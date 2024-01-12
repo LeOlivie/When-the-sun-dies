@@ -18,14 +18,14 @@ public class WeatherSpriteShower : MonoBehaviour
 
     private void CheckWeatherChange()
     {
-        if (_weatherType == GlobalRepository.WeatherType && !_isActive)
+        if (_weatherType == GlobalRepository.SystemVars.WeatherType && !_isActive)
         {
             this.gameObject.SetActive(true);
             _isActive = true;
             StopAllCoroutines();
             StartCoroutine(Show());
         }
-        else if (_weatherType != GlobalRepository.WeatherType && _isActive)
+        else if (_weatherType != GlobalRepository.SystemVars.WeatherType && _isActive)
         {
             _isActive = false;
             StopAllCoroutines();

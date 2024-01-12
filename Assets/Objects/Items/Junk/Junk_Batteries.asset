@@ -16,9 +16,9 @@ MonoBehaviour:
   _name: Batteries
   _description: Alkaline batteries. The simpliest electricity source.
   _weight: 0.03
-  _maxInStack: 20
+  _maxInStack: 15
   _isUsable: 0
   _itemsToAddAfterUse: []
-  _lootPointsToSpawn: 50
-  _kcalPrice: 300
-  _mlPrice: 100
+  _lootPointsToSpawn: 150
+  _kcalPrice: 350
+  _mlPrice: 150

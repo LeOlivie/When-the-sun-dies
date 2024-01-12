@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Rapid heartbeat
   _description: 'Feeling of a rapid heart in your chest.
 
-    ( -20% Search, -20%
+    (-20% Search, -20%
     Harvest, -2 HP/min)'
   _buffs:
   - _statToChange: 0

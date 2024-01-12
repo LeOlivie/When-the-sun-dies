@@ -63,7 +63,7 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
         HarvesterData.HarvestOptionData harvestData = harvestOption.HarvestOptionData;
         _harvestItemName.text = string.Format("{0} ({1}/{2})", harvestData.ItemToHarvest.Name, harvestOption.HarvestsLeft, harvestData.MaxHarvests);
         _itemToHarvestShower.ShowItem(harvestData.ItemToHarvest);
-        int harvestTime = Mathf.RoundToInt(harvestData.TimeToHarvest * GlobalRepository.LightSourceData.HarvestSpeed);
+        int harvestTime = Mathf.RoundToInt(harvestData.TimeToHarvest * GlobalRepository.SystemVars.LightSourceData.HarvestSpeed);
         string additionalInfo = TimeConverter.InsertTime("Time to harvest: {0}:{1}\n",harvestTime,TimeConverter.InsertionType.HourMinute);
 
         if (harvestOption.HarvestOptionData.KcalDebuff != 0)
@@ -86,7 +86,7 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
         {
             _requirementShowers[i].ShowItem(harvestData.Requirements[i].ItemRequirement);
             
-            if (!GlobalRepository.Inventory.CheckIfHas(harvestData.Requirements[i].ItemRequirement.ItemData, harvestData.Requirements[i].ItemRequirement.Count))
+            if (!GlobalRepository.PlayerVars.Inventory.CheckIfHas(harvestData.Requirements[i].ItemRequirement.ItemData, harvestData.Requirements[i].ItemRequirement.Count))
             {
                 ifCanBeHarvested = false;
             }
@@ -122,21 +122,21 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
 
     private void ShowInventory()
     {
-        GlobalRepository.Inventory.ContainerUpdated?.Invoke();
+        GlobalRepository.PlayerVars.Inventory.ContainerUpdated?.Invoke();
 
         GlobalRepository.CountWeight();
 
-        float r = 0.6f - 0.3f / GlobalRepository.MaxWeight * (GlobalRepository.MaxWeight - GlobalRepository.Weight);
-        float g = 0.6f - 0.3f / GlobalRepository.MaxWeight * GlobalRepository.Weight;
+        float r = 0.6f - 0.3f / GlobalRepository.SystemVars.MaxWeight * (GlobalRepository.SystemVars.MaxWeight - GlobalRepository.PlayerVars.Weight);
+        float g = 0.6f - 0.3f / GlobalRepository.SystemVars.MaxWeight * GlobalRepository.PlayerVars.Weight;
 
         _weightBar.color = new Color(r, g, 0.3f);
-        _weightBar.rectTransform.localScale = new Vector3(0.216f / GlobalRepository.MaxWeight * GlobalRepository.Weight, 0.216f, 0.216f);
+        _weightBar.rectTransform.localScale = new Vector3(0.216f / GlobalRepository.SystemVars.MaxWeight * GlobalRepository.PlayerVars.Weight, 0.216f, 0.216f);
 
-        _weightText.text = string.Format("{0}/{1} KG", GlobalRepository.Weight, GlobalRepository.MaxWeight);
+        _weightText.text = string.Format("{0}/{1} KG", GlobalRepository.PlayerVars.Weight, GlobalRepository.SystemVars.MaxWeight);
 
         for (int i = 0; i < _inventoryShowers.Length; i++)
         {
-            _inventoryShowers[i].ShowItem(GlobalRepository.Inventory.Items[i]);
+            _inventoryShowers[i].ShowItem(GlobalRepository.PlayerVars.Inventory.Items[i]);
         }
     }
 
@@ -144,7 +144,7 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
     {
         float harvestTimeDebuff = 0;
 
-        foreach (Statuses.Status status in GlobalRepository.ActiveStatuses)
+        foreach (Statuses.Status status in GlobalRepository.PlayerVars.ActiveStatuses)
         {
             foreach (EffectData effectData in status.GetActiveEffects())
             {
@@ -160,28 +160,29 @@ public class HarvestScreenShower : MonoBehaviour, IClosable
 
         _harvestInProgress.SetActive(true);
         _itemBeingHarvestedShower.ShowItem(_harvestOptions[_optionIndex].HarvestOptionData.ItemToHarvest);
-        _harvestTimeLeft = Mathf.RoundToInt(_harvestTimeLeft * (1 - harvestTimeDebuff) * GlobalRepository.LightSourceData.HarvestSpeed);
+        _harvestTimeLeft = _harvestOptions[_optionIndex].HarvestOptionData.TimeToHarvest;
+        _harvestTimeLeft = Mathf.RoundToInt(_harvestTimeLeft * (1 - harvestTimeDebuff) * GlobalRepository.SystemVars.LightSourceData.HarvestSpeed);
         _harvestTimeLeftText.text = TimeConverter.InsertTime("Time to harvest: {0}:{1}", _harvestTimeLeft, TimeConverter.InsertionType.HourMinute);
         GlobalRepository.OnTimeUpdated += HarvestInProgress;
-        Time.timeScale = 20 * GlobalRepository.Difficulty.DayCycleLength / 24;
+        Time.timeScale = 20 * GlobalRepository.SystemVars.Difficulty.DayCycleLength / 24;
     }
 
     private void HarvestInProgress()
     {
         _harvestTimeLeft -= 1;
         _harvestTimeLeftText.text = TimeConverter.InsertTime("Time to harvest: {0}:{1}", _harvestTimeLeft, TimeConverter.InsertionType.HourMinute);
-        GlobalRepository.AddKcal(_harvestOptions[_optionIndex].HarvestOptionData.KcalDebuff);
-        GlobalRepository.AddWater(_harvestOptions[_optionIndex].HarvestOptionData.WaterDebuff);
+        GlobalRepository.PlayerVars.KCal+=_harvestOptions[_optionIndex].HarvestOptionData.KcalDebuff;
+        GlobalRepository.PlayerVars.Water+=_harvestOptions[_optionIndex].HarvestOptionData.WaterDebuff;
 
         if (_harvestTimeLeft <= 0)
         {
-            GlobalRepository.Inventory.AddItem(_harvestOptions[_optionIndex].HarvestOptionData.ItemToHarvest,false);
+            GlobalRepository.PlayerVars.Inventory.AddItem(_harvestOptions[_optionIndex].HarvestOptionData.ItemToHarvest,false);
 
             foreach (HarvesterData.HarvestOptionData.Requirement requirement in _harvestOptions[_optionIndex].HarvestOptionData.Requirements)
             {
                 if (requirement.IsDisposable)
                 {
-                    GlobalRepository.Inventory.RemoveItem(requirement.ItemRequirement, requirement.ItemRequirement.Count);
+                    GlobalRepository.PlayerVars.Inventory.RemoveItem(requirement.ItemRequirement, requirement.ItemRequirement.Count);
                 }
             }
 

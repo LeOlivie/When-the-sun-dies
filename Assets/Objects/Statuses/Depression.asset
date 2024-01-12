@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0027a89a070da874595c5962c9f571a3, type: 3}
   m_Name: Depression
   m_EditorClassIdentifier: 
-  _name: Dehydration
+  _name: Depression
+  _iconName: LowHappinessIcon
+  _dependentVar: 3
+  _removeValue: 15
+  _startProgress: 0
   _maxProgress: 2880
   _effectStructs:
   - _progressRequired: 0

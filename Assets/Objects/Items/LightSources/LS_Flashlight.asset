@@ -19,13 +19,13 @@ MonoBehaviour:
   _maxInStack: 1
   _isUsable: 0
   _itemsToAddAfterUse: []
-  _lootPointsToSpawn: 350
-  _kcalPrice: 4000
+  _lootPointsToSpawn: 300
+  _kcalPrice: 3250
   _mlPrice: 2500
-  _searchSpeed: 0.9
-  _harvestSpeed: 0.8
-  _lightRadius: 1.25
-  _lightIntensity: 1.1
+  _searchSpeed: 0.95
+  _harvestSpeed: 0.85
+  _lightRadius: 1.15
+  _lightIntensity: 1
   _lightColor: {r: 0.8915094, g: 0.9323387, b: 1, a: 1}
   _disposableItem:
     _itemData: {fileID: 11400000, guid: e18a4f57421eba649b683f17b8252e70, type: 2}

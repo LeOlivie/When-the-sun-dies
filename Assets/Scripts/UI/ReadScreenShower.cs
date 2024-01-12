@@ -40,7 +40,7 @@ public class ReadScreenShower : MonoBehaviour, IClosable
         _startBtnHandler.AddListener(PauseReading);
         _startBtnText.text = "Pause";
         GlobalRepository.OnTimeUpdated += ReadProgress;
-        Time.timeScale = 40 * GlobalRepository.Difficulty.DayCycleLength / 24;
+        Time.timeScale = 40 * GlobalRepository.SystemVars.Difficulty.DayCycleLength / 24;
     }
 
     private void ReadProgress()
@@ -74,12 +74,12 @@ public class ReadScreenShower : MonoBehaviour, IClosable
         {
             if (_timeLeft <= 0)
             {
-                GlobalRepository.Skills[_bookData.SkillType] += 1;
+                GlobalRepository.PlayerVars.Skills[_bookData.SkillType] += 1;
             }
 
             if (_timeLeft > 0)
             {
-                GlobalRepository.Inventory.AddItem(new Item(_bookData, 1), false);
+                GlobalRepository.PlayerVars.Inventory.AddItem(new Item(_bookData, 1), false);
             }
 
             _menu.SetActive(true);

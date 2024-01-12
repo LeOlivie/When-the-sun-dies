@@ -28,7 +28,7 @@ MonoBehaviour:
     _availabilityChance: 100
   - _itemToHarvest:
       _itemData: {fileID: 11400000, guid: b45e60c882934104c828133c6fb6bb8d, type: 2}
-      _count: 2
+      _count: 1
     _requirements:
     - _itemRequirement:
         _itemData: {fileID: 11400000, guid: 955440116049e9744ab54f27be488363, type: 2}

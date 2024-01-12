@@ -4,15 +4,15 @@ public class StartKitGiver : MonoBehaviour
 {
     private void Start()
     {
-        if (GlobalRepository.IsStartKitReceived)
+        if (GlobalRepository.SystemVars.IsStartKitReceived)
         {
             return;
         }
 
-        foreach (Item item in GlobalRepository.Difficulty.StartKit)
+        foreach (Item item in GlobalRepository.SystemVars.Difficulty.StartKit)
         {
-            GlobalRepository.Inventory.AddItem(item,false);
+            GlobalRepository.PlayerVars.Inventory.AddItem(item,false);
         }
-        GlobalRepository.IsStartKitReceived = true;
+        GlobalRepository.SystemVars.IsStartKitReceived = true;
     }
 }
